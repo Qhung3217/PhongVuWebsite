@@ -1,0 +1,36 @@
+@import "../../../../scss/variables/variable";
+::ng-deep .slide-cus {
+  height: 5.6rem !important;
+  img {
+    height: 5.6rem !important;
+    object-fit: cover;
+  }
+}
+.aside-box {
+  background-color: $primaryColor;
+  height: 4.2rem;
+  margin: 0 auto;
+  padding: 0 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .row {
+    justify-content: flex-end;
+  }
+  .aside-item {
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    .icon {
+      margin-right: 0.8rem;
+    }
+    .text {
+      font-size: 1.3rem;
+      span {
+        color: red;
+      }
+    }
+  }
+}

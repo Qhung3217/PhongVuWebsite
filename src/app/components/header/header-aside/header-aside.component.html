@@ -1,0 +1,47 @@
+<app-slider
+  [classObj]="'slide-cus'"
+  [slideConfig]="{
+    slidesToShow: 1,
+    autoplay: true,
+    autoplayspeed: 2000,
+    accessibility: false,
+    arrows: false,
+    draggable: false,
+    adaptiveHeight: true,
+    speed: 250
+  }"
+  [slides]="[
+    {
+      img: 'https://lh3.googleusercontent.com/7QWRyS6YRaxrLXIEeoTDrW45gT79bwkXsL6YkWy5W1H163fl-fFONtqqEyDTRQGmOb9ldNYfyFUht34miPDRwmvfQS2Kvlk4=w1920-rw'
+    },
+    {
+      img: 'https://lh3.googleusercontent.com/7QWRyS6YRaxrLXIEeoTDrW45gT79bwkXsL6YkWy5W1H163fl-fFONtqqEyDTRQGmOb9ldNYfyFUht34miPDRwmvfQS2Kvlk4=w1920-rw'
+    }
+  ]"
+></app-slider>
+<div class="aside-box">
+  <div class="grid wide">
+    <div class="row">
+      <a href="#" class="aside-item">
+        <div class="icon"><app-business-icon></app-business-icon></div>
+        <div class="text">Hệ thống Showroom</div>
+      </a>
+      <a href="#" class="aside-item">
+        <div class="icon"><app-headset-icon></app-headset-icon></div>
+        <div class="text">Tư vấn mua hàng: <span>1800 6867</span></div>
+      </a>
+      <a href="#" class="aside-item">
+        <div class="icon"><app-headset-icon></app-headset-icon></div>
+        <div class="text">CSKH: <span>1800 6865</span></div>
+      </a>
+      <a href="#" class="aside-item">
+        <div class="icon"><app-desktop-news-icon></app-desktop-news-icon></div>
+        <div class="text">Tin công nghệ</div>
+      </a>
+      <a href="#" class="aside-item">
+        <div class="icon"><app-build-icon></app-build-icon></div>
+        <div class="text">Xây dựng cấu hình</div>
+      </a>
+    </div>
+  </div>
+</div>

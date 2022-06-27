@@ -1,0 +1,17 @@
+<!-- <div [ngStyle]="styleObj">
+  <img *ngFor="let img of imgs" [src]="img" alt="Siêu Sale Phong Vũ" />
+</div> -->
+<ngx-slick-carousel
+  class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+>
+  <div
+    ngxSlickItem
+    *ngFor="let slide of slides"
+    class="slide"
+    [ngClass]="classObj"
+  >
+    <img src="{{ slide.img }}" alt="" width="100%" />
+  </div>
+</ngx-slick-carousel>

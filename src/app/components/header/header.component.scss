@@ -1,0 +1,90 @@
+@import "../../../scss/variables/variable";
+
+.header {
+  height: 8.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .header-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .logo {
+      max-width: 100%;
+      display: block;
+      padding: 0 0.8rem;
+      flex-shrink: 0.3;
+      img {
+        width: 100%;
+      }
+    }
+    .search {
+      flex: auto;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      background-color: whitesmoke;
+      padding: 1px;
+      margin: 0 0.8rem;
+      .search-input {
+        width: 100%;
+        height: 3.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        font-size: 1.4rem;
+        font-weight: 400;
+        background-color: transparent;
+      }
+      .search-action {
+        flex-shrink: 0;
+        width: 3.6rem;
+        height: 3.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+          width: 2.4rem;
+          height: 2.4rem;
+          display: block;
+          ::ng-deep svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 0.365rem 2rem;
+      gap: 1.3rem;
+      color: $asideColor;
+      flex-shrink: 0;
+      .header-icon {
+        width: 3.6rem;
+        height: 3.6rem;
+        color: inherit;
+        ::ng-deep svg {
+          fill: currentColor;
+          color: currentColor;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      span {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: inherit;
+      }
+    }
+  }
+}
