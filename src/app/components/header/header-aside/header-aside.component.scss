@@ -1,9 +1,11 @@
 @import "../../../../scss/variables/variable";
-::ng-deep .slide-cus {
-  height: 5.6rem !important;
-  img {
+.slide-box {
+  ::ng-deep .slide-cus {
     height: 5.6rem !important;
-    object-fit: cover;
+    img {
+      height: 5.6rem !important;
+      object-fit: cover;
+    }
   }
 }
 .aside-box {

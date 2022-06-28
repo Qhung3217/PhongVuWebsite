@@ -1,24 +1,26 @@
-<app-slider
-  [classObj]="'slide-cus'"
-  [slideConfig]="{
-    slidesToShow: 1,
-    autoplay: true,
-    autoplayspeed: 2000,
-    accessibility: false,
-    arrows: false,
-    draggable: false,
-    adaptiveHeight: true,
-    speed: 250
-  }"
-  [slides]="[
-    {
-      img: 'https://lh3.googleusercontent.com/7QWRyS6YRaxrLXIEeoTDrW45gT79bwkXsL6YkWy5W1H163fl-fFONtqqEyDTRQGmOb9ldNYfyFUht34miPDRwmvfQS2Kvlk4=w1920-rw'
-    },
-    {
-      img: 'https://lh3.googleusercontent.com/7QWRyS6YRaxrLXIEeoTDrW45gT79bwkXsL6YkWy5W1H163fl-fFONtqqEyDTRQGmOb9ldNYfyFUht34miPDRwmvfQS2Kvlk4=w1920-rw'
-    }
-  ]"
-></app-slider>
+<div class="slide-box">
+  <app-slider
+    [classObj]="'slide-cus'"
+    [slideConfig]="{
+      slidesToShow: 1,
+      autoplay: true,
+      autoplayspeed: 10000,
+      accessibility: false,
+      arrows: false,
+      draggable: false,
+      adaptiveHeight: true,
+      speed: 250
+    }"
+    [slides]="[
+      {
+        img: 'assets/imgs/banner-head/banner.webp'
+      },
+      {
+        img: 'assets/imgs/banner-head/banner.webp'
+      }
+    ]"
+  ></app-slider>
+</div>
 <div class="aside-box">
   <div class="grid wide">
     <div class="row">

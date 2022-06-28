@@ -1,0 +1,46 @@
+@import "../../../scss/variables/variable";
+.nav {
+  background-color: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+  // overflow: hidden;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  .nav-list {
+    list-style: none;
+    .nav-item {
+      padding: 0 0.8rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.8rem;
+      height: 3.2rem;
+      color: $textColor;
+      border-radius: 0.8rem;
+      &:hover {
+        background-color: #f3f5fc;
+        color: $primaryColor;
+      }
+      .image {
+        width: 3rem;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        img {
+          display: block;
+          max-width: 100%;
+          object-fit: cover;
+        }
+      }
+      .title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: inherit;
+        flex: 1;
+        padding-right: 1rem;
+      }
+    }
+  }
+}

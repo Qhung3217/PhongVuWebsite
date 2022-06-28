@@ -1,3 +1,17 @@
-<div *ngFor="let navItem of navItems">
-  {{ navItem.name }}
-</div>
+<nav class="nav" (mouseleave)="hoverItem = null">
+  <ul class="nav-list">
+    <li *ngFor="let navItem of navItems">
+      <a
+        [routerLink]="['/product', navItem.slug]"
+        class="nav-item"
+        (mouseover)="onHover(navItem)"
+      >
+        <figure class="image">
+          <img [src]="navItem.image" [alt]="navItem.name" />
+        </figure>
+        <span class="title">{{ navItem.name }}</span>
+      </a>
+    </li>
+  </ul>
+  <app-sub-nav [navItem]="hoverItem" *ngIf="hoverItem"></app-sub-nav>
+</nav>

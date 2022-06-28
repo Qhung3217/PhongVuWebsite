@@ -2,3 +2,23 @@ img {
   height: 100%;
   width: 100%;
 }
+.slick-slider {
+  position: relative;
+  display: block;
+  user-select: none;
+  touch-action: pan-y;
+  .slick-list {
+    position: relative;
+    height: 5.6rem;
+    .slick-track {
+      height: 100%;
+      transform: translate3d(0, 0, 0);
+      .slick-slide {
+        display: none;
+        &.slick-current {
+          display: block;
+        }
+      }
+    }
+  }
+}

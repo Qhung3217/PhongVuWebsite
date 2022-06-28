@@ -1,0 +1,33 @@
+@import "../../../../scss/variables/variable";
+
+.mega-menu {
+  padding: 1.2rem;
+  min-height: 100%;
+  width: calc(1200px - 95%);
+  position: absolute;
+  background-color: white;
+  top: 0;
+  left: 95%;
+  border-top-right-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  .menu-item {
+    margin-bottom: 2.4rem;
+    .title {
+      color: $primaryColor;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .list {
+      list-style: none;
+      .item {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2rem;
+        color: #333;
+      }
+    }
+  }
+}

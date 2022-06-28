@@ -1,0 +1,78 @@
+<section class="section-hero">
+  <div class="grid wide">
+    <div class="row section-content no-gutters">
+      <div class="navbar-box col l-2">
+        <app-navbar></app-navbar>
+      </div>
+
+      <div class="slide-box col l-8">
+        <div class="slide-content">
+          <app-slider
+            [isNext]="isNextSlide"
+            [isPrevious]="isPreviousSlide"
+            (isChangeSlideComplete)="onCompleteChangeSlide()"
+            [classObj]="'slide-cus'"
+            [slideConfig]="{
+              slidesToShow: 1,
+              autoplay: false,
+              autoplayspeed: 10000,
+              accessibility: false,
+              draggable: false,
+              arrows: false,
+              adaptiveHeight: true,
+              speed: 250,
+              dots: true
+            }"
+            [slides]="[
+              {
+                img: 'assets/imgs/banner-hero/banner-1.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-2.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-3.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-4.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-5.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-6.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-7.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-8.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-9.webp'
+              },
+              {
+                img: 'assets/imgs/banner-hero/banner-10.webp'
+              }
+            ]"
+          ></app-slider>
+        </div>
+        <button
+          class="btn btn-control btn-control-prev"
+          (click)="onPreviousSlide()"
+        >
+          &lt;
+        </button>
+      </div>
+      <div class="col l-2 btn-next-col">
+        <button
+          class="btn btn-control btn-control-next"
+          [attr.data-width]="screenWidth"
+          (click)="onNextSlide()"
+        >
+          &gt;
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

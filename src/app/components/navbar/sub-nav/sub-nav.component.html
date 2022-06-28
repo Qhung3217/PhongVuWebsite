@@ -1,0 +1,40 @@
+<div class="mega-menu grid" *ngIf="(rangePrice | json) != '{}'">
+  <div class="row">
+    <div class="col l-6">
+      <div class="menu-item" *ngFor="let number of [1, 2, 3]">
+        <h1 class="title">{{ navItem.name }} theo giá tiền</h1>
+        <ul class="list">
+          <li *ngIf="rangePrice?.low">
+            <a
+              class="item"
+              [routerLink]="['/products']"
+              [queryParam]="{ 'where[price][$lte]': 1000 }"
+              >{{ rangePrice.low }}</a
+            >
+          </li>
+          <li *ngIf="rangePrice?.middle">
+            <a
+              class="item"
+              [routerLink]="['/products']"
+              [queryParam]="{
+                'where[price][$gte]': 1000,
+                'where[price][$lte]': 2000
+              }"
+              >{{ rangePrice.middle }}</a
+            >
+          </li>
+          <li *ngIf="rangePrice?.hight">
+            <a
+              class="item"
+              [routerLink]="['/products']"
+              [queryParam]="{ 'where[price][$gte]': 2000 }"
+              >{{ rangePrice.hight }}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col l-6"></div>
+    <div class="col l-6"></div>
+  </div>
+</div>

@@ -8,17 +8,20 @@ import { SliderComponent } from './shared/slider/slider.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderAsideComponent } from './components/header/header-aside/header-aside.component';
-import { HeadsetIconComponent } from './components/header/icons/headset-icon/headset-icon.component';
-import { BusinessIconComponent } from './components/header/icons/business-icon/business-icon.component';
-import { DesktopNewsIconComponent } from './components/header/icons/desktop-news-icon/desktop-news-icon.component';
-import { BuildIconComponent } from './components/header/icons/build-icon/build-icon.component';
-import { SearchIconComponent } from './components/header/icons/search-icon/search-icon.component';
-import { DiscountIconComponent } from './components/header/icons/discount-icon/discount-icon.component';
-import { OrderIconComponent } from './components/header/icons/order-icon/order-icon.component';
-import { UserIconComponent } from './components/header/icons/user-icon/user-icon.component';
-import { BellIconComponent } from './components/header/icons/bell-icon/bell-icon.component';
-import { CartIconComponent } from './components/header/icons/cart-icon/cart-icon.component';
+import { HeadsetIconComponent } from './shared/icons/headset-icon/headset-icon.component';
+import { BusinessIconComponent } from './shared/icons/business-icon/business-icon.component';
+import { DesktopNewsIconComponent } from './shared/icons/desktop-news-icon/desktop-news-icon.component';
+import { BuildIconComponent } from './shared/icons/build-icon/build-icon.component';
+import { SearchIconComponent } from './shared/icons/search-icon/search-icon.component';
+import { DiscountIconComponent } from './shared/icons/discount-icon/discount-icon.component';
+import { OrderIconComponent } from './shared/icons/order-icon/order-icon.component';
+import { UserIconComponent } from './shared/icons/user-icon/user-icon.component';
+import { BellIconComponent } from './shared/icons/bell-icon/bell-icon.component';
+import { CartIconComponent } from './shared/icons/cart-icon/cart-icon.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { SubNavComponent } from './components/navbar/sub-nav/sub-nav.component';
+import { LandingPageComponent } from './main/landing-page/landing-page.component';
+import { SectionHeroComponent } from './components/section-hero/section-hero.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     UserIconComponent,
     BellIconComponent,
     CartIconComponent,
+    SubNavComponent,
+    LandingPageComponent,
+    SectionHeroComponent,
   ],
   imports: [
     BrowserModule,
