@@ -1,0 +1,18 @@
+<div class="grid" [ngClass]="{ wide: isFullScreen }">
+  <div class="row">
+    <div
+      class="col promotion-list"
+      [ngClass]="classNameCol"
+      *ngFor="let promotion of promotionList"
+    >
+      <a href="#" class="promotion-item">
+        <figure class="promotion-img zoom-in-hover">
+          <img [src]="promotion.img" alt="" />
+        </figure>
+        <span class="promotion-title" *ngIf="promotion?.title">
+          {{ promotion?.title }}</span
+        >
+      </a>
+    </div>
+  </div>
+</div>

@@ -18,9 +18,6 @@ export class SliderComponent implements OnInit, OnChanges {
   @Input() slides: [{ img: string }];
   @Input() classObj;
   @Input() slideConfig: { any: any };
-  @Input() isNext = false;
-  @Input() isPrevious = false;
-  @Output() isChangeSlideComplete = new EventEmitter();
   @ViewChild('slickModal', { static: true }) slickModal: SlickCarouselComponent;
   // slides = [
   //   { img: 'https://picsum.photos/350?random=1' },
@@ -32,16 +29,11 @@ export class SliderComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit(): void {}
-  ngOnChanges() {
-    if (this.isNext) this.nextSlide();
-    if (this.isPrevious) this.prevSlide();
-  }
+  ngOnChanges() {}
   nextSlide() {
     this.slickModal.slickNext();
-    this.isChangeSlideComplete.emit(null);
   }
   prevSlide() {
     this.slickModal.slickPrev();
-    this.isChangeSlideComplete.emit(null);
   }
 }

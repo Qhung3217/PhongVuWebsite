@@ -1,81 +1,98 @@
 .section-hero {
   width: 100%;
   position: relative;
+  .slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    // z-index: -1;
+    &:hover ~ .grid .btn-control {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+    }
+    ::ng-deep {
+      .slide-cus {
+        height: 566px;
+        img {
+          object-fit: cover;
+        }
+      }
+      .slick-dots {
+        position: absolute;
+        bottom: 9.6rem;
+        li {
+          margin: 0 0;
+        }
+        button:before {
+          font-size: 1rem;
+        }
+        .slick-active {
+          button:before {
+            color: #007aff;
+            border-color: #007aff;
+          }
+        }
+      }
+    }
+  }
   .section-content {
     display: flex;
     .navbar-box {
       position: relative;
       z-index: 1;
       padding-top: 1.5rem;
+      pointer-events: none;
     }
-    .slide-box {
+
+    .slide-action {
+      position: relative;
       height: 550px;
-      .slide-content {
+      pointer-events: none;
+      .btn-control {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        // z-index: -1;
-        ::ng-deep {
-          .slide-cus {
-            height: 566px;
-            img {
-              object-fit: cover;
-            }
-          }
-          .slick-dots {
-            position: absolute;
-            bottom: 9.6rem;
-            li {
-              margin: 0 0;
-            }
-            button:before {
-              font-size: 1rem;
-            }
-            .slick-active {
-              button:before {
-                color: #007aff;
-                border-color: #007aff;
-              }
-            }
-          }
+        pointer-events: all;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        font-size: 3rem;
+        font-weight: 100;
+        background-color: transparent;
+        color: transparent;
+        transition: all 250ms linear;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.4);
+          color: white;
         }
       }
-      &:hover .btn-control,
-      &:hover ~ .btn-next-col .btn-control {
-        background-color: rgba(0, 0, 0, 0.4);
-        color: white;
+      .btn-control-prev {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        left: 0;
       }
-    }
-    .btn-control {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-      width: 5rem;
-      height: 5rem;
-      border-radius: 50%;
-      font-size: 3rem;
-      font-weight: 100;
-      background-color: transparent;
-      color: transparent;
-      transition: all 250ms linear;
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.4);
-        color: white;
-      }
-    }
-    .btn-control-prev {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-    .btn-next-col {
-      position: relative;
       .btn-control-next {
+        // pointer-events: all;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
-        right: 100%;
+        right: 0;
       }
+    }
+
+    .btn-next-col {
+      position: relative;
+      pointer-events: none;
+    }
+  }
+  .promotion-box {
+    position: relative;
+
+    .promotions {
+      position: absolute;
+      z-index: 1;
+      transform: translateY(-38%);
     }
   }
 }

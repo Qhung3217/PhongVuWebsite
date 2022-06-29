@@ -8,8 +8,11 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  pointer-events: all;
   .nav-list {
     list-style: none;
+    display: block;
+    width: 100%;
     .nav-item {
       padding: 0 0.8rem;
       display: flex;
@@ -19,6 +22,7 @@
       height: 3.2rem;
       color: $textColor;
       border-radius: 0.8rem;
+
       &:hover {
         background-color: #f3f5fc;
         color: $primaryColor;
@@ -38,7 +42,7 @@
         font-size: 1.2rem;
         font-weight: 500;
         color: inherit;
-        flex: 1;
+        flex: auto;
         padding-right: 1rem;
       }
     }

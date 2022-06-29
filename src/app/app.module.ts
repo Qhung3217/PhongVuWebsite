@@ -22,6 +22,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SubNavComponent } from './components/navbar/sub-nav/sub-nav.component';
 import { LandingPageComponent } from './main/landing-page/landing-page.component';
 import { SectionHeroComponent } from './components/section-hero/section-hero.component';
+import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SectionHeroComponent } from './components/section-hero/section-hero.com
     SubNavComponent,
     LandingPageComponent,
     SectionHeroComponent,
+    PromotionListComponent,
   ],
   imports: [
     BrowserModule,

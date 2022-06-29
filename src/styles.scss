@@ -21,6 +21,15 @@ a {
   color: $primaryColor !important;
 }
 
+.zoom-in-hover {
+  transform: scale(1);
+  transition: transform 250ms linear;
+}
+
+.zoom-in-hover:hover {
+  transform: scale(1.1);
+}
+
 /******************************/
 //----------Button-----------//
 /******************************/

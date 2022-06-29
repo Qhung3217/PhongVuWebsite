@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SliderComponent } from 'src/app/shared/slider/slider.component';
 
 @Component({
   selector: 'app-section-hero',
@@ -7,19 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionHeroComponent implements OnInit {
   screenWidth = window.innerWidth;
-  isNextSlide = false;
-  isPreviousSlide = false;
+
+  @ViewChild(SliderComponent) slider;
   constructor() {}
 
   ngOnInit(): void {}
   onNextSlide() {
-    this.isNextSlide = true;
+    this.slider.nextSlide();
   }
   onPreviousSlide() {
-    this.isPreviousSlide = true;
-  }
-  onCompleteChangeSlide() {
-    this.isNextSlide = false;
-    this.isPreviousSlide = false;
+    this.slider.prevSlide();
   }
 }
