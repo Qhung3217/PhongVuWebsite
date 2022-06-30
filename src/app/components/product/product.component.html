@@ -1,0 +1,41 @@
+<a [routerLink]="['product', product.slug]" class="product">
+  <div class="product-wrap">
+    <figure class="image">
+      <img
+        [src]="product.image"
+        [alt]="product.name"
+        width="100%"
+        class="zoom-in-hover"
+      />
+      <div
+        class="money-saved"
+        [ngStyle]="{ backgroundImage: 'url(assets/imgs/deals/save.svg)' }"
+        *ngIf="isSale"
+      >
+        <h1 class="title">save</h1>
+        <p>{{ 250 | currency: "AUD" }}</p>
+      </div>
+    </figure>
+    <div class="product-info">
+      <h3 class="title">{{ product.name }}</h3>
+      <div class="price-and-delivery">
+        <div class="price-box">
+          <p class="price-sell">
+            {{
+              isSale
+                ? (product.price - 250 | currency: "AUD")
+                : (product.price | currency: "AUD")
+            }}
+          </p>
+          <div class="price-origin" *ngIf="isSale">
+            <p>{{ product.price | currency: "AUD" }}</p>
+            <span>
+              &nbsp;-{{ (250 / product.price) * 100 | number: "1.1-2" }}%
+            </span>
+          </div>
+        </div>
+        <app-freeship-icon></app-freeship-icon>
+      </div>
+    </div>
+  </div>
+</a>

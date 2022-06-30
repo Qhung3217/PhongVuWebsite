@@ -1,0 +1,37 @@
+.hot-deal {
+  margin-bottom: 5rem;
+  margin-top: 11rem;
+  .hot-deal-content {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    border-radius: 0.8rem;
+    .hot-deal-tab {
+      color: #848788;
+
+      .hot-deal-list {
+        height: 6.1rem;
+        .hot-deal-item {
+          width: 50%;
+          height: 100%;
+          cursor: pointer;
+          background-color: white;
+          &.active {
+            color: white;
+            background-color: transparent;
+          }
+          .title {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 2.8rem;
+          }
+          .subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            line-height: 2.4rem;
+          }
+        }
+      }
+    }
+  }
+}

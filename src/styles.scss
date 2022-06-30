@@ -30,6 +30,22 @@ a {
   transform: scale(1.1);
 }
 
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-centerc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 /******************************/
 //----------Button-----------//
 /******************************/

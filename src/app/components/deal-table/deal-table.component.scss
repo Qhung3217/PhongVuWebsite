@@ -1,0 +1,64 @@
+.deal-table {
+  .table-heading {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.2rem;
+    height: 5.6rem;
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 2.8rem;
+    }
+    .see-all {
+      color: inherit;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2rem;
+    }
+  }
+  .countdown-box {
+    color: white;
+    text-align: center;
+    position: relative;
+    right: -2rem;
+    .text {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2rem;
+      margin-bottom: 1.6rem;
+      span {
+        font-size: 2.8rem;
+        font-weight: 600;
+      }
+    }
+    .countdown-time {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      .countdown {
+        background-image: linear-gradient(rgb(74, 74, 74), rgb(35, 34, 34));
+        border-radius: 0.5rem;
+        font-size: 2rem;
+        font-weight: 700;
+        height: 4.5rem;
+        width: 4.5rem;
+        line-height: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .countdown-hours {
+      }
+      .countdown-minutes {
+      }
+      .countdown-seconds {
+      }
+    }
+  }
+  .sliders {
+    padding-left: 3rem;
+  }
+}

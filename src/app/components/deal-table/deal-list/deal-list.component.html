@@ -1,0 +1,16 @@
+<div class="list-wrap">
+  <ngx-slick-carousel
+    class="products"
+    #dealModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    <div
+      class="temp"
+      *ngFor="let product of products; trackBy: _trackBy; let i = index"
+      ngxSlickItem
+    >
+      <app-product [product]="product" class="product-box" [isSale]="i < 3">
+      </app-product>
+    </div>
+  </ngx-slick-carousel>
+</div>

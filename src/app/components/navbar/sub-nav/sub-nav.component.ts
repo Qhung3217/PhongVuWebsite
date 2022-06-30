@@ -17,7 +17,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./sub-nav.component.scss'],
 })
 export class SubNavComponent implements OnInit, OnChanges {
-  rangePrice: { low?: string; middle?: string; hight?: string };
+  rangePrice: {
+    low?: string;
+    middle?: { upperBound: string; lowerBound: string };
+    hight?: string;
+  };
   @Input() navItem: Category;
   constructor(
     private productService: ProductService,
@@ -42,11 +46,14 @@ export class SubNavComponent implements OnInit, OnChanges {
 
     productsInCategory.forEach((prod) => {
       if (prod.price < 1000)
-        this.rangePrice = { ...this.rangePrice, low: 'Dưới 1000AUD' };
+        this.rangePrice = { ...this.rangePrice, low: '1000' };
       if (prod.price >= 1000 && prod.price <= 2000)
-        this.rangePrice = { ...this.rangePrice, middle: '1000-2000AUD' };
+        this.rangePrice = {
+          ...this.rangePrice,
+          middle: { lowerBound: '1000', upperBound: '2000' },
+        };
       if (prod.price > 2000)
-        this.rangePrice = { ...this.rangePrice, hight: 'Trên 2000AUD' };
+        this.rangePrice = { ...this.rangePrice, hight: '2000' };
     });
     // console.log(
     //   products.filter((prod) => prod.category._id === this.navItem._id),

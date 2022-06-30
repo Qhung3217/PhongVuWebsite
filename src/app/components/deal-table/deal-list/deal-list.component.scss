@@ -1,0 +1,65 @@
+.list-wrap {
+  // padding: 1rem 0;
+  padding-bottom: 1.4rem;
+}
+
+.products {
+  &:hover ::ng-deep .slick-arrow {
+    opacity: 1;
+  }
+  ::ng-deep {
+    .product-box {
+      height: 100%;
+    }
+    .slick-list {
+      height: 265px;
+    }
+    .slick-track {
+      display: flex;
+      height: 100%;
+      // gap: 1.2rem;
+    }
+    .slick-slide {
+      margin-right: 1.2rem;
+    }
+    .slick-disabled {
+      opacity: 0.35;
+    }
+    .slick-arrow {
+      width: 4.4rem;
+      height: 4.4rem;
+      background-color: rgba(168, 168, 168, 0.46);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      opacity: 0;
+    }
+    .slick-prev {
+      border-top-right-radius: 100px;
+      border-bottom-right-radius: 100px;
+      left: 0rem;
+    }
+    .slick-next {
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+      right: 0.9rem;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+      font-weight: 200;
+      font-size: 3rem;
+      width: 4.4rem;
+      height: 4.4rem;
+      top: 9%;
+      position: relative;
+    }
+    .slick-prev:before {
+      content: "<";
+    }
+    .slick-next:before {
+      content: ">";
+    }
+  }
+}

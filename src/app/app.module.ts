@@ -23,6 +23,11 @@ import { SubNavComponent } from './components/navbar/sub-nav/sub-nav.component';
 import { LandingPageComponent } from './main/landing-page/landing-page.component';
 import { SectionHeroComponent } from './components/section-hero/section-hero.component';
 import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
+import { SectionHotDealComponent } from './components/section-hot-deal/section-hot-deal.component';
+import { DealTableComponent } from './components/deal-table/deal-table.component';
+import { DealListComponent } from './components/deal-table/deal-list/deal-list.component';
+import { ProductComponent } from './components/product/product.component';
+import { FreeshipIconComponent } from './shared/icons/freeship-icon/freeship-icon.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,11 @@ import { PromotionListComponent } from './components/promotion-list/promotion-li
     LandingPageComponent,
     SectionHeroComponent,
     PromotionListComponent,
+    SectionHotDealComponent,
+    DealTableComponent,
+    DealListComponent,
+    ProductComponent,
+    FreeshipIconComponent,
   ],
   imports: [
     BrowserModule,

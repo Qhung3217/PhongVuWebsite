@@ -1,0 +1,34 @@
+<div class="deal-table">
+  <div class="row">
+    <div class="col l-12 m-12 s-12">
+      <div class="table-heading">
+        <h1 class="title">{{ title }}</h1>
+        <a [routerLink]="href" class="see-all">See all <span>></span></a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l-2 flex-centerc" *ngIf="isCountdown">
+      <div class="countdown-box">
+        <p class="text">Ends in <span>2</span> day</p>
+        <div class="countdown-time">
+          <div class="countdown countdown-hours">
+            {{ this.hours | number: "2.0-0" }}
+          </div>
+          <div class="countdown countdown-minutes">
+            {{ this.minutes | number: "2.0-0" }}
+          </div>
+          <div class="countdown countdown-seconds">
+            {{ this.seconds | number: "2.0-0" }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="col l-10 sliders"
+      [ngClass]="{ 'l-10': isCountdown, 'l-12 m-12 s-12': !isCountdown }"
+    >
+      <app-deal-list></app-deal-list>
+    </div>
+  </div>
+</div>

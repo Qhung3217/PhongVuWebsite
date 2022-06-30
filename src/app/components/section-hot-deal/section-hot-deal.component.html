@@ -1,0 +1,29 @@
+<section class="hot-deal grid wide">
+  <div class="hot-deal-content" [ngStyle]="{ backgroundImage: backgroundUrl }">
+    <nav class="hot-deal-tab">
+      <ul class="hot-deal-list flex-center">
+        <li
+          class="hot-deal-item flex-centerc"
+          [ngClass]="{ active: selected === 'gaming' }"
+          (click)="onClick('gaming')"
+        >
+          <h1 class="title">Gamimg Gear</h1>
+          <aside class="subtitle">Only From 299K CZK</aside>
+        </li>
+        <li
+          class="hot-deal-item flex-centerc"
+          [ngClass]="{ active: selected === 'office' }"
+          (click)="onClick('office')"
+        >
+          <h1 class="title">Office - Tablet</h1>
+          <aside class="subtitle">Up to 30% Off</aside>
+        </li>
+      </ul>
+    </nav>
+
+    <app-deal-table
+      href="product/laptop-paSPa"
+      [isCountdown]="true"
+    ></app-deal-table>
+  </div>
+</section>

@@ -9,7 +9,7 @@
               class="item"
               [routerLink]="['/products']"
               [queryParam]="{ 'where[price][$lte]': 1000 }"
-              >{{ rangePrice.low }}</a
+              >Below {{ rangePrice.low | currency: "AUD":"symbol":"1.0-0" }}</a
             >
           </li>
           <li *ngIf="rangePrice?.middle">
@@ -20,7 +20,13 @@
                 'where[price][$gte]': 1000,
                 'where[price][$lte]': 2000
               }"
-              >{{ rangePrice.middle }}</a
+              >{{
+                rangePrice.middle.lowerBound | currency: "AUD":"symbol":"1.0-0"
+              }}
+              -
+              {{
+                rangePrice.middle.upperBound | currency: "AUD":"symbol":"1.0-0"
+              }}</a
             >
           </li>
           <li *ngIf="rangePrice?.hight">
@@ -28,7 +34,8 @@
               class="item"
               [routerLink]="['/products']"
               [queryParam]="{ 'where[price][$gte]': 2000 }"
-              >{{ rangePrice.hight }}</a
+              >Above
+              {{ rangePrice.hight | currency: "AUD":"symbol":"1.0-0" }}</a
             >
           </li>
         </ul>
