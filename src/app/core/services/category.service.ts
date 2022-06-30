@@ -14,7 +14,7 @@ interface dataResponse {
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
-  categories: Category[];
+  categories: Category[] = [];
   categoriesChanged = new Subject<Category[]>();
   constructor(private http: HttpClient) {}
   fetchData() {
@@ -32,6 +32,7 @@ export class CategoryService {
       );
   }
   getCategories() {
+    if (this.categories.length === 0) return [];
     return this.categories.slice();
   }
 

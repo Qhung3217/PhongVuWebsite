@@ -21,9 +21,22 @@
       </ul>
     </nav>
 
+    <app-deal-table href="products" [isCountdown]="true"></app-deal-table>
+  </div>
+  <div class="hot-deal-content" style="height: 400px; margin-top: 2.4rem">
     <app-deal-table
-      href="product/laptop-paSPa"
-      [isCountdown]="true"
+      href="laptop-paSPa"
+      backgroundUrl="assets/imgs/deals/laptop.jpg"
+      title="Laptop"
+      categoryID="627931d711256e063d363c79"
+    ></app-deal-table>
+  </div>
+  <div class="hot-deal-content" style="height: 400px; margin-top: 2.4rem">
+    <app-deal-table
+      href="smart-phone-1t2bQ"
+      backgroundUrl="assets/imgs/deals/deal-3.jpg"
+      title="Smart phone"
+      categoryID="628e6373d01557f5a4dfb8c4"
     ></app-deal-table>
   </div>
 </section>

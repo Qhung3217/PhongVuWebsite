@@ -28,6 +28,7 @@ import { DealTableComponent } from './components/deal-table/deal-table.component
 import { DealListComponent } from './components/deal-table/deal-list/deal-list.component';
 import { ProductComponent } from './components/product/product.component';
 import { FreeshipIconComponent } from './shared/icons/freeship-icon/freeship-icon.component';
+import { SectionRecommendComponent } from './components/section-recommend/section-recommend.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FreeshipIconComponent } from './shared/icons/freeship-icon/freeship-ico
     DealListComponent,
     ProductComponent,
     FreeshipIconComponent,
+    SectionRecommendComponent,
   ],
   imports: [
     BrowserModule,

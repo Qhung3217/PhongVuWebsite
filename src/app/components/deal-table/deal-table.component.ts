@@ -9,6 +9,8 @@ export class DealTableComponent implements OnInit, OnDestroy {
   @Input() isCountdown = false;
   @Input() href = '#';
   @Input() title;
+  @Input() backgroundUrl;
+  @Input() categoryID;
   hours = 24;
   minutes = 60;
   seconds = 60;

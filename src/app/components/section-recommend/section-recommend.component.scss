@@ -1,0 +1,115 @@
+@import "../../../scss/mixin";
+.popular-brand {
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+  &-heading {
+    height: 5.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 2.8rem;
+    }
+    .see-all {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2rem;
+      color: #82869e;
+
+      span {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-bottom: 1.6rem;
+    .popular-brand-img {
+      width: 100%;
+      overflow: hidden;
+      height: 14rem;
+      border-radius: 0.8rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .popular-brand-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2.4rem;
+      margin-top: 1.6rem;
+      color: #333;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+.introduce-product {
+  .popular-brand {
+    padding: 0;
+    overflow: hidden;
+    &-heading {
+      padding: 1.2rem;
+    }
+  }
+  .popular-brand-poster {
+    height: 100%;
+    overflow: hidden;
+    img {
+      height: 100%;
+    }
+  }
+  .poster-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px;
+    background-color: #e0e0e0;
+    .poster-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1.6rem;
+      color: #333;
+      background-color: white;
+      .poster-title {
+        text-align: center;
+        .primary-title {
+          font-size: 1.5rem;
+          font-weight: 500;
+          line-height: 2.4rem;
+          display: block;
+        }
+        .sub-title {
+          display: block;
+          font-size: 1.3rem;
+          font-weight: 400;
+          line-height: 2rem;
+          margin-bottom: 2.4rem;
+          @include textTruncate(1);
+        }
+      }
+
+      .popular-brand-img {
+        height: 9.4rem;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

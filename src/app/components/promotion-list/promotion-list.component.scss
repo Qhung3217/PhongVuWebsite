@@ -1,18 +1,18 @@
 .promotion-list {
   .promotion-item {
-    display: block;
-    border-radius: 0.8rem;
-    overflow: hidden;
+    display: flex;
     width: 100%;
+    flex-direction: column;
 
     .promotion-img {
       width: 100%;
+      border-radius: 0.8rem;
+      overflow: hidden;
+
       img {
         width: 100%;
         object-fit: cover;
       }
-    }
-    .promotion-title {
     }
   }
 }

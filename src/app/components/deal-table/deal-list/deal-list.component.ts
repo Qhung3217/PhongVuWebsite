@@ -1,6 +1,6 @@
 import { Product } from './../../../core/models/product.model';
 import { ProductService } from './../../../core/services/product.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./deal-list.component.scss'],
 })
 export class DealListComponent implements OnInit, OnDestroy {
+  @Input() categoryID;
   products: Product[];
   productSub: Subscription;
   slideConfig = {
@@ -26,14 +27,19 @@ export class DealListComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.assignProducts();
     if (this.products.length === 0)
-      this.productService
-        .fetchData()
-        .subscribe((products) => (this.products = products));
-    this.productSub = this.productService.productsChanged.subscribe(
-      (products) => (this.products = products)
+      this.productService.fetchData().subscribe(() => this.assignProducts());
+    this.productSub = this.productService.productsChanged.subscribe(() =>
+      this.assignProducts()
     );
+  }
+  private assignProducts() {
+    if (this.categoryID)
+      this.products = this.productService.getProductsByCategoryId(
+        this.categoryID
+      );
+    else this.products = this.productService.getProducts();
   }
   ngOnDestroy() {
     this.productSub.unsubscribe();

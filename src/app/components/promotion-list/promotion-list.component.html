@@ -6,12 +6,9 @@
       *ngFor="let promotion of promotionList"
     >
       <a href="#" class="promotion-item">
-        <figure class="promotion-img zoom-in-hover">
-          <img [src]="promotion.img" alt="" />
+        <figure class="promotion-img">
+          <img [src]="promotion.img" alt="" class="zoom-in-hover" />
         </figure>
-        <span class="promotion-title" *ngIf="promotion?.title">
-          {{ promotion?.title }}</span
-        >
       </a>
     </div>
   </div>

@@ -1,4 +1,12 @@
 .deal-table {
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .border-bottom {
+    border-bottom: 1px solid white;
+    margin-bottom: 1.2rem;
+  }
   .table-heading {
     color: white;
     display: flex;

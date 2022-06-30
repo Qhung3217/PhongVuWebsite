@@ -1,6 +1,7 @@
 .list-wrap {
   // padding: 1rem 0;
   padding-bottom: 1.4rem;
+  height: 100%;
 }
 
 .products {
@@ -13,14 +14,15 @@
     }
     .slick-list {
       height: 265px;
+      height: 100%;
     }
     .slick-track {
       display: flex;
       height: 100%;
-      // gap: 1.2rem;
+      gap: 1.2rem;
     }
     .slick-slide {
-      margin-right: 1.2rem;
+      // margin-right: 1.2rem;
     }
     .slick-disabled {
       opacity: 0.35;
@@ -38,12 +40,12 @@
     .slick-prev {
       border-top-right-radius: 100px;
       border-bottom-right-radius: 100px;
-      left: 0rem;
+      left: 1.2rem;
     }
     .slick-next {
       border-top-left-radius: 100px;
       border-bottom-left-radius: 100px;
-      right: 0.9rem;
+      right: 0.8rem;
     }
     .slick-prev:before,
     .slick-next:before {
@@ -52,14 +54,14 @@
       font-size: 3rem;
       width: 4.4rem;
       height: 4.4rem;
-      top: 9%;
+      top: 10%;
       position: relative;
     }
     .slick-prev:before {
-      content: "<";
+      content: "\003C";
     }
     .slick-next:before {
-      content: ">";
+      content: "\003E";
     }
   }
 }

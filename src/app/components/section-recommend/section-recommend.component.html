@@ -1,0 +1,125 @@
+<section class="section-recommend">
+  <app-promotion-list
+    isFullScreen="true"
+    classNameCol="l-6"
+    [promotionList]="[
+      {
+        img: 'assets/imgs/promotion/recommend/p-1.webp'
+      },
+      {
+        img: 'assets/imgs/promotion/recommend/p-2.webp'
+      }
+    ]"
+  ></app-promotion-list>
+  <div class="popular-brand grid wide panel">
+    <div class="popular-brand-heading">
+      <h1 class="title">Outstanding Brand</h1>
+    </div>
+    <div class="row">
+      <div class="col l-3" *ngFor="let branch of branchList">
+        <a href="#" class="popular-brand-item">
+          <figure class="popular-brand-img">
+            <img [src]="branch.img" alt="" class="zoom-in-hover" />
+          </figure>
+          <span class="popular-brand-title"> {{ branch.title }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <app-promotion-list
+    isFullScreen="true"
+    classNameCol="l-4"
+    [promotionList]="[
+      {
+        img: 'assets/imgs/promotion/recommend/p-3.webp'
+      },
+      {
+        img: 'assets/imgs/promotion/recommend/p-4.webp'
+      },
+      {
+        img: 'assets/imgs/promotion/recommend/p-5.webp'
+      }
+    ]"
+  ></app-promotion-list>
+
+  <div class="introduce-product grid wide">
+    <div class="row">
+      <div class="col l-6">
+        <div class="popular-brand popular-brand--intro grid wide panel">
+          <div class="popular-brand-heading">
+            <h1 class="title">SPEAKER-HEADPHONE-PERIPHERALS</h1>
+            <a href="#" class="see-all">See all <span>&rsaquo;</span></a>
+          </div>
+          <div class="row no-gutters">
+            <div class="col l-4">
+              <figure class="popular-brand-poster">
+                <img
+                  src="assets/imgs/promotion/poster/gaming.webp"
+                  alt=""
+                  class="zoom-in-hover"
+                />
+              </figure>
+            </div>
+            <div class="col l-8">
+              <div class="poster-list">
+                <a
+                  href="#"
+                  class="poster-item"
+                  *ngFor="let category of categories.slice(0, 4)"
+                >
+                  <div class="poster-title">
+                    <h1 class="primary-title">{{ category.name }}</h1>
+                    <h3 class="sub-title">
+                      {{ category.description }}
+                    </h3>
+                  </div>
+                  <figure class="popular-brand-img">
+                    <img [src]="category.image" alt="" class="zoom-in-hover" />
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col l-6">
+        <div class="popular-brand popular-brand--intro grid wide panel">
+          <div class="popular-brand-heading">
+            <h1 class="title">TV - ELECTRICAL - HOUSEHOLD</h1>
+            <a href="#" class="see-all">See all <span>&rsaquo;</span></a>
+          </div>
+          <div class="row no-gutters">
+            <div class="col l-4">
+              <figure class="popular-brand-poster">
+                <img
+                  src="assets/imgs/promotion/poster/electric-appliances.webp"
+                  alt=""
+                  class="zoom-in-hover"
+                />
+              </figure>
+            </div>
+            <div class="col l-8">
+              <div class="poster-list">
+                <a
+                  href="#"
+                  class="poster-item"
+                  *ngFor="let category of categories.slice(0, 4)"
+                >
+                  <div class="poster-title">
+                    <h1 class="primary-title">{{ category.name }}</h1>
+                    <h3 class="sub-title">
+                      {{ category.description }}
+                    </h3>
+                  </div>
+                  <figure class="popular-brand-img">
+                    <img [src]="category.image" alt="" class="zoom-in-hover" />
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

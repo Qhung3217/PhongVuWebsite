@@ -39,4 +39,8 @@ export class ProductService {
     this.products = products.slice();
     this.productsChanged.next(products.slice());
   }
+  getProductsByCategoryId(id: string): Product[] {
+    if (!this.products) return [];
+    return this.products.filter((product) => product.category._id === id);
+  }
 }
