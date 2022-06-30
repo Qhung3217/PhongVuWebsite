@@ -1,0 +1,12 @@
+<div class="grid wide panel panel-no-padding mt-24">
+  <div class="list-header flex-center">
+    <h1 class="title" *ngIf="title">{{ title }}</h1>
+    <div class="sort-choices" *ngIf="!title"></div>
+  </div>
+  <div class="list">
+    <div class="list-item" *ngFor="let product of products">
+      <app-product [product]="product"></app-product>
+    </div>
+  </div>
+  <div class="list-bottom"></div>
+</div>

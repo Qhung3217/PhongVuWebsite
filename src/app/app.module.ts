@@ -29,6 +29,16 @@ import { DealListComponent } from './components/deal-table/deal-list/deal-list.c
 import { ProductComponent } from './components/product/product.component';
 import { FreeshipIconComponent } from './shared/icons/freeship-icon/freeship-icon.component';
 import { SectionRecommendComponent } from './components/section-recommend/section-recommend.component';
+import { SectionBestSellerInMonthComponent } from './components/section-best-seller-in-month/section-best-seller-in-month.component';
+import { StickyHeaderDirective } from './shared/directives/sticky-header.directive';
+import { MenuIconComponent } from './shared/icons/menu-icon/menu-icon.component';
+import { ShowCatalogDirective } from './shared/directives/show-catalog.directive';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { SectionShowProductComponent } from './components/section-show-product/section-show-product.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FacebookLogoComponent } from './shared/icons/facebook-logo/facebook-logo.component';
+import { YoutubeLogoComponent } from './shared/icons/youtube-logo/youtube-logo.component';
+import { ClanIconComponent } from './shared/icons/clan-icon/clan-icon.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +67,16 @@ import { SectionRecommendComponent } from './components/section-recommend/sectio
     ProductComponent,
     FreeshipIconComponent,
     SectionRecommendComponent,
+    SectionBestSellerInMonthComponent,
+    StickyHeaderDirective,
+    MenuIconComponent,
+    ShowCatalogDirective,
+    ProductListComponent,
+    SectionShowProductComponent,
+    FooterComponent,
+    FacebookLogoComponent,
+    YoutubeLogoComponent,
+    ClanIconComponent,
   ],
   imports: [
     BrowserModule,

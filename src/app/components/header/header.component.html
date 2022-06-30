@@ -1,10 +1,21 @@
 <app-header-aside></app-header-aside>
-<header class="header">
+<header class="header" appStickyHeader>
   <div class="grid wide">
     <div class="header-box">
-      <a href="#" class="logo"
-        ><img src="../../../assets/logo-full.svg" alt="Logo"
-      /></a>
+      <a href="#" class="logo">
+        <img src="../../../assets/logo-full.svg" alt="Logo" />
+        <img src="../../../assets/logo.svg" alt="Logo" class="logo-sticky" />
+      </a>
+      <div class="header-sticky" appShowCatalog>
+        <div class="menu-box">
+          <app-menu-icon></app-menu-icon>
+          <span>Product catalog</span>
+        </div>
+        <div class="catalog">
+          <app-navbar></app-navbar>
+        </div>
+        <div class="overlay"></div>
+      </div>
       <div class="search">
         <input type="text" class="search-input" placeholder="Search..." />
         <button class="btn btn-primary search-action">
