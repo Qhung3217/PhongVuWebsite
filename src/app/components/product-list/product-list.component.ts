@@ -9,14 +9,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
   @Input() title;
+  @Input() categoryId;
   products: Product[] = [];
-
+  currentPage = 1;
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
-    this.productService.productsChanged.subscribe(
-      (products) => (this.products = products)
-    );
+    this.assignProducts();
+    this.productService.productsChanged.subscribe(() => this.assignProducts());
+  }
+  private assignProducts() {
+    if (this.categoryId)
+      this.products = this.productService.getProductsByCategoryId(
+        this.categoryId
+      );
+    else this.products = this.productService.getProducts();
   }
 }

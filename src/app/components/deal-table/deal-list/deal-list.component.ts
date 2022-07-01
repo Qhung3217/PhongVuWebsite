@@ -28,8 +28,6 @@ export class DealListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.assignProducts();
-    if (this.products.length === 0)
-      this.productService.fetchData().subscribe(() => this.assignProducts());
     this.productSub = this.productService.productsChanged.subscribe(() =>
       this.assignProducts()
     );

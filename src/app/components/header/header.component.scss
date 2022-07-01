@@ -70,6 +70,7 @@
       gap: 1.3rem;
       color: $asideColor;
       flex-shrink: 0;
+      position: relative;
       .header-icon {
         width: 3.6rem;
         height: 3.6rem;
@@ -85,6 +86,21 @@
         font-size: 1.3rem;
         font-weight: 500;
         color: inherit;
+      }
+      &:hover .dropdown {
+        display: block;
+      }
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 10;
+        box-shadow: 0px 2px 8px rgb(0 0 0 / 15%);
+        border-radius: 0.8rem;
+        display: none;
+        &:hover {
+          display: block;
+        }
       }
     }
   }

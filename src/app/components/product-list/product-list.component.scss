@@ -1,4 +1,5 @@
 @import "../../../scss/mixin";
+@import "../../../scss/variables/variable";
 .list-header {
   height: 5.6rem;
   justify-content: space-between;
@@ -20,5 +21,75 @@
   gap: 2px;
   background-color: #f6f6f6;
   .list-item {
+  }
+}
+.list-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .paginate {
+    margin-top: 1.6rem;
+    ::ng-deep {
+      .ngx-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      li {
+        border-radius: 0.25rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        background-color: white;
+        border: 1px solid #e4e5f0;
+        font-size: 1.3rem;
+        font-weight: 500;
+        line-height: 2.4rem;
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+      }
+      .current {
+        background-color: $primaryColor;
+        color: white;
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+      }
+      .ellipsis {
+        background-color: transparent;
+        border: none;
+        pointer-events: none;
+      }
+      .pagination-next:after,
+      .pagination-previous:before {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .pagination-previous.disabled:before,
+      .pagination-previous a:before {
+        content: "<";
+      }
+      .pagination-next a:after,
+      .pagination-next.disabled:after {
+        content: ">";
+        margin-left: 0;
+      }
+      .pagination-next a:after,
+      .pagination-next:after,
+      .pagination-previous:before,
+      .pagination-previous a:before {
+        font-size: 1.8rem;
+        font-weight: 100;
+      }
+    }
   }
 }

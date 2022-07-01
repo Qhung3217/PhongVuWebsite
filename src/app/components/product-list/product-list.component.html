@@ -1,12 +1,30 @@
-<div class="grid wide panel panel-no-padding mt-24">
-  <div class="list-header flex-center">
-    <h1 class="title" *ngIf="title">{{ title }}</h1>
-    <div class="sort-choices" *ngIf="!title"></div>
-  </div>
-  <div class="list">
-    <div class="list-item" *ngFor="let product of products">
-      <app-product [product]="product"></app-product>
+<div class="grid wide">
+  <div class="panel panel panel-no-padding mt-24">
+    <div class="list-header flex-center">
+      <h1 class="title" *ngIf="title">{{ title }}</h1>
+      <div class="sort-choices" *ngIf="!title"></div>
+    </div>
+    <div class="list">
+      <div
+        class="list-item"
+        *ngFor="
+          let product of products
+            | paginate: { currentPage: currentPage, itemsPerPage: 20 }
+        "
+      >
+        <app-product [product]="product"></app-product>
+      </div>
     </div>
   </div>
-  <div class="list-bottom"></div>
+  <div class="list-bottom">
+    <pagination-controls
+      class="paginate"
+      (pageChange)="currentPage = $event"
+      directionLinks="true"
+      previousLabel=""
+      nextLabel=""
+      maxSize="7"
+      (pageBoundsCorrection)="currentPage = $event"
+    ></pagination-controls>
+  </div>
 </div>

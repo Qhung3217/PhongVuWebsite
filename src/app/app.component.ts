@@ -1,4 +1,3 @@
-import { CategoryService } from './core/services/category.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'phongvu';
-  constructor(private categoryService: CategoryService) {}
+  constructor() {}
   ngOnInit() {}
 }

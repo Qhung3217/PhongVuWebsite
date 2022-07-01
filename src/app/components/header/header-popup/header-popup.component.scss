@@ -1,0 +1,45 @@
+.popup {
+  max-height: 40rem;
+  width: 38.4rem;
+  padding: 1.6rem;
+  .popup-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    .popup-empty {
+      width: 25rem;
+      padding: 3.2rem;
+      text-align: center;
+      .image-box {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .notify-img {
+        width: 12.8rem;
+        height: 12.8rem;
+        margin: 0 auto;
+        & + .text {
+          margin-bottom: 0;
+        }
+      }
+      .text {
+        margin-top: 1.6rem;
+        margin-bottom: 2.4rem;
+        color: #848788;
+        font-size: 1.4rem;
+        font-weight: 400;
+        line-height: 2rem;
+      }
+      .shop-now {
+        padding: 0.6rem 1.2rem;
+        width: fit-content;
+        margin: 0 auto;
+        border-radius: 4px;
+      }
+    }
+  }
+}

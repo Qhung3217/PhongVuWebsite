@@ -1,0 +1,19 @@
+<div class="popup panel">
+  <div class="popup-box">
+    <div class="popup-empty" [ngClass]="{ 'no-padding': isNotification }">
+      <figure class="image-box" [ngClass]="{ 'notify-img': isNotification }">
+        <img [src]="isNotification ? notifyImg : cartImg" alt="" />
+      </figure>
+      <aside class="text">
+        {{
+          isNotification
+            ? "No new announcements yet"
+            : "Shopping Cart no products"
+        }}
+      </aside>
+      <a routerLink="/" class="btn btn-primary shop-now" *ngIf="!isNotification"
+        >Shop now</a
+      >
+    </div>
+  </div>
+</div>

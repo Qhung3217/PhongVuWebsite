@@ -39,6 +39,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FacebookLogoComponent } from './shared/icons/facebook-logo/facebook-logo.component';
 import { YoutubeLogoComponent } from './shared/icons/youtube-logo/youtube-logo.component';
 import { ClanIconComponent } from './shared/icons/clan-icon/clan-icon.component';
+import { QRIconComponent } from './shared/icons/qr-icon/qr-icon.component';
+import { CashIconComponent } from './shared/icons/cash-icon/cash-icon.component';
+import { ClockIconComponent } from './shared/icons/clock-icon/clock-icon.component';
+import { CreditCardIconComponent } from './shared/icons/credit-card-icon/credit-card-icon.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HeaderPopupComponent } from './components/header/header-popup/header-popup.component';
 
 @NgModule({
   declarations: [
@@ -77,11 +83,17 @@ import { ClanIconComponent } from './shared/icons/clan-icon/clan-icon.component'
     FacebookLogoComponent,
     YoutubeLogoComponent,
     ClanIconComponent,
+    QRIconComponent,
+    CashIconComponent,
+    ClockIconComponent,
+    CreditCardIconComponent,
+    HeaderPopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SlickCarouselModule,
+    NgxPaginationModule,
     HttpClientModule,
   ],
   providers: [],

@@ -1,69 +1,142 @@
 @import "../../../scss/variables/variable";
 .footer {
   border-top: 3px solid $primaryColor;
+
   .footer-infor {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
     .policy-contact {
       .footer-group {
-        display: grid;
         grid-template-columns: repeat(5, 1fr);
-        list-style: none;
+      }
+    }
+    .payment-method {
+      .footer-group {
+        grid-template-columns: 40% 60%;
         .footer-list {
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
-          color: #333;
-          .footer-title {
-            font-weight: bold;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-          }
-          .footer-item {
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1.6rem;
-            color: inherit;
-            padding-top: 0.6rem;
-            padding-right: 1.2rem;
+          .payment-choices {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            .spacer {
-              margin-right: 0.4rem;
-              width: 1.6rem;
-              height: 1.6rem;
-
-              ::ng-deep {
-                svg path {
-                  fill: #333;
-                }
-                svg {
-                  width: 100%;
-                  height: 100%;
-                }
-              }
-            }
-            ::ng-deep {
-              .spacer-fb svg path {
-                fill: #485992 !important;
-              }
-              .spacer-youtube svg path {
-                fill: #cf2200 !important;
-              }
-              .spacer-clan svg path {
-                fill: #00aff7 !important;
+            .footer-item {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              flex-direction: column;
+              max-width: 7.2rem;
+              text-align: center;
+              .icon {
+                width: 3rem;
+                height: 3rem;
+                margin-bottom: 0.4rem;
               }
             }
           }
-          .footer-contact {
-            font-size: 1.2rem;
-            padding-top: 0.6rem;
-            padding-right: 1.2rem;
-            line-height: 2rem;
-            a {
-              color: #0d6efd;
+          .footer-image-banks {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .footer-group {
+    list-style: none;
+    display: grid;
+
+    .footer-list {
+      display: flex;
+      align-items: flex-start;
+      color: #333;
+      flex-direction: column;
+
+      .footer-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+      .footer-item {
+        font-size: 1.2rem;
+        font-weight: 400;
+        line-height: 1.6rem;
+        color: inherit;
+        padding-top: 0.6rem;
+        padding-right: 1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          color: #024dbc;
+        }
+        .icon {
+          margin-right: 0.4rem;
+          width: 1.6rem;
+          height: 1.6rem;
+
+          ::ng-deep {
+            svg path {
+              fill: #333;
+            }
+            svg {
+              width: 100%;
+              height: 100%;
             }
           }
         }
+        ::ng-deep {
+          .icon-fb svg path {
+            fill: #485992 !important;
+          }
+          .icon-youtube svg path {
+            fill: #cf2200 !important;
+          }
+          .icon-clan svg path {
+            fill: #00aff7 !important;
+          }
+        }
+      }
+      .footer-contact {
+        font-size: 1.2rem;
+        padding-top: 0.6rem;
+        padding-right: 1.2rem;
+        line-height: 2rem;
+        a {
+          color: #0d6efd;
+          &:hover {
+            color: #024dbc;
+          }
+        }
+      }
+    }
+  }
+
+  .about {
+    background-color: #e9edf2;
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+    .item-title {
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+    .footer-item:hover {
+      color: #333 !important;
+    }
+    .about-content {
+      display: flex;
+      .footer-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      .introduce {
+        width: 40%;
+      }
+      .address {
+        width: 40%;
+        .footer-item:first-child {
+          padding-top: 0;
+        }
+      }
+      .certification {
+        width: 20%;
       }
     }
   }
