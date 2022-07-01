@@ -45,6 +45,15 @@ import { ClockIconComponent } from './shared/icons/clock-icon/clock-icon.compone
 import { CreditCardIconComponent } from './shared/icons/credit-card-icon/credit-card-icon.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderPopupComponent } from './components/header/header-popup/header-popup.component';
+import { DetailPageComponent } from './main/detail-page/detail-page.component';
+import { HomeIconComponent } from './shared/icons/home-icon/home-icon.component';
+import { SectionDetailProductComponent } from './components/section-detail-product/section-detail-product.component';
+import { GiftIconComponent } from './shared/icons/gift-icon/gift-icon.component';
+import { DeliveryIconComponent } from './shared/icons/delivery-icon/delivery-icon.component';
+import { ProtectionIconComponent } from './shared/icons/protection-icon/protection-icon.component';
+import { ReturnsIconComponent } from './shared/icons/returns-icon/returns-icon.component';
+import { GearIconComponent } from './shared/icons/gear-icon/gear-icon.component';
+import { DesktopIconComponent } from './shared/icons/desktop-icon/desktop-icon.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +97,15 @@ import { HeaderPopupComponent } from './components/header/header-popup/header-po
     ClockIconComponent,
     CreditCardIconComponent,
     HeaderPopupComponent,
+    DetailPageComponent,
+    HomeIconComponent,
+    SectionDetailProductComponent,
+    GiftIconComponent,
+    DeliveryIconComponent,
+    ProtectionIconComponent,
+    ReturnsIconComponent,
+    GearIconComponent,
+    DesktopIconComponent,
   ],
   imports: [
     BrowserModule,

@@ -43,4 +43,8 @@ export class ProductService {
     if (!this.products) return [];
     return this.products.filter((product) => product.category._id === id);
   }
+  getProductBySlug(slug: string): Product {
+    if (!this.products) return null;
+    return this.products.find((product) => product.slug === slug);
+  }
 }

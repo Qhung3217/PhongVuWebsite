@@ -1,7 +1,9 @@
 @import "../../../scss/variables/variable";
 .footer {
   border-top: 3px solid $primaryColor;
-
+  position: relative;
+  z-index: 100;
+  background-color: white;
   .footer-infor {
     padding-top: 1.6rem;
     padding-bottom: 1.6rem;

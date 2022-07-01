@@ -51,6 +51,11 @@ a {
     background-color: #1230b0;
   }
 }
+.btn-outline {
+  border: 1px solid $primaryColor;
+  color: $primaryColor;
+  background-color: transparent;
+}
 
 /******************************/
 //----------HELPER CLASS-----------//

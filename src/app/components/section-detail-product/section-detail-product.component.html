@@ -1,0 +1,102 @@
+<div class="breadcrumbs grid wide">
+  <a routerLink="/" class="home">
+    <div class="icon">
+      <app-home-icon></app-home-icon>
+    </div>
+    <span>></span>
+  </a>
+  <div class="current">
+    {{ product.name }}
+  </div>
+</div>
+
+<div class="display-area">
+  <div class="main-display">
+    <div class="main-display-left">
+      <div class="img-product-detail">
+        <figure><img [src]="product.image" [alt]="product.name" /></figure>
+        <div class="img-track">
+          <img [src]="product.image" [alt]="product.name" />
+        </div>
+      </div>
+    </div>
+    <div class="main-display-right">
+      <h1 class="product-title">{{ product.name }}</h1>
+      <aside>SKU: {{ product.sku }}</aside>
+      <div class="product-price">
+        <div class="price-sell">{{ product.price }}</div>
+        <div class="price-origin">{{ product.price }}</div>
+      </div>
+      <div class="promotions">
+        <h1 class="promotions-title">Choose one of the following promotions</h1>
+        <div class="promotion">
+          <div class="promotion-icon">
+            <app-gift-icon></app-gift-icon>
+          </div>
+          <div class="promotion-info">
+            <div class="promotion-discount">
+              <div class="discount-top">
+                Discount {{ 500 | currency: "AUD":"symbol":"1.0-0" }}
+              </div>
+              <div class="discount-bottom">
+                <span class="expire-time">1/7/2022</span>
+                <div class="apply">Appy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="action-group">
+        <button class="btn btn-primary">Buy now</button>
+        <button class="btn btn-outline">Add to cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="side-panel">
+    <div class="free-ship">
+      <div class="icon">
+        <app-freeship-icon></app-freeship-icon>
+      </div>
+      Products are free shipping
+    </div>
+    <div class="policies">
+      <h1 class="title">Sales policy</h1>
+      <ul class="list">
+        <li class="item">
+          <span class="item-icon"><app-delivery-icon></app-delivery-icon></span>
+          Free delivery for orders from A&500
+        </li>
+        <li class="item">
+          <span class="item-icon"
+            ><app-protection-icon></app-protection-icon
+          ></span>
+          100% genuine guarantee
+        </li>
+        <li class="item">
+          <span class="item-icon"><app-returns-icon></app-returns-icon></span>
+          Return within 10 days
+        </li>
+      </ul>
+    </div>
+    <div class="services">
+      <h1 class="title">Other services</h1>
+      <ul class="list">
+        <li class="item">
+          <span class="item-icon"><app-gear-icon></app-gear-icon></span>
+          Repair the same price A$100.
+        </li>
+        <li class="item">
+          <span class="item-icon"><app-desktop-icon></app-desktop-icon></span>
+          Computer and laptop cleaning.
+        </li>
+        <li class="item">
+          <span class="item-icon"
+            ><app-protection-icon></app-protection-icon
+          ></span>
+          Home warranty.
+        </li>
+      </ul>
+    </div>
+    <a href="#">See details</a>
+  </div>
+</div>
