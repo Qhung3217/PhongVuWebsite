@@ -10,27 +10,29 @@
   </div>
 </div>
 
-<div class="display-area">
-  <div class="main-display">
+<div class="display-area grid wide">
+  <div class="main-display panel">
     <div class="main-display-left">
       <div class="img-product-detail">
         <figure><img [src]="product.image" [alt]="product.name" /></figure>
         <div class="img-track">
-          <img [src]="product.image" [alt]="product.name" />
+          <img [src]="product.image" [alt]="product.name" class="show" />
         </div>
       </div>
     </div>
     <div class="main-display-right">
       <h1 class="product-title">{{ product.name }}</h1>
       <aside>SKU: {{ product.sku }}</aside>
+      <div class="only-one">Only 1 product left</div>
       <div class="product-price">
-        <div class="price-sell">{{ product.price }}</div>
-        <div class="price-origin">{{ product.price }}</div>
+        <div class="price-sell">{{ product.price | currency: "AUD" }}</div>
+        <div class="price-origin">{{ product.price | currency: "AUD" }}</div>
       </div>
       <div class="promotions">
         <h1 class="promotions-title">Choose one of the following promotions</h1>
         <div class="promotion">
-          <div class="promotion-icon">
+          <!--Chi ap dung duoc 1 promotion, su dung index de handle button -->
+          <div class="promotion-icon flex-center">
             <app-gift-icon></app-gift-icon>
           </div>
           <div class="promotion-info">
@@ -39,8 +41,8 @@
                 Discount {{ 500 | currency: "AUD":"symbol":"1.0-0" }}
               </div>
               <div class="discount-bottom">
-                <span class="expire-time">1/7/2022</span>
-                <div class="apply">Appy</div>
+                <span class="expire-time">Expiry date: 1/7/2022</span>
+                <div class="apply">Apply</div>
               </div>
             </div>
           </div>
@@ -52,14 +54,14 @@
       </div>
     </div>
   </div>
-  <div class="side-panel">
+  <div class="side-panel panel">
     <div class="free-ship">
       <div class="icon">
         <app-freeship-icon></app-freeship-icon>
       </div>
       Products are free shipping
     </div>
-    <div class="policies">
+    <div class="list-group">
       <h1 class="title">Sales policy</h1>
       <ul class="list">
         <li class="item">
@@ -78,7 +80,7 @@
         </li>
       </ul>
     </div>
-    <div class="services">
+    <div class="list-group">
       <h1 class="title">Other services</h1>
       <ul class="list">
         <li class="item">
@@ -98,5 +100,84 @@
       </ul>
     </div>
     <a href="#">See details</a>
+  </div>
+</div>
+
+<div class="more-infor grid wide panel">
+  <div class="main-infor">
+    <h1 class="description">Product decription</h1>
+    <div class="description-area" [innerHtml]="product.description"></div>
+  </div>
+  <div class="side-infor">
+    <h1 class="title">Details</h1>
+    <div class="side-panel">
+      <div class="list">
+        <div class="item">
+          <div class="item-title">Brand</div>
+          <div class="item-text">MSI</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Warranty</div>
+          <div class="item-text">
+            {{ product.warranty.months }}
+          </div>
+        </div>
+        <div class="seperate">General information</div>
+        <div class="item">
+          <div class="item-title">Series Laptop</div>
+          <div class="item-text">Modern Series</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Part-number</div>
+          <div class="item-text">1024VN</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Color</div>
+          <div class="item-text">Gray</div>
+        </div>
+        <div class="item">
+          <div class="item-title">CPU gen</div>
+          <div class="item-text">Intel Core i5-1155G7</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Graphics chip</div>
+          <div class="item-text">Intel Iris Xe Graphics</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Ram</div>
+          <div class="item-text">
+            1 x 8GB DDR4 3200MHz ( 2 slots / Support up to 64GB )
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-title">Monitor</div>
+          <div class="item-text">
+            15.6" ( 1920 x 1080 ) Full HD IPS no touch , HD webcam
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-title">Storage</div>
+          <div class="item-text">512GB SSD M.2 NVMe</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Maximum number of storage ports</div>
+          <div class="item-text">2 x M.2 NVMe</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Supported M.2 slot type</div>
+          <div class="item-text">M.2 NVMe</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Output port</div>
+          <div class="item-text">1 x HDMI</div>
+        </div>
+      </div>
+    </div>
+    <p class="action-more-info flex-center">
+      View more content
+      <span class="icon flex-center"
+        ><app-arrow-down-icon></app-arrow-down-icon
+      ></span>
+    </p>
   </div>
 </div>

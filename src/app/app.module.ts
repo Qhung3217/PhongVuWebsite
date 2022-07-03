@@ -54,6 +54,7 @@ import { ProtectionIconComponent } from './shared/icons/protection-icon/protecti
 import { ReturnsIconComponent } from './shared/icons/returns-icon/returns-icon.component';
 import { GearIconComponent } from './shared/icons/gear-icon/gear-icon.component';
 import { DesktopIconComponent } from './shared/icons/desktop-icon/desktop-icon.component';
+import { ArrowDownIconComponent } from './shared/icons/arrow-down-icon/arrow-down-icon.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { DesktopIconComponent } from './shared/icons/desktop-icon/desktop-icon.c
     ReturnsIconComponent,
     GearIconComponent,
     DesktopIconComponent,
+    ArrowDownIconComponent,
   ],
   imports: [
     BrowserModule,

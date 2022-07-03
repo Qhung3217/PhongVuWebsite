@@ -5,7 +5,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  position: sticky;
+  top: -1px;
+  z-index: 5;
+  background-color: white;
   .header-box {
     display: flex;
     justify-content: center;
@@ -105,12 +108,15 @@
     }
   }
 }
+.sticky ~ .spacer {
+  display: block;
+}
+.spacer {
+  display: none;
+  height: 8.8rem;
+}
 .sticky {
-  position: sticky;
-  top: -1px;
-  z-index: 5;
-  background-color: white;
-  height: 7.2rem;
+  // height: 7.2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   .logo {
     flex-shrink: 0;
