@@ -1,6 +1,10 @@
 <div class="popup panel">
   <div class="popup-box">
-    <div class="popup-empty" [ngClass]="{ 'no-padding': isNotification }">
+    <div
+      class="popup-empty"
+      [ngClass]="{ 'no-padding': isNotification }"
+      *ngIf="!carts"
+    >
       <figure class="image-box" [ngClass]="{ 'notify-img': isNotification }">
         <img [src]="isNotification ? notifyImg : cartImg" alt="" />
       </figure>
@@ -15,5 +19,19 @@
         >Shop now</a
       >
     </div>
+    <ul class="popup-list" *ngIf="!isNotification">
+      <li class="popup-item" *ngFor="let cart of carts">
+        <figure class="popup-image">
+          <img [src]="cart.item.image" [alt]="cart.item.name" />
+        </figure>
+        <div class="popup-info">
+          <a [routerLink]="['/', cart.item.slug]" class="title">{{
+            cart.item.name
+          }}</a>
+          <aside>Quantity: {{ cart.quantity }}</aside>
+          <p class="main-info">{{ cart.item.price | currency: "AUD" }}</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>

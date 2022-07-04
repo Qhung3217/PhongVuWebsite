@@ -1,3 +1,4 @@
+import { ProductFilterSlugResolver } from './core/services/product-filter-slug-resolver.service';
 import { DetailPageComponent } from './main/detail-page/detail-page.component';
 import { LandingPageComponent } from './main/landing-page/landing-page.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,7 @@ const routes: Routes = [
   {
     path: ':slug',
     component: DetailPageComponent,
-    resolve: [ProductResolverService],
+    resolve: [ProductFilterSlugResolver],
   },
 ];
 

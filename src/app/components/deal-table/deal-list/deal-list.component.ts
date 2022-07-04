@@ -34,12 +34,12 @@ export class DealListComponent implements OnInit, OnDestroy {
   }
   private assignProducts() {
     if (this.categoryID)
-      this.products = this.productService.getProductsByCategoryId(
-        this.categoryID
-      );
+      this.productService
+        .getProductsByCategoryId(this.categoryID)
+        .subscribe((products: Product[]) => (this.products = products));
     else this.products = this.productService.getProducts();
   }
   ngOnDestroy() {
-    this.productSub.unsubscribe();
+    if (this.productSub) this.productSub.unsubscribe();
   }
 }

@@ -55,6 +55,9 @@ import { ReturnsIconComponent } from './shared/icons/returns-icon/returns-icon.c
 import { GearIconComponent } from './shared/icons/gear-icon/gear-icon.component';
 import { DesktopIconComponent } from './shared/icons/desktop-icon/desktop-icon.component';
 import { ArrowDownIconComponent } from './shared/icons/arrow-down-icon/arrow-down-icon.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ImageModelComponent } from './components/section-detail-product/image-model/image-model.component';
+import { CountImageOverflowDirective } from './shared/directives/count-image-overflow.directive';
 
 @NgModule({
   declarations: [
@@ -108,6 +111,9 @@ import { ArrowDownIconComponent } from './shared/icons/arrow-down-icon/arrow-dow
     GearIconComponent,
     DesktopIconComponent,
     ArrowDownIconComponent,
+    LoadingSpinnerComponent,
+    ImageModelComponent,
+    CountImageOverflowDirective,
   ],
   imports: [
     BrowserModule,

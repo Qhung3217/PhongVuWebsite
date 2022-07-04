@@ -4,12 +4,20 @@
       <h1 class="title" *ngIf="title">{{ title }}</h1>
       <div class="sort-choices" *ngIf="!title"></div>
     </div>
-    <div class="list">
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+    <div class="list" *ngIf="!isLoading">
       <div
         class="list-item"
         *ngFor="
           let product of products
-            | paginate: { currentPage: currentPage, itemsPerPage: 20 }
+            | paginate
+              : {
+                  id: id,
+                  currentPage: currentPage,
+                  itemsPerPage: pageSize,
+                  totalItems: totalRow
+                }
         "
       >
         <app-product [product]="product"></app-product>
@@ -18,8 +26,9 @@
   </div>
   <div class="list-bottom">
     <pagination-controls
+      [id]="id"
       class="paginate"
-      (pageChange)="currentPage = $event"
+      (pageChange)="handlePageChange($event)"
       directionLinks="true"
       previousLabel=""
       nextLabel=""

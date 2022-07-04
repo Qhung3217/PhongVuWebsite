@@ -4,6 +4,7 @@ export class Product {
     public _id: string,
     public name: string,
     public description: string,
+
     public sku: string,
     public price: number,
     public quantity: number,
@@ -13,6 +14,15 @@ export class Product {
     public updatedAt: Date,
     public slug: string,
     public __v: number,
-    public warranty: { months: number; description: string }
+    public warranty: { months: number; description: string },
+    public galleries?: {
+      label: string;
+      order: number;
+      type: string;
+      url: string;
+      _id: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }
   ) {}
 }

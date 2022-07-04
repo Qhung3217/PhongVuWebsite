@@ -1,0 +1,40 @@
+<div class="model flex-center">
+  <div class="model-content">
+    <button class="close" (click)="onClose()">X</button>
+    <div class="display">
+      <ngx-slick-carousel
+        [config]="{
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          fade: true,
+          asNavFor: '.tracker-carousel',
+          infinite: false
+        }"
+        class="display-carousel"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides">
+          <img src="{{ slide.url }}" [alt]="slide.label" width="100%" />
+        </div>
+      </ngx-slick-carousel>
+    </div>
+    <div class="tracker">
+      <ngx-slick-carousel
+        class="tracker-carousel"
+        [config]="{
+          slidesToShow: 10,
+          slidesToScroll: 1,
+          asNavFor: '.display-carousel',
+          focusOnSelect: true,
+          useCSS: false,
+          infinite: false,
+          swipe: false
+        }"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides">
+          <img src="{{ slide.url }}" [alt]="slide.label" width="100%" />
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>

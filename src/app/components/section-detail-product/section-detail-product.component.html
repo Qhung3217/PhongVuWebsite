@@ -1,4 +1,5 @@
-<div class="breadcrumbs grid wide">
+<app-loading-spinner *ngIf="!product"></app-loading-spinner>
+<div class="breadcrumbs grid wide" *ngIf="product">
   <a routerLink="/" class="home">
     <div class="icon">
       <app-home-icon></app-home-icon>
@@ -10,27 +11,65 @@
   </div>
 </div>
 
-<div class="display-area grid wide">
+<div class="display-area grid wide" *ngIf="product">
   <div class="main-display panel">
     <div class="main-display-left">
       <div class="img-product-detail">
-        <figure><img [src]="product.image" [alt]="product.name" /></figure>
+        <figure>
+          <img
+            [src]="displayImage.gallery"
+            [alt]="product.name"
+            (click)="onOpenModelImage()"
+          />
+        </figure>
         <div class="img-track">
-          <img [src]="product.image" [alt]="product.name" class="show" />
+          <div
+            (click)="onOpenModelImage()"
+            class="img-box"
+            *ngFor="let gallery of product.galleries; let i = index"
+          >
+            <img
+              [src]="gallery.url"
+              [alt]="gallery.label"
+              (mouseover)="onChangeDisplayImage(i)"
+              [ngClass]="{ show: displayImage.index === i }"
+            />
+            <div class="overflow-img flex-center" *ngIf="i >= 5">
+              +{{ product.galleries.length - 5 }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="main-display-right">
       <h1 class="product-title">{{ product.name }}</h1>
       <aside>SKU: {{ product.sku }}</aside>
-      <div class="only-one">Only 1 product left</div>
+      <div class="only-one" *ngIf="product.quantity === 0">
+        Only 1 product left
+      </div>
       <div class="product-price">
-        <div class="price-sell">{{ product.price | currency: "AUD" }}</div>
-        <div class="price-origin">{{ product.price | currency: "AUD" }}</div>
+        <div class="price-sell">
+          {{
+            (promotionSelected
+              ? product.price - promotionSelected.promotion.discount
+              : product.price
+            ) | currency: "AUD"
+          }}
+        </div>
+        <div class="price-origin">
+          {{ promotionSelected && product.price | currency: "AUD" }}
+        </div>
       </div>
       <div class="promotions">
         <h1 class="promotions-title">Choose one of the following promotions</h1>
-        <div class="promotion">
+        <div
+          class="promotion"
+          *ngFor="let promotion of promotions; let i = index"
+          [ngClass]="{
+            'apply-promotion':
+              promotionSelected && i === promotionSelected.index
+          }"
+        >
           <!--Chi ap dung duoc 1 promotion, su dung index de handle button -->
           <div class="promotion-icon flex-center">
             <app-gift-icon></app-gift-icon>
@@ -38,11 +77,16 @@
           <div class="promotion-info">
             <div class="promotion-discount">
               <div class="discount-top">
-                Discount {{ 500 | currency: "AUD":"symbol":"1.0-0" }}
+                Discount
+                {{ promotion.discount | currency: "AUD":"symbol":"1.0-0" }}
               </div>
               <div class="discount-bottom">
-                <span class="expire-time">Expiry date: 1/7/2022</span>
-                <div class="apply">Apply</div>
+                <span class="expire-time"
+                  >Expiry date: {{ promotion.expiryDate }}</span
+                >
+                <div class="apply" (click)="onApplyPromotion(i)">
+                  {{ promotionSelected ? "Unchecked" : "Apply" }}
+                </div>
               </div>
             </div>
           </div>
@@ -50,12 +94,14 @@
       </div>
       <div class="action-group">
         <button class="btn btn-primary">Buy now</button>
-        <button class="btn btn-outline">Add to cart</button>
+        <button class="btn btn-outline" (click)="onAddToCart()">
+          Add to cart
+        </button>
       </div>
     </div>
   </div>
   <div class="side-panel panel">
-    <div class="free-ship">
+    <div class="free-ship" *ngIf="!promotionSelected">
       <div class="icon">
         <app-freeship-icon></app-freeship-icon>
       </div>
@@ -103,7 +149,7 @@
   </div>
 </div>
 
-<div class="more-infor grid wide panel">
+<div class="more-infor grid wide panel" *ngIf="product">
   <div class="main-infor">
     <h1 class="description">Product decription</h1>
     <div class="description-area" [innerHtml]="product.description"></div>
@@ -181,3 +227,9 @@
     </p>
   </div>
 </div>
+
+<app-image-model
+  [slides]="product && product.galleries"
+  *ngIf="isOpenModelImage"
+  (closeEvent)="onCloseModelImage($event)"
+></app-image-model>

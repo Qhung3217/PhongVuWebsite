@@ -9,4 +9,11 @@ export class AppComponent implements OnInit {
   title = 'phongvu';
   constructor() {}
   ngOnInit() {}
+  onActivate(event) {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
 }
