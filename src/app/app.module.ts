@@ -58,6 +58,10 @@ import { ArrowDownIconComponent } from './shared/icons/arrow-down-icon/arrow-dow
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ImageModelComponent } from './components/section-detail-product/image-model/image-model.component';
 import { CountImageOverflowDirective } from './shared/directives/count-image-overflow.directive';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { ToastMessageComponent } from './components/toast-message/toast-message.component';
+import { CheckedIconComponent } from './shared/icons/checked-icon/checked-icon.component';
+import { ExclamationIconComponent } from './shared/icons/exclamation-icon/exclamation-icon.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +118,10 @@ import { CountImageOverflowDirective } from './shared/directives/count-image-ove
     LoadingSpinnerComponent,
     ImageModelComponent,
     CountImageOverflowDirective,
+    BreadcrumbComponent,
+    ToastMessageComponent,
+    CheckedIconComponent,
+    ExclamationIconComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<div class="toasts" #toasts>
+  <div
+    class="toast"
+    [ngClass]="{ error: toast.type === 'error' }"
+    *ngFor="let toast of toastList"
+    [style]="{
+      animation:
+        'slideInLeft ease .3s, fadeOut linear ' +
+        fadeOutDurationSeconds +
+        's ' +
+        delay +
+        's forwards'
+    }"
+  >
+    <div class="toast-icon">
+      <app-checked-icon *ngIf="toast.type === 'success'"></app-checked-icon>
+
+      <app-exclamation-icon
+        *ngIf="toast.type === 'error'"
+      ></app-exclamation-icon>
+    </div>
+    <div class="info flex-center">
+      <p class="text">{{ toast.message }}</p>
+      <button class="remove">X</button>
+    </div>
+  </div>
+</div>

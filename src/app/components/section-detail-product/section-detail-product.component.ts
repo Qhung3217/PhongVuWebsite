@@ -1,38 +1,58 @@
+import { Subscription } from 'rxjs';
+import { Cart, CartService } from './../../core/services/cart.service';
 import { Product } from './../../core/models/product.model';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-section-detail-product',
   templateUrl: './section-detail-product.component.html',
   styleUrls: ['./section-detail-product.component.scss'],
 })
-export class SectionDetailProductComponent implements OnInit {
+export class SectionDetailProductComponent implements OnInit, OnDestroy {
   product: Product = null;
   promotionSelected = null;
   promotions = [{ discount: 500, expiryDate: '1/7/2020' }];
+  cart: Cart;
   isOpenModelImage = false;
   displayImage;
+  toast;
+  isAlert = false;
+  isError = false;
+  productSub: Subscription;
+  cartSub: Subscription;
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       const slug = params['slug'];
-      // this.product = this.productService.getProductBySlug(slug);
       this.product = this.productService.productSeleted;
+      this.cart = this.cartService.getCart(this.product._id);
+
       console.log(this.product);
       this.displayImage = {
         index: 0,
         gallery: this.product.image,
       };
     });
-    this.productService.productSelectedChanged.subscribe(
-      (product) => (this.product = product)
+    this.productSub = this.productService.productSelectedChanged.subscribe(
+      (product) => {
+        this.product = product;
+        this.cart = this.cartService.getCart(this.product._id);
+      }
     );
+    this.cartSub = this.cartService.cartsChanged.subscribe(
+      (carts) => (this.cart = this.cartService.getCart(this.product._id))
+    );
+  }
+  ngOnDestroy(): void {
+    this.cartSub.unsubscribe();
+    this.productSub.unsubscribe();
   }
 
   onApplyPromotion(index) {
@@ -63,19 +83,22 @@ export class SectionDetailProductComponent implements OnInit {
     console.log(this.displayImage);
   }
   onAddToCart() {
-    let carts = [];
-    if (localStorage.getItem('cart'))
-      carts = [...JSON.parse(localStorage.getItem('cart'))];
-    const itemExisted = carts.find(
-      (cart) => cart.item._id === this.product._id
-    );
-    if (itemExisted) {
-      const index = carts.findIndex(
-        (cart) => cart.item._id === this.product._id
-      );
-      carts[index] = { item: this.product, quantity: itemExisted.quantity + 1 };
-    } else carts.push({ item: this.product, quantity: 1 });
-
-    localStorage.setItem('cart', JSON.stringify(carts));
+    if (this.cart && this.product.quantity <= this.cart.quantity) {
+      this.toast = {
+        type: 'error',
+        message: `Only ${this.product.quantity} products left`,
+      };
+      this.isError = true;
+      this.isAlert = true;
+      console.log(this.cart.quantity);
+    } else {
+      this.cartService.saveCart(this.product, 1);
+      this.toast = {
+        type: 'success',
+        message: 'Product added to cart',
+      };
+      this.isError = false;
+      this.isAlert = true;
+    }
   }
 }

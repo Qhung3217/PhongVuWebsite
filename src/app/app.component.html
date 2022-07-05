@@ -1,1 +1,7 @@
-<router-outlet (activate)="onActivate($event)"></router-outlet>
+<router-outlet
+  (activate)="onActivate($event)"
+  (deactivate)="isLoading = false"
+></router-outlet>
+<div class="fixed flex-center" *ngIf="isLoading">
+  <app-loading-spinner></app-loading-spinner>
+</div>

@@ -1,16 +1,8 @@
 <app-loading-spinner *ngIf="!product"></app-loading-spinner>
-<div class="breadcrumbs grid wide" *ngIf="product">
-  <a routerLink="/" class="home">
-    <div class="icon">
-      <app-home-icon></app-home-icon>
-    </div>
-    <span>></span>
-  </a>
-  <div class="current">
-    {{ product.name }}
-  </div>
+<app-breadcrumb [level2Name]="product.name" *ngIf="product"></app-breadcrumb>
+<div [ngClass]="{ error: isError }">
+  <app-toast-message [toast]="toast" [isAlert]="isAlert"></app-toast-message>
 </div>
-
 <div class="display-area grid wide" *ngIf="product">
   <div class="main-display panel">
     <div class="main-display-left">
@@ -229,7 +221,10 @@
 </div>
 
 <app-image-model
-  [slides]="product && product.galleries"
+  [slides]="
+    product &&
+    product.galleries && [{ url: product.image, label: product.name }]
+  "
   *ngIf="isOpenModelImage"
   (closeEvent)="onCloseModelImage($event)"
 ></app-image-model>

@@ -46,7 +46,12 @@
         </div>
       </a>
       <a href="#" class="action hover">
-        <div class="header-icon"><app-cart-icon></app-cart-icon></div>
+        <div class="header-icon">
+          <app-cart-icon></app-cart-icon>
+          <span class="count-cart" *ngIf="countCarts > 0">{{
+            countCarts
+          }}</span>
+        </div>
         <span>Cart</span>
         <div class="dropdown">
           <app-header-popup></app-header-popup>

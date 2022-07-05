@@ -78,11 +78,28 @@
         width: 3.6rem;
         height: 3.6rem;
         color: inherit;
+        position: relative;
+
         ::ng-deep svg {
           fill: currentColor;
           color: currentColor;
           width: 100%;
           height: 100%;
+        }
+        .count-cart {
+          position: absolute;
+          top: -23%;
+          right: -5px;
+          color: white;
+          background-color: #da4343;
+          border-radius: 50%;
+          width: 1.6rem;
+          height: 1.6rem;
+          display: block;
+          font-weight: 500;
+          font-size: 1rem;
+          line-height: 1.6rem;
+          text-align: center;
         }
       }
       span {
