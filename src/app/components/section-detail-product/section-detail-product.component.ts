@@ -3,7 +3,7 @@ import { Cart, CartService } from './../../core/services/cart.service';
 import { Product } from './../../core/models/product.model';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-section-detail-product',

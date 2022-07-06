@@ -1,3 +1,4 @@
+import { LoadingSpinnerService } from './loading-spinner.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { Injectable } from '@angular/core';
 import {
@@ -5,12 +6,15 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProductFilterSlugResolver implements Resolve<Product[] | Product> {
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private loadingSpinnerService: LoadingSpinnerService
+  ) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -21,7 +25,9 @@ export class ProductFilterSlugResolver implements Resolve<Product[] | Product> {
     | Promise<Product[] | Product> {
     console.log('resolver', route.params, state);
 
-    return this.productService.getProductBySlug(route.params['slug']);
+    return this.productService
+      .getProductDetailBySlug(route.params['slug'])
+      .pipe(tap(() => this.loadingSpinnerService.turnOn()));
     // return null;
   }
 }

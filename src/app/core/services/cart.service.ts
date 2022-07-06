@@ -60,4 +60,19 @@ export class CartService {
     localStorage.setItem('cart', JSON.stringify(this.carts));
     this.cartsChanged.next(this.carts);
   }
+  clearCarts() {
+    if (localStorage.getItem('cart')) {
+      localStorage.removeItem('cart');
+    }
+  }
+  removeCart(productID: string) {
+    const cartIndex = this.carts.findIndex(
+      (cart) => cart.item._id === productID
+    );
+    if (cartIndex !== -1) {
+      this.carts.splice(cartIndex, 1);
+      localStorage.setItem('cart', JSON.stringify(this.carts));
+      this.cartsChanged.next(this.carts);
+    }
+  }
 }

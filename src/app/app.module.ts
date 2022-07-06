@@ -62,6 +62,12 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { CheckedIconComponent } from './shared/icons/checked-icon/checked-icon.component';
 import { ExclamationIconComponent } from './shared/icons/exclamation-icon/exclamation-icon.component';
+import { CartPageComponent } from './main/cart-page/cart-page.component';
+import { SectionCartComponent } from './components/section-cart/section-cart.component';
+import { LineIconComponent } from './shared/icons/line-icon/line-icon.component';
+import { MinusIconComponent } from './shared/icons/minus-icon/minus-icon.component';
+import { PlusIconComponent } from './shared/icons/plus-icon/plus-icon.component';
+import { CheckboxIconComponent } from './shared/icons/checkbox-icon/checkbox-icon.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +128,12 @@ import { ExclamationIconComponent } from './shared/icons/exclamation-icon/exclam
     ToastMessageComponent,
     CheckedIconComponent,
     ExclamationIconComponent,
+    CartPageComponent,
+    SectionCartComponent,
+    LineIconComponent,
+    MinusIconComponent,
+    PlusIconComponent,
+    CheckboxIconComponent,
   ],
   imports: [
     BrowserModule,

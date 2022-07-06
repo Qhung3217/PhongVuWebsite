@@ -1,7 +1,15 @@
 import { Product } from './../models/product.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Subject, map, tap, switchMap, exhaustMap, take } from 'rxjs';
+import {
+  Subject,
+  map,
+  tap,
+  switchMap,
+  exhaustMap,
+  take,
+  lastValueFrom,
+} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 interface dataResponse {
@@ -55,7 +63,7 @@ export class ProductService {
         })
       );
   }
-  fetchDataByCriteria(criteria: string, key: string) {
+  fetchDataByCategoryIdOrProductId(criteria: string, key: string) {
     console.log('crs map');
 
     let queryParams = new HttpParams();
@@ -89,6 +97,24 @@ export class ProductService {
         })
       );
   }
+  fetchProductByCriteria(criteria: string, flag: string, key) {
+    let queryParams = new HttpParams();
+
+    const stringQuery = `where[${criteria}][${flag}]`;
+    console.log(stringQuery);
+    queryParams = queryParams.append(stringQuery, key);
+    queryParams = queryParams.append('page', 1);
+    queryParams = queryParams.append('limit', 20);
+    return this.http
+      .get<dataResponse>(environment.urlApi + '/products', {
+        params: queryParams,
+      })
+      .pipe(
+        map((dataResponse) => {
+          return dataResponse.data;
+        })
+      );
+  }
   getProducts() {
     if (!this.products) return [];
     return this.products.slice();
@@ -100,7 +126,7 @@ export class ProductService {
   }
   getProductsByCategoryId(id: string) {
     // if (!this.products) return [];
-    return this.fetchDataByCriteria('category', id);
+    return this.fetchDataByCategoryIdOrProductId('category', id);
   }
   retrieveProductIdBySlug(slug: string) {
     let product;
@@ -128,15 +154,7 @@ export class ProductService {
       console.log('id retrieve: ', this.id);
     }
   }
-  getProductBySlug(slug: string) {
-    // this.retrieveProductIdBySlug(slug);
-    // return this.fetchDataByCriteria('id', this.id).pipe(
-    //   tap((data) => {
-    //     console.log('data', data);
-    //     this.productSeleted = data as Product;
-    //     this.productSelectedChanged.next(this.productSeleted);
-    //   })
-    // );
+  getProductDetailBySlug(slug: string) {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('where[slug][$eq]', slug);
     console.log('retrieve', slug);
@@ -151,8 +169,16 @@ export class ProductService {
           return dataResponse.data;
         }),
         exhaustMap((products) =>
-          this.fetchDataByCriteria('id', products[0]._id)
+          this.fetchDataByCategoryIdOrProductId('id', products[0]._id)
         )
       );
+  }
+  async getProductBySlug(slug: string) {
+    const product = await lastValueFrom(
+      this.fetchProductByCriteria('slug', '$eq', slug),
+      { defaultValue: null }
+    );
+    return product;
+    // console.log('product: ', product, slug);
   }
 }
