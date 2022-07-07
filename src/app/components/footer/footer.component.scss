@@ -46,7 +46,7 @@
     .footer-list {
       display: flex;
       align-items: flex-start;
-      color: #333;
+      color: $textColor;
       flex-direction: column;
 
       .footer-title {
@@ -74,7 +74,7 @@
 
           ::ng-deep {
             svg path {
-              fill: #333;
+              fill: $textColor;
             }
             svg {
               width: 100%;
@@ -118,7 +118,7 @@
       line-height: 2rem;
     }
     .footer-item:hover {
-      color: #333 !important;
+      color: $textColor !important;
     }
     .about-content {
       display: flex;

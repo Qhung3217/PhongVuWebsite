@@ -1,3 +1,4 @@
+@import "../../../scss/variables/variable";
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -5,7 +6,7 @@
   .home {
     display: flex;
     align-items: center;
-    color: #333;
+    color: $textColor;
 
     .icon {
       width: 3.4rem;

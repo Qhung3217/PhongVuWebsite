@@ -196,10 +196,10 @@
       padding: 0.64rem 1.2rem;
       border: 1px solid #e0e0e0;
       text-align: center;
-      color: #82869e;
+      color: $asideColor;
       ::ng-deep {
         svg line {
-          stroke: #82869e;
+          stroke: $asideColor;
         }
       }
       span {

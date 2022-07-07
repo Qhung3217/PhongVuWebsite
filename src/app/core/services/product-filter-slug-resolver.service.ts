@@ -27,7 +27,9 @@ export class ProductFilterSlugResolver implements Resolve<Product[] | Product> {
 
     return this.productService
       .getProductDetailBySlug(route.params['slug'])
-      .pipe(tap(() => this.loadingSpinnerService.turnOn()));
+      .pipe(tap(() => this.loadingSpinnerService.turnOn())) as Observable<
+      Product[] | Product
+    >;
     // return null;
   }
 }

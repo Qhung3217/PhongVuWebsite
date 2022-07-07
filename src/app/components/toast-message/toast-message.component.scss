@@ -1,9 +1,10 @@
+@import "../../../scss/variables/variable";
 .toasts {
   position: fixed;
   top: 10rem;
   right: 1rem;
   z-index: 10;
-  color: #333;
+  color: $textColor;
   .toast {
     display: flex;
     background-color: white;

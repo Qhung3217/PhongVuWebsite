@@ -1,6 +1,9 @@
 import { Subscription } from 'rxjs';
 import { Product } from './../../core/models/product.model';
-import { ProductService } from './../../core/services/product.service';
+import {
+  dataResponse,
+  ProductService,
+} from './../../core/services/product.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
@@ -31,14 +34,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.categoryId)
       this.productService
         .getProductsByCategoryId(this.categoryId)
-        .subscribe((products: Product[]) => {
-          this.products = products;
+        .subscribe((dataResponse: dataResponse) => {
+          this.products = dataResponse.data as Product[];
+          this.pageSize = dataResponse.limit;
+          this.totalRow = dataResponse.totalRow;
           this.isLoading = false;
         });
-    else this.products = this.productService.getProducts();
-    if (this.productService.dataResponse) {
-      this.pageSize = this.productService.dataResponse.limit;
-      this.totalRow = this.productService.dataResponse.totalRow;
+    else {
+      this.products = this.productService.getProducts();
+      if (this.productService.dataResponse) {
+        this.pageSize = this.productService.dataResponse.limit;
+        this.totalRow = this.productService.dataResponse.totalRow;
+      }
     }
     this.isLoading = false;
     // console.log('dataREs: ', this.productService.dataResponse);

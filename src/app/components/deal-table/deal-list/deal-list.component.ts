@@ -1,5 +1,8 @@
 import { Product } from './../../../core/models/product.model';
-import { ProductService } from './../../../core/services/product.service';
+import {
+  dataResponse,
+  ProductService,
+} from './../../../core/services/product.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -36,7 +39,10 @@ export class DealListComponent implements OnInit, OnDestroy {
     if (this.categoryID)
       this.productService
         .getProductsByCategoryId(this.categoryID)
-        .subscribe((products: Product[]) => (this.products = products));
+        .subscribe(
+          (dataResponse: dataResponse) =>
+            (this.products = dataResponse.data as Product[])
+        );
     else this.products = this.productService.getProducts();
   }
   ngOnDestroy() {

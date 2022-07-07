@@ -1,7 +1,7 @@
 @import "../../../scss/variables/variable";
 @import "../../../scss/mixin";
 .section-cart {
-  color: #333;
+  color: $textColor;
   position: relative;
 }
 .cart-top {
@@ -49,7 +49,7 @@
             font-size: 1.3rem;
             font-weight: 500;
             line-height: 2rem;
-            color: #333;
+            color: $textColor;
           }
         }
 
@@ -125,7 +125,7 @@
             line-height: 2rem;
             @include textTruncate(2);
             transition: color 0.3s ease;
-            color: #333;
+            color: $textColor;
             &:hover {
               color: $primaryColor;
             }
@@ -133,7 +133,7 @@
           .sku {
             font-size: 1.2rem;
             line-height: 1.6rem;
-            color: #82869e;
+            color: $asideColor;
           }
         }
       }
@@ -235,7 +235,7 @@
       }
       .price {
         font-weight: 700;
-        color: #333;
+        color: $textColor;
         text-align: right;
         width: fit-content;
         flex-shrink: 0;

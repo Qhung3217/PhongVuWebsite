@@ -9,10 +9,11 @@ import {
   exhaustMap,
   take,
   lastValueFrom,
+  Observable,
 } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-interface dataResponse {
+export interface dataResponse {
   page: number;
   limit: number;
   totalRow: number;
@@ -39,7 +40,7 @@ export class ProductService {
       .pipe(
         map((dataResponse) => {
           console.log(dataResponse);
-          // this.dataResponse = { ...dataResponse };
+          this.dataResponse = { ...dataResponse };
           return dataResponse.data;
         }),
         tap((products: Product[]) => this.setProducts(products))
@@ -86,16 +87,16 @@ export class ProductService {
             this.productSelectedChanged.next(this.productSeleted);
           })
         );
-    return this.http
-      .get<dataResponse>(environment.urlApi + '/products', {
-        params: queryParams,
-      })
-      .pipe(
-        map((dataResponse) => {
-          console.log(dataResponse);
-          return dataResponse.data;
-        })
-      );
+    return this.http.get<dataResponse>(environment.urlApi + '/products', {
+      params: queryParams,
+    });
+    // .pipe
+    // // map((dataResponse) => {
+    // //   console.log(dataResponse);
+    // //   // this.dataResponse = dataResponse;
+    // //   return dataResponse.data;
+    // // })
+    // ();
   }
   fetchProductByCriteria(criteria: string, flag: string, key) {
     let queryParams = new HttpParams();
@@ -124,9 +125,12 @@ export class ProductService {
     this.products = products.slice();
     this.productsChanged.next(products.slice());
   }
-  getProductsByCategoryId(id: string) {
+  getProductsByCategoryId(id: string): Observable<dataResponse> {
     // if (!this.products) return [];
-    return this.fetchDataByCategoryIdOrProductId('category', id);
+    return this.fetchDataByCategoryIdOrProductId(
+      'category',
+      id
+    ) as Observable<dataResponse>;
   }
   retrieveProductIdBySlug(slug: string) {
     let product;
