@@ -21,8 +21,18 @@
           <li class="cart-item cart-heading">
             <div class="cart-check">
               <label for="check">
-                <input type="checkbox" checked id="check" />
-                <div class="checkbox-inner">
+                <input
+                  type="checkbox"
+                  [checked]="countChecked === carts.length"
+                  id="check"
+                  (change)="onChangeCheckedMaster($event)"
+                />
+                <div
+                  class="checkbox-inner"
+                  [ngClass]="{
+                    'show-line': countChecked > 0 && countChecked < carts.length
+                  }"
+                >
                   <app-line-icon
                     class="checkbox-icon icon-not-check-all"
                   ></app-line-icon>
@@ -39,10 +49,16 @@
               <div class="into-money">Into money</div>
             </div>
           </li>
+          <!-- [checked]="countChecked === carts.length && !unCheckAll" -->
           <li class="cart-item" *ngFor="let cart of carts; let i = index">
             <div class="cart-check">
               <label [for]="'check' + i">
-                <input type="checkbox" checked [id]="'check' + i" />
+                <input
+                  type="checkbox"
+                  [checked]="checkInputArray[i]"
+                  [id]="'check' + i"
+                  (change)="onChangeChecked($event, i)"
+                />
                 <div class="checkbox-inner">
                   <app-checkbox-icon
                     class="checkbox-icon icon-checked"
@@ -112,9 +128,12 @@
           </div>
         </div>
         <aside>(VAT included)</aside>
-        <button class="btn btn-primary btn-padding checkout-btn flex-centerc">
+        <button
+          class="btn btn-primary btn-padding checkout-btn flex-centerc"
+          (click)="onCheckout()"
+        >
           <p class="checkout">Checkout</p>
-          <p class="notice">You need to login to continue</p>
+          <p class="notice" *ngIf="!auth">You need to login to continue</p>
         </button>
       </div>
     </div>

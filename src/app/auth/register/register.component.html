@@ -1,0 +1,118 @@
+<div class="panel panel-padding-full form">
+  <h1 class="form-title">Register Account</h1>
+  <div class="line mb-16"></div>
+  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        name="email"
+        ngModel
+        required
+        email
+        #email="ngModel"
+      />
+      <span *ngIf="!email.valid && email.touched" class="help-block">
+        <span *ngIf="email?.errors['email']">Email invalid !</span>
+        <span *ngIf="email?.errors['required']">Please enter your email</span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        ngModel
+        required
+        #password="ngModel"
+      />
+      <span *ngIf="!password.valid && password.touched" class="help-block">
+        <span *ngIf="password?.errors['required']"
+          >Please enter your password</span
+        >
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        name="phone"
+        ngModel
+        #phone="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="firstName">First name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        name="firstName"
+        ngModel
+        #firstName="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        name="lastName"
+        ngModel
+        #lastName="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label for="DOB">Date of birth</label>
+      <input
+        type="date"
+        class="form-control"
+        id="DOB"
+        name="DOB"
+        ngModel
+        #DOB="ngModel"
+      />
+    </div>
+    <div class="form-group">
+      <label>Gender</label>
+
+      <div class="form-radio-box">
+        <div class="form-radio">
+          <input type="radio" id="male" name="gender" ngModel value="male" />
+          <label for="male">Male</label>
+        </div>
+
+        <div class="form-radio">
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            ngModel
+            value="female"
+          />
+          <label for="female">Female</label>
+        </div>
+      </div>
+    </div>
+    <div class="line"></div>
+    <div class="form-bottom">
+      <button
+        type="submit"
+        class="btn btn-primary btn-padding"
+        [disabled]="!registerForm.valid"
+      >
+        Register
+      </button>
+      <a routerLink="/login" class="aside-direct"
+        >You have account? Login now !</a
+      >
+    </div>
+  </form>
+</div>

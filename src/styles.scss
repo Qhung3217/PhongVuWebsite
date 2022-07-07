@@ -60,6 +60,10 @@ a {
 .btn-padding {
   padding: 1.12rem 1.6rem;
 }
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 /******************************/
 //----------HELPER CLASS-----------//
 /******************************/
@@ -78,6 +82,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 
 .flex-centerc {
@@ -91,7 +96,7 @@ a {
   padding-right: 1.6rem;
   background-color: white;
   border-radius: 0.8rem;
-  box-shadow: 0px 5px 20px rgb(0 0 0 / 1%);
+  box-shadow: 0px 0px 10px 6px rgb(0 0 0 / 1%);
 }
 .panel.panel-no-padding {
   padding-left: 0;
@@ -106,6 +111,9 @@ a {
 }
 .mb-15 {
   margin-bottom: 1.5rem;
+}
+.mb-16 {
+  margin-bottom: 1.6rem;
 }
 .mt-24 {
   margin-top: 2.4rem;
@@ -129,4 +137,114 @@ a {
 }
 .blur {
   background-color: rgba(255, 255, 255, 0.6);
+}
+/******************************/
+//----------Form-----------//
+/******************************/
+
+.form {
+  max-width: 45rem;
+  margin: 0 auto;
+  line-height: 2rem;
+
+  .form-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.6rem;
+  }
+  // .form-group + .form-group {
+  //   margin-top: 1rem;
+  // }
+  .form-group + .line {
+    margin-top: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 2rem;
+    .form-radio-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      .form-radio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1.4rem;
+        label {
+          margin: 0;
+          cursor: pointer;
+          font-size: inherit;
+          opacity: 0.6;
+          transition: opacity 200ms ease;
+        }
+        input[type="radio"] {
+          width: 1.4rem;
+          height: 1.4rem;
+          opacity: 0.6;
+          &:checked {
+            opacity: 1;
+          }
+        }
+        input[type="radio"]:checked ~ label {
+          opacity: 1;
+        }
+      }
+    }
+    label {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      width: fit-content;
+    }
+    .form-control.ng-invalid.ng-touched {
+      border: 1px solid rgb(240, 66, 66);
+    }
+    .form-control {
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.4rem;
+      border: 1px solid $asideColor;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2rem;
+      outline: none;
+      transition: box-shadow 200ms ease, outline 200ms ease;
+      &:focus {
+        outline: 1px solid $primaryColor;
+        box-shadow: 0px 2px 3px 0px rgb(95 118 221 / 73%);
+        border: 1px solid transparent !important;
+      }
+    }
+
+    .help-block {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      color: red;
+      span {
+      }
+    }
+  }
+  .form-bottom {
+    margin-top: 1.6rem;
+    button {
+      width: 100%;
+      border-radius: 0.2rem;
+    }
+    .aside-direct {
+      color: $asideColor;
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+      display: block;
+      transition: color 200ms ease;
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
 }

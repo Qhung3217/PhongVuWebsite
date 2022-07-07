@@ -20,7 +20,7 @@ import { BellIconComponent } from './shared/icons/bell-icon/bell-icon.component'
 import { CartIconComponent } from './shared/icons/cart-icon/cart-icon.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SubNavComponent } from './components/navbar/sub-nav/sub-nav.component';
-import { LandingPageComponent } from './main/landing-page/landing-page.component';
+import { LandingPageComponent } from './main/public-pages/landing-page/landing-page.component';
 import { SectionHeroComponent } from './components/section-hero/section-hero.component';
 import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
 import { SectionHotDealComponent } from './components/section-hot-deal/section-hot-deal.component';
@@ -45,7 +45,7 @@ import { ClockIconComponent } from './shared/icons/clock-icon/clock-icon.compone
 import { CreditCardIconComponent } from './shared/icons/credit-card-icon/credit-card-icon.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderPopupComponent } from './components/header/header-popup/header-popup.component';
-import { DetailPageComponent } from './main/detail-page/detail-page.component';
+import { DetailPageComponent } from './main/public-pages/detail-page/detail-page.component';
 import { HomeIconComponent } from './shared/icons/home-icon/home-icon.component';
 import { SectionDetailProductComponent } from './components/section-detail-product/section-detail-product.component';
 import { GiftIconComponent } from './shared/icons/gift-icon/gift-icon.component';
@@ -62,12 +62,19 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ToastMessageComponent } from './components/toast-message/toast-message.component';
 import { CheckedIconComponent } from './shared/icons/checked-icon/checked-icon.component';
 import { ExclamationIconComponent } from './shared/icons/exclamation-icon/exclamation-icon.component';
-import { CartPageComponent } from './main/cart-page/cart-page.component';
+import { CartPageComponent } from './main/public-pages/cart-page/cart-page.component';
 import { SectionCartComponent } from './components/section-cart/section-cart.component';
 import { LineIconComponent } from './shared/icons/line-icon/line-icon.component';
 import { MinusIconComponent } from './shared/icons/minus-icon/minus-icon.component';
 import { PlusIconComponent } from './shared/icons/plus-icon/plus-icon.component';
 import { CheckboxIconComponent } from './shared/icons/checkbox-icon/checkbox-icon.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+
+import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './main/user-pages/login-page/login-page.component';
+import { RegisterPageComponent } from './main/user-pages/register-page/register-page.component';
+import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-page.component';
 
 @NgModule({
   declarations: [
@@ -134,10 +141,17 @@ import { CheckboxIconComponent } from './shared/icons/checkbox-icon/checkbox-ico
     MinusIconComponent,
     PlusIconComponent,
     CheckboxIconComponent,
+    LoginComponent,
+    RegisterComponent,
+
+    LoginPageComponent,
+    RegisterPageComponent,
+    CheckoutPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     SlickCarouselModule,
     NgxPaginationModule,
     HttpClientModule,
