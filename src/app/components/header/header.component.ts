@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs';
 import { CartService } from './../../core/services/cart.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,37 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   countCarts;
+  userInfor;
+  briefInfor: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+  userSub: Subscription;
   cartSub: Subscription;
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
+    this.setUserInfor();
+    this.setCountCarts();
+  }
+
+  ngOnDestroy() {
+    this.cartSub.unsubscribe();
+    this.userSub.unsubscribe();
+  }
+  setUserInfor() {
+    this.userInfor = this.userService.getOwnProfile();
+    this.setBriefInfor();
+    this.userSub = this.userService.userChanged.subscribe((user) => {
+      this.userInfor = user;
+      this.setBriefInfor();
+    });
+  }
+  setCountCarts() {
     this.countCarts = this.cartService.getTotalQuantityInCarts();
 
     // this.counterQuantity();
@@ -20,11 +48,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
       (carts) => (this.countCarts = this.cartService.getTotalQuantityInCarts())
     );
   }
-
-  ngOnDestroy() {
-    this.cartSub.unsubscribe();
+  setBriefInfor() {
+    if (this.userInfor)
+      this.briefInfor = {
+        name:
+          this.userInfor?.firstName &&
+          this.userInfor?.lastName &&
+          this.userInfor.firstName + ' ' + this.userInfor.lastName,
+        email: this.userInfor.email,
+        avatar: this.userInfor?.avatar,
+      };
   }
-
   /* no change countCarts ?
   counterQuantity(carts = null) {
     // console.log(this.cartService.getCarts());

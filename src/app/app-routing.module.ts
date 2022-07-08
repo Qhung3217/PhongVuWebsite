@@ -1,3 +1,4 @@
+import { UserPageComponent } from './main/user-pages/user-page/user-page.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-page.component';
 import { LoginPageComponent } from './main/user-pages/login-page/login-page.component';
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPageComponent,
+  },
+  {
+    path: 'me',
+    component: UserPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'checkout',

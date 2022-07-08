@@ -4,6 +4,7 @@ import { Product } from './../../core/models/product.model';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-section-detail-product',
@@ -25,7 +26,8 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
       const slug = params['slug'];
       this.product = this.productService.productSeleted;
       this.cart = this.cartService.getCart(this.product._id);
-
+      this.titleService.setTitle('PhongVu - ' + this.product.name);
       console.log(this.product);
       this.displayImage = {
         index: 0,
@@ -43,6 +45,7 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
     this.productSub = this.productService.productSelectedChanged.subscribe(
       (product) => {
         this.product = product;
+        this.titleService.setTitle('PhongVu - ' + product.name);
         this.cart = this.cartService.getCart(this.product._id);
       }
     );

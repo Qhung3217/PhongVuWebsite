@@ -24,39 +24,71 @@
           </span>
         </button>
       </div>
-      <a href="#" class="action hover">
-        <div class="header-icon">
-          <app-discount-icon></app-discount-icon>
+      <div class="action">
+        <a class="action hover">
+          <div class="header-icon">
+            <app-discount-icon></app-discount-icon>
+          </div>
+          <span>Promotion</span>
+        </a>
+      </div>
+      <div class="action">
+        <a class="action hover">
+          <div class="header-icon"><app-order-icon></app-order-icon></div>
+          <span>Order</span>
+        </a>
+      </div>
+      <div class="action">
+        <a routerLink="me" class="action hover">
+          <div class="header-icon">
+            <app-user-icon *ngIf="!userInfor"></app-user-icon>
+            <img
+              src="assets/imgs/avatar-default.png"
+              alt="Avatar default"
+              *ngIf="!userInfor?.avatar && userInfor"
+              class="img-cover"
+            />
+            <img
+              [src]="briefInfor?.avatar"
+              [alt]="briefInfor?.name + 'avatar'"
+              *ngIf="userInfor?.avatar && userInfor"
+              class="img-cover"
+            />
+          </div>
+          <span *ngIf="!userInfor">Login</span>
+          <span *ngIf="userInfor">{{
+            userInfor?.firstName && userInfor?.lastName
+              ? briefInfo?.name
+              : "Welcome"
+          }}</span>
+        </a>
+        <div class="dropdown" *ngIf="userInfor">
+          <app-user-menu [briefInfo]="briefInfor"></app-user-menu>
         </div>
-        <span>Promotion</span>
-      </a>
-      <a href="#" class="action hover">
-        <div class="header-icon"><app-order-icon></app-order-icon></div>
-        <span>Order</span>
-      </a>
-      <a routerLink="authenticate" class="action hover">
-        <div class="header-icon"><app-user-icon></app-user-icon></div>
-        <span>Login</span>
-      </a>
-      <a href="#" class="action hover">
-        <div class="header-icon"><app-bell-icon></app-bell-icon></div>
-        <span>Notify</span>
+      </div>
+      <div class="action">
+        <a class="action hover">
+          <div class="header-icon"><app-bell-icon></app-bell-icon></div>
+          <span>Notify</span>
+        </a>
         <div class="dropdown">
           <app-header-popup isNotification="true"></app-header-popup>
         </div>
-      </a>
-      <a href="#" class="action hover">
-        <div class="header-icon">
-          <app-cart-icon></app-cart-icon>
-          <span class="count-cart" *ngIf="countCarts > 0">{{
-            countCarts
-          }}</span>
-        </div>
-        <span>Cart</span>
+      </div>
+      <div class="action">
+        <a class="action hover">
+          <div class="header-icon">
+            <app-cart-icon></app-cart-icon>
+            <span class="count-cart" *ngIf="countCarts > 0">{{
+              countCarts
+            }}</span>
+          </div>
+          <span>Cart</span>
+        </a>
         <div class="dropdown">
           <app-header-popup></app-header-popup>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </header>

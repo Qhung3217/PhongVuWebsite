@@ -1,10 +1,12 @@
 <div class="grid wide section-cart">
-  <div class="fixed flex-center blur" *ngIf="isLoading">
+  <div class="overlay flex-center blur" *ngIf="isLoading">
     <app-loading-spinner></app-loading-spinner>
   </div>
   <app-breadcrumb [level2Name]="'Cart'"></app-breadcrumb>
-
-  <div class="row">
+  <div class="cart-empty" *ngIf="carts.length === 0">
+    <app-header-popup></app-header-popup>
+  </div>
+  <div class="row" *ngIf="carts.length > 0">
     <div class="col l-8">
       <div class="cart-top">
         <h1 class="title">Cart</h1>
@@ -14,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="row cart-infor">
+  <div class="row cart-infor" *ngIf="carts.length > 0">
     <div class="col l-8">
       <div class="cart-content panel panel-padding-full">
         <ul class="cart-list">

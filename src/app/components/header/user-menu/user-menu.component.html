@@ -1,0 +1,40 @@
+<div
+  class="menu-box panel panel-padding-full"
+  (click)="$event.stopPropagation()"
+>
+  <div class="menu-head">
+    <figure class="avatar">
+      <img
+        [src]="briefInfo?.avatar || 'assets/imgs/avatar-default.png'"
+        [alt]="briefInfo?.name + 'avatar'"
+        class="img-cover"
+      />
+    </figure>
+    <div class="infor">
+      <h1 class="name">{{ briefInfo?.name ? briefInfo.name : "Welcome" }}</h1>
+      <p class="email">{{ briefInfo?.email }}</p>
+    </div>
+  </div>
+  <div class="line"></div>
+  <div class="menu-body">
+    <ul class="menu-list">
+      <li *ngFor="let menu of menus">
+        <a [routerLink]="menu.url" class="menu-item">
+          <div class="icon">
+            <ndc-dynamic [ndcDynamicComponent]="menu.icon"></ndc-dynamic>
+          </div>
+          {{ menu.select }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="line"></div>
+  <div class="menu-bottom">
+    <button
+      class="btn btn-outline btn-padding btn-width-full btn-sm-radius btn-outline-hover"
+      (click)="onLogout($event)"
+    >
+      Logout
+    </button>
+  </div>
+</div>

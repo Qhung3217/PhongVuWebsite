@@ -63,6 +63,7 @@ export class CartService {
   clearCarts() {
     if (localStorage.getItem('cart')) {
       localStorage.removeItem('cart');
+      this.cartsChanged.next(null);
     }
   }
   removeCart(productID: string) {

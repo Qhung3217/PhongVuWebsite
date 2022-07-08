@@ -2,7 +2,7 @@
   <div
     class="toast"
     [ngClass]="{ error: toast.type === 'error' }"
-    *ngFor="let toast of toastList"
+    *ngFor="let toast of toastList; let i = index"
     [style]="{
       animation:
         'slideInLeft ease .3s, fadeOut linear ' +
@@ -21,7 +21,7 @@
     </div>
     <div class="info flex-center">
       <p class="text">{{ toast.message }}</p>
-      <button class="remove">X</button>
+      <button class="remove" (click)="onRemove(i)">X</button>
     </div>
   </div>
 </div>

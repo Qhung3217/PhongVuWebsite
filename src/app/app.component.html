@@ -1,6 +1,6 @@
 <app-header></app-header>
 <main>
-  <div class="fixed flex-center" *ngIf="isLoading">
+  <div class="overlay flex-center" *ngIf="isLoading">
     <app-loading-spinner></app-loading-spinner>
   </div>
   <router-outlet (activate)="onActivate($event)"></router-outlet>

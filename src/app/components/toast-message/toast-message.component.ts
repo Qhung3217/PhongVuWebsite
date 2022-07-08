@@ -36,4 +36,7 @@ export class ToastMessageComponent implements OnChanges, OnInit {
       );
     }
   }
+  onRemove(index) {
+    this.toastList.splice(index, 1);
+  }
 }

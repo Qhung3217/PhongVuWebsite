@@ -1,21 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError, tap, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Credential } from '../models/credential.model';
+import { UserService } from './user.service';
 interface AuthResponse {
   data: {
     accessToken: string;
     refreshToken: string;
   };
-}
-interface ErrorResponse {
-  statusCode: string;
-  error: string;
-  message: string;
-  errors;
-  path: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -25,7 +19,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) {}
 
   register(payload: {
@@ -70,7 +65,8 @@ export class AuthService {
         tap((authRes) =>
           this.handleAuthentication(
             authRes.data.accessToken,
-            authRes.data.refreshToken
+            authRes.data.refreshToken,
+            false
           )
         )
       );
@@ -88,18 +84,21 @@ export class AuthService {
       auth._refreshToken,
       new Date(auth.expiresIn)
     );
+    console.log('load: ', loadedAuth.token);
     if (loadedAuth.token) {
       this.auth.next(loadedAuth);
       const expirationDuration =
         new Date(auth.expiresIn).getTime() - new Date().getTime();
       this.autoRefresh(expirationDuration, auth._refreshToken);
+      this.userService.fetchOwnProfile().subscribe();
     }
   }
 
   logout() {
+    this.router.navigate(['/']);
     this.auth.next(null);
-    this.router.navigate(['/authenticate']);
     localStorage.removeItem('credential');
+    this.userService.clearUser();
     if (this.refreshTokenTimer) clearTimeout(this.refreshTokenTimer);
     this.refreshTokenTimer = null;
   }
@@ -108,7 +107,11 @@ export class AuthService {
       this.refreshToken(refreshToken).subscribe();
     }, expirationDuration);
   }
-  private handleAuthentication(token: string, refreshToken: string) {
+  private handleAuthentication(
+    token: string,
+    refreshToken: string,
+    isRedirect = true
+  ) {
     const expireDurationSeconds = 3600;
     const expirationDate = new Date(
       new Date().getTime() + expireDurationSeconds * 1000
@@ -117,7 +120,8 @@ export class AuthService {
     this.auth.next(credential);
     this.autoRefresh(expireDurationSeconds * 1000, refreshToken);
     localStorage.setItem('credential', JSON.stringify(credential));
-    this.redirect();
+    if (isRedirect) this.redirect();
+    this.userService.fetchOwnProfile().subscribe();
   }
   private redirect() {
     let nextUrl = null;
@@ -126,26 +130,29 @@ export class AuthService {
     );
 
     if (nextUrl) this.router.navigate([nextUrl]);
-    else this.router.navigate(['/']);
+    else this.router.navigate(['/me']);
   }
-  private handleCatchError(errRes: ErrorResponse) {
+  private handleCatchError(errRes: HttpErrorResponse) {
+    console.log(errRes);
     let errorMessage = 'An unknow error occured!';
-    switch (errRes.error) {
+    if (!errRes.error && !errRes.error.error)
+      return throwError(() => errorMessage);
+    switch (errRes.error.error) {
       case 'JsonWebTokenError':
-        errorMessage = errRes.message + ': ' + errRes.path;
+        errorMessage = errRes.error.message + ': ' + errRes.error.path;
         break;
       case 'UnauthorizedException':
         errorMessage = 'Email or password is incorrect';
         break;
       case 'UnprocessableEntityException':
         errorMessage = '';
-        errRes.errors.forEach((err, index) => {
+        errRes.error.errors.forEach((err, index) => {
           errorMessage += err.message;
-          if (index < errRes.errors.length - 1) errorMessage += ';';
+          if (index < errRes.error.errors.length - 1) errorMessage += ';';
         });
         break;
       case 'Error':
-        errorMessage = errRes.message;
+        errorMessage = errRes.error.message;
         break;
     }
     return throwError(() => errorMessage);

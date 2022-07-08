@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,6 +75,12 @@ import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './main/user-pages/login-page/login-page.component';
 import { RegisterPageComponent } from './main/user-pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-page.component';
+import { AuthInterceptorService } from './core/interceptors/auth-interceptor.service';
+import { UserPageComponent } from './main/user-pages/user-page/user-page.component';
+import { UserMenuComponent } from './components/header/user-menu/user-menu.component';
+import { AddressIconComponent } from './shared/icons/address-icon/address-icon.component';
+import { WishlistIconComponent } from './shared/icons/wishlist-icon/wishlist-icon.component';
+import { DynamicModule } from 'ng-dynamic-component';
 
 @NgModule({
   declarations: [
@@ -147,6 +153,10 @@ import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-
     LoginPageComponent,
     RegisterPageComponent,
     CheckoutPageComponent,
+    UserPageComponent,
+    UserMenuComponent,
+    AddressIconComponent,
+    WishlistIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -155,8 +165,15 @@ import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-
     SlickCarouselModule,
     NgxPaginationModule,
     HttpClientModule,
+    DynamicModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
