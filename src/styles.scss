@@ -151,7 +151,7 @@ a {
   position: absolute;
 }
 .blur {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.6) !important;
 }
 .relative {
   position: relative;
@@ -165,6 +165,27 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.wfull {
+  width: 100%;
+}
+.whaft {
+  width: 50%;
+}
+.w25 {
+  width: 25% !important;
+}
+.model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.backdrop-filter-blur {
+  backdrop-filter: blur(10px);
 }
 /******************************/
 //----------Form-----------//
@@ -187,6 +208,13 @@ a {
   .form-group + .line {
     margin-top: 1rem;
   }
+  .form-multi-group {
+    display: flex;
+    gap: 0.8rem;
+    .form-group {
+      flex-basis: 50%;
+    }
+  }
   .form-group {
     display: flex;
     flex-direction: column;
@@ -196,6 +224,10 @@ a {
       display: flex;
       align-items: center;
       gap: 1rem;
+      height: 100%;
+      border-radius: 0.4rem;
+      border: 1px dashed $asideColor;
+      padding: 0 1.2rem;
       .form-radio {
         display: flex;
         justify-content: center;

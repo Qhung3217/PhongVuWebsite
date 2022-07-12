@@ -56,9 +56,9 @@
             />
           </div>
           <span *ngIf="!userInfor">Login</span>
-          <span *ngIf="userInfor">{{
+          <span *ngIf="userInfor" class="username">{{
             userInfor?.firstName && userInfor?.lastName
-              ? briefInfo?.name
+              ? userInfor?.firstName + " " + userInfor?.lastName
               : "Welcome"
           }}</span>
         </a>

@@ -22,6 +22,23 @@ export class UserService {
         tap(this.setUser)
       );
   }
+  updateProfile(payload: {
+    firstName?: string;
+    lastName?: string;
+    phone?: string;
+    dob?: string;
+    gender?: string;
+  }) {
+    return this.http
+      .put<{ data: User }>(environment.urlApi + '/users/me/profile', {
+        ...payload,
+      })
+      .pipe(
+        map((res) => res.data),
+        tap((user) => this.userChanged.next({ ...user })),
+        tap(this.setUser)
+      );
+  }
   getOwnProfile() {
     if (this.user) return { ...this.user };
   }

@@ -73,98 +73,20 @@
             color: $textColor;
           }
         }
-
-        .cart-check {
-          flex: 0 0 4%;
-          position: relative;
-          * {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 16px;
-            height: 16px;
-          }
-          input {
-            cursor: pointer;
-            z-index: 1;
-
-            opacity: 0;
-          }
-          input:hover + .checkbox-inner {
-            border-color: rgb(167, 171, 195);
-          }
-          input:checked + .checkbox-inner {
-            background-color: $primaryColor;
-          }
-          input:checked + .checkbox-inner .icon-checked {
-            display: block;
-          }
-          .checkbox-inner {
-            border: 1px solid rgb(228, 229, 240);
-            border-radius: 2px;
-            background-color: rgb(255, 255, 255);
-            .checkbox-icon {
-              display: none;
-              color: white;
-              text-align: center;
-              left: -1px;
-              ::ng-deep svg path {
-                stroke-width: 5;
-                stroke: white;
-              }
-            }
-          }
-          .show-line {
-            background-color: $primaryColor;
-            .icon-not-check-all {
-              display: block;
-            }
-          }
-        }
       }
     }
+
     .item-content {
-      flex: 0 0 96%;
+      width: 100%;
       display: flex;
       .infor {
         flex: 0 0 50%;
         display: flex;
         gap: 1.2rem;
-        .image {
-          width: 8rem;
-          height: 8rem;
-          border: 1px solid #e4e5f0;
-          flex-shrink: 0;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-        }
-        .infor-content {
-          font-weight: 400;
-          .name {
-            font-size: 1.3rem;
-            line-height: 2rem;
-            @include textTruncate(2);
-            transition: color 0.3s ease;
-            color: $textColor;
-            &:hover {
-              color: $primaryColor;
-            }
-          }
-          .sku {
-            font-size: 1.2rem;
-            line-height: 1.6rem;
-            color: $asideColor;
-          }
-        }
       }
       .price {
         flex: 0 0 16.66%;
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 2.4rem;
+
         text-align: right;
         padding-right: 1.6rem;
       }
@@ -173,63 +95,10 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        .change-quantity-box {
-          background-color: #f8f8fc;
-          width: fit-content;
-          border-radius: 0.4rem;
-          border: 1px solid #e4e5f0;
-          * {
-            background-color: transparent;
-          }
-          .change-button {
-            border: none;
-            width: 3.2rem;
-            height: 3rem;
-            padding: 0.1rem 0.6rem;
-            cursor: pointer;
-            .icon-change {
-              height: 100%;
-              display: flex;
-              align-items: center;
-            }
-            &:disabled {
-              pointer-events: none;
-              cursor: default;
-              ::ng-deep svg path {
-                fill: #d2d2d2;
-              }
-            }
-            &.button-decrease {
-            }
-            &.button-increase {
-            }
-          }
-          .quantity {
-            font-size: 1.3rem;
-            font-weight: 500;
-            line-height: 2rem;
-            height: 100%;
-            width: 4rem;
-          }
-        }
-        .remove-cart {
-          font-size: 1.3rem;
-          font-weight: 400;
-          line-height: 2rem;
-          margin-top: 1.2rem;
-          color: #1990ff;
-          transition: color 0.3s ease;
-          cursor: pointer;
-          &:hover {
-            color: red;
-          }
-        }
       }
       .into-money {
         flex: 0 0 16.66%;
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 2.4rem;
+
         color: $primaryColor;
         text-align: right;
       }

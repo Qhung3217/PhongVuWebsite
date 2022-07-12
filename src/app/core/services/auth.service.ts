@@ -34,7 +34,7 @@ export class AuthService {
   }) {
     return this.http
       .post<{ message: string }>(environment.urlApi + '/auth/register', {
-        payload,
+        ...payload,
       })
       .pipe(catchError(this.handleCatchError));
   }

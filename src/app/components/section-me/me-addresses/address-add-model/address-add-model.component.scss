@@ -1,0 +1,39 @@
+.address {
+  overflow: auto;
+  height: 100%;
+  // max-height: 100%;
+  // margin: auto 0;
+  display: flex;
+  align-items: center;
+}
+form {
+  height: fit-content;
+}
+.address-form {
+  max-height: 100%;
+  height: fit-content;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.btn-group {
+  gap: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.set-default {
+  display: flex;
+
+  align-items: center;
+  font-size: 1.4rem !important;
+  gap: 0.4rem;
+  margin-left: auto;
+  input {
+    &:focus {
+      outline: none !important;
+      box-shadow: unset;
+      border: unset;
+    }
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}

@@ -1,7 +1,4 @@
 <div class="grid wide section-cart">
-  <div class="overlay flex-center blur" *ngIf="isLoading">
-    <app-loading-spinner></app-loading-spinner>
-  </div>
   <app-breadcrumb [level2Name]="'Cart'"></app-breadcrumb>
   <div class="cart-empty" *ngIf="carts.length === 0">
     <app-header-popup></app-header-popup>
@@ -21,29 +18,6 @@
       <div class="cart-content panel panel-padding-full">
         <ul class="cart-list">
           <li class="cart-item cart-heading">
-            <div class="cart-check">
-              <label for="check">
-                <input
-                  type="checkbox"
-                  [checked]="countChecked === carts.length"
-                  id="check"
-                  (change)="onChangeCheckedMaster($event)"
-                />
-                <div
-                  class="checkbox-inner"
-                  [ngClass]="{
-                    'show-line': countChecked > 0 && countChecked < carts.length
-                  }"
-                >
-                  <app-line-icon
-                    class="checkbox-icon icon-not-check-all"
-                  ></app-line-icon>
-                  <app-checkbox-icon
-                    class="checkbox-icon icon-checked"
-                  ></app-checkbox-icon>
-                </div>
-              </label>
-            </div>
             <div class="item-content">
               <div class="infor">Product item</div>
               <div class="price">Unit price</div>
@@ -51,67 +25,9 @@
               <div class="into-money">Into money</div>
             </div>
           </li>
-          <!-- [checked]="countChecked === carts.length && !unCheckAll" -->
+
           <li class="cart-item" *ngFor="let cart of carts; let i = index">
-            <div class="cart-check">
-              <label [for]="'check' + i">
-                <input
-                  type="checkbox"
-                  [checked]="checkInputArray[i]"
-                  [id]="'check' + i"
-                  (change)="onChangeChecked($event, i)"
-                />
-                <div class="checkbox-inner">
-                  <app-checkbox-icon
-                    class="checkbox-icon icon-checked"
-                  ></app-checkbox-icon>
-                </div>
-              </label>
-            </div>
-            <div class="item-content">
-              <div class="infor">
-                <figure class="image">
-                  <img [src]="cart.item.image" [alt]="cart.item.name" />
-                </figure>
-                <div class="infor-content">
-                  <a
-                    [routerLink]="['/', cart.item.slug]"
-                    class="name"
-                    [title]="cart.item.name"
-                    >{{ cart.item.name }}</a
-                  >
-                  <aside class="sku">SKU: {{ cart.item.sku }}</aside>
-                </div>
-              </div>
-              <div class="price">{{ cart.item.price | currency: "AUD" }}</div>
-              <div class="quantity-box">
-                <div class="change-quantity-box flex-center">
-                  <button
-                    class="change-button button-decrease flex-center"
-                    (click)="onDecreaseQuantity(cart.item.slug)"
-                    [disabled]="cart.quantity === 1"
-                  >
-                    <app-minus-icon class="icon-change"></app-minus-icon>
-                  </button>
-                  <div class="quantity flex-center">
-                    {{ cart.quantity }}
-                  </div>
-                  <button
-                    class="change-button button-increase flex-center"
-                    (click)="onIncreaseQuantity(cart.item.slug)"
-                    [disabled]="cart.item.quantity <= cart.quantity"
-                  >
-                    <app-plus-icon class="icon-change"></app-plus-icon>
-                  </button>
-                </div>
-                <div class="remove-cart" (click)="onRemoveCart(cart.item._id)">
-                  Remove
-                </div>
-              </div>
-              <div class="into-money">
-                {{ cart.item.price * cart.quantity | currency: "AUD" }}
-              </div>
-            </div>
+            <app-cart [cart]="cart" class="wfull"></app-cart>
           </li>
         </ul>
       </div>

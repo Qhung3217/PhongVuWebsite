@@ -1,0 +1,30 @@
+@import "../../../../scss/variables/variable";
+
+.me-address {
+  font-weight: 500;
+  line-height: 2rem;
+  color: $textColor;
+  .title {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+  .primary-cta {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4rem;
+    border: 1px dashed $asideColor;
+    padding: 1.2rem 0rem;
+  }
+  .addresses {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: $asideColor;
+
+    .list {
+      list-style: none;
+      .item + .item {
+        margin-top: 0.8rem;
+      }
+    }
+  }
+}

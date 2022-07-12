@@ -9,6 +9,11 @@ import { LandingPageComponent } from './main/public-pages/landing-page/landing-p
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterPageComponent } from './main/user-pages/register-page/register-page.component';
+import { MeProfileComponent } from './components/section-me/me-profile/me-profile.component';
+import { MeAddressesComponent } from './components/section-me/me-addresses/me-addresses.component';
+import { MeOrderComponent } from './components/section-me/me-order/me-order.component';
+import { MeNotifyComponent } from './components/section-me/me-notify/me-notify.component';
+import { MeWishlistComponent } from './components/section-me/me-wishlist/me-wishlist.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -28,6 +33,14 @@ const routes: Routes = [
     path: 'me',
     component: UserPageComponent,
     canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+      { path: 'profile', component: MeProfileComponent },
+      { path: 'address', component: MeAddressesComponent },
+      { path: 'order', component: MeOrderComponent },
+      { path: 'notify', component: MeNotifyComponent },
+      { path: 'wishlist', component: MeWishlistComponent },
+    ],
   },
   {
     path: 'checkout',

@@ -71,7 +71,7 @@ import { CheckboxIconComponent } from './shared/icons/checkbox-icon/checkbox-ico
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './main/user-pages/login-page/login-page.component';
 import { RegisterPageComponent } from './main/user-pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './main/user-pages/checkout-page/checkout-page.component';
@@ -81,6 +81,22 @@ import { UserMenuComponent } from './components/header/user-menu/user-menu.compo
 import { AddressIconComponent } from './shared/icons/address-icon/address-icon.component';
 import { WishlistIconComponent } from './shared/icons/wishlist-icon/wishlist-icon.component';
 import { DynamicModule } from 'ng-dynamic-component';
+import { SectionMeComponent } from './components/section-me/section-me.component';
+import { TabPaneComponent } from './components/section-me/tab-pane/tab-pane.component';
+import { MeProfileComponent } from './components/section-me/me-profile/me-profile.component';
+import { MeOrderComponent } from './components/section-me/me-order/me-order.component';
+import { MeAddressesComponent } from './components/section-me/me-addresses/me-addresses.component';
+import { MeNotifyComponent } from './components/section-me/me-notify/me-notify.component';
+import { MeWishlistComponent } from './components/section-me/me-wishlist/me-wishlist.component';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { NgxStripeModule } from 'ngx-stripe';
+import { SectionCheckoutComponent } from './components/section-checkout/section-checkout.component';
+import { environment } from 'src/environments/environment';
+import { CartComponent } from './components/section-cart/cart/cart.component';
+import { AddressComponent } from './components/section-me/me-addresses/address/address.component';
+import { AddressAddModelComponent } from './components/section-me/me-addresses/address-add-model/address-add-model.component';
+import { TrashIconComponent } from './shared/icons/trash-icon/trash-icon.component';
+import { CreateIconComponent } from './shared/icons/create-icon/create-icon.component';
 
 @NgModule({
   declarations: [
@@ -157,15 +173,31 @@ import { DynamicModule } from 'ng-dynamic-component';
     UserMenuComponent,
     AddressIconComponent,
     WishlistIconComponent,
+    SectionMeComponent,
+    TabPaneComponent,
+    MeProfileComponent,
+    MeOrderComponent,
+    MeAddressesComponent,
+    MeNotifyComponent,
+    MeWishlistComponent,
+    DropdownDirective,
+    SectionCheckoutComponent,
+    CartComponent,
+    AddressComponent,
+    AddressAddModelComponent,
+    TrashIconComponent,
+    CreateIconComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     SlickCarouselModule,
     NgxPaginationModule,
     HttpClientModule,
     DynamicModule,
+    NgxStripeModule.forRoot(environment.STRIPE_PUBLIC_KEY),
   ],
   providers: [
     {

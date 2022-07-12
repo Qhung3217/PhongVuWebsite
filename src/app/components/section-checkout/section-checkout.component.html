@@ -1,0 +1,115 @@
+<app-breadcrumb level2Name="Checkout"></app-breadcrumb>
+<app-toast-message [isAlert]="isAlert" [toast]="toast"></app-toast-message>
+<div class="model flex-center blur" *ngIf="paying">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="grid wide">
+  <form class="checkout" [formGroup]="paymentElementForm">
+    <div class="area cart-area panel panel-padding-full">
+      <div class="heading">
+        <h1 class="title">Order summary</h1>
+        <p class="remove-all hover">Remove all</p>
+      </div>
+      <ul class="list">
+        <li class="item" *ngFor="let cart of carts">
+          <app-cart [cart]="cart" class="wfull cart-item"></app-cart>
+        </li>
+      </ul>
+      <div class="bottom">
+        <span>Total</span>
+        <span class="price">{{ totalPrice | currency: "AUD" }}</span>
+      </div>
+    </div>
+    <div class="area address-area relative panel panel-padding-full">
+      <div class="overlay flex-center blur" *ngIf="isLoadings.address">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <div class="heading">
+        <h1 class="title">Shiping address</h1>
+      </div>
+      <ul class="list">
+        <li
+          class="item"
+          [ngClass]="{
+            selected: addressSelected && address.id === addressSelected.id
+          }"
+          *ngFor="let address of addresses; let i = index"
+          (click)="selectAddress(i)"
+        >
+          <app-address
+            [address]="address"
+            class="address-item wfull"
+            [isSelected]="addressSelected && address.id === addressSelected.id"
+            (selected)="selectAddress(i)"
+          ></app-address>
+        </li>
+      </ul>
+      <div class="add-new flex-center">
+        Add new address <app-plus-icon class="icon"></app-plus-icon>
+      </div>
+    </div>
+    <div class="area card-area panel panel-padding-full relative">
+      <div
+        class="overlay flex-center blur"
+        *ngIf="!elementsOptions?.clientSecret"
+      >
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+      <div class="cards">
+        <ngx-slick-carousel
+          class="carousel"
+          [config]="{
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            centerMode: true,
+
+            infinite: false,
+            arrows: false
+          }"
+          (slickCurrentSlide)="changePaymentSelected($event)"
+        >
+          <div ngxSlickItem *ngFor="let card of cards" class="card">
+            <div class="card-type">
+              {{ card.card.brand }}
+            </div>
+            <div class="card-number">
+              <span>****</span>
+              <span>****</span>
+              <span>****</span>
+              <span class="last4">{{ card.card.last4 }}</span>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+      <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
+        <ngx-stripe-payment [clientSecret]="elementsOptions?.clientSecret">
+        </ngx-stripe-payment>
+        <!-- <div ngxStripeCardGroup [elementsOptions]="elementsOptions">
+          <div class="form-group">
+            <label for="name">Name of card holder</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+            />
+          </div>
+
+          <ngx-stripe-card-number></ngx-stripe-card-number>
+          <ngx-stripe-card-expiry></ngx-stripe-card-expiry>
+          <ngx-stripe-card-cvc></ngx-stripe-card-cvc>
+        </div> -->
+      </ng-container>
+      <div class="cta">
+        <button
+          type="button"
+          class="btn btn-primary btn-padding whaft"
+          (click)="pay()"
+        >
+          Pay
+        </button>
+        <button class="btn btn-outline btn-padding whaft">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

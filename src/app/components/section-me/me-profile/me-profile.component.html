@@ -3,9 +3,9 @@
     <app-loading-spinner></app-loading-spinner>
   </div>
   <app-toast-message [isAlert]="isAlert" [toast]="error"></app-toast-message>
-  <h1 class="form-title">Register Account</h1>
+  <h1 class="form-title">Your profile</h1>
   <div class="line mb-16"></div>
-  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+  <form (ngSubmit)="onSubmit(profileForm)" #profileForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
       <input
@@ -23,27 +23,7 @@
         <span *ngIf="email?.errors['required']">Please enter your email</span>
       </span>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        [(ngModel)]="payload.password"
-        required
-        minlength="8"
-        #password="ngModel"
-      />
-      <span *ngIf="!password.valid && password.touched" class="help-block">
-        <span *ngIf="password?.errors['required']"
-          >Please enter your password</span
-        >
-        <span *ngIf="password?.errors['minlength']"
-          >At least 8 characters long!</span
-        >
-      </span>
-    </div>
+
     <div class="form-multi-group">
       <div class="form-group">
         <label for="firstName">First name</label>
@@ -123,13 +103,10 @@
       <button
         type="submit"
         class="btn btn-primary btn-padding"
-        [disabled]="!registerForm.valid"
+        [disabled]="!profileForm.valid"
       >
-        Register
+        Update
       </button>
-      <a routerLink="/login" class="aside-direct"
-        >You have account? Login now !</a
-      >
     </div>
   </form>
 </div>

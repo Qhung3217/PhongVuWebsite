@@ -1,0 +1,140 @@
+<div class="model backdrop-filter-blur blur">
+  <div class="address">
+    <div class="overlay flex-center blur" *ngIf="isLoading">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="panel panel-padding-full form address-form">
+      <h1 class="form-title">Create new address</h1>
+      <div class="line mb-16"></div>
+      <form (ngSubmit)="onSubmit(addressForm)" #addressForm="ngForm">
+        <div class="form-group">
+          <label for="fullname">Your name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullname"
+            name="fullName"
+            [(ngModel)]="payload.fullName"
+            required
+            #fullname="ngModel"
+          />
+          <span *ngIf="!fullname.valid && fullname.touched" class="help-block">
+            <span *ngIf="fullname?.errors['required']"
+              >Please enter your full name</span
+            >
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Your phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            [(ngModel)]="payload.phone"
+            required
+            #phone="ngModel"
+          />
+          <span *ngIf="!phone.valid && phone.touched" class="help-block">
+            <span *ngIf="phone?.errors['required']"
+              >Please enter your phone</span
+            >
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="address">Your address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            name="address"
+            [(ngModel)]="payload.address"
+            required
+            #address="ngModel"
+          />
+          <span *ngIf="!address.valid && address.touched" class="help-block">
+            <span *ngIf="address?.errors['required']"
+              >Please enter your address</span
+            >
+          </span>
+        </div>
+        <div class="form-multi-group">
+          <div class="form-group">
+            <label for="ward">Ward</label>
+            <input
+              type="text"
+              class="form-control"
+              id="ward"
+              name="ward"
+              [(ngModel)]="payload.ward"
+              #ward="ngModel"
+            />
+          </div>
+          <div class="form-group">
+            <label for="district">District</label>
+            <input
+              type="text"
+              class="form-control"
+              id="district"
+              name="district"
+              [(ngModel)]="payload.district"
+              #district="ngModel"
+            />
+          </div>
+        </div>
+        <div class="form-multi-group">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              [(ngModel)]="payload.city"
+              #city="ngModel"
+            />
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              name="country"
+              [(ngModel)]="payload.country"
+              #country="ngModel"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="isDefault" class="set-default"
+            >Set as default
+
+            <input
+              type="checkbox"
+              class="form-control"
+              id="isDefault"
+              name="isDefault"
+              [(ngModel)]="payload.isDefault"
+              required
+              #isDefault="ngModel"
+            />
+          </label>
+        </div>
+        <div class="line"></div>
+        <div class="form-bottom btn-group">
+          <button
+            class="btn btn-outline btn-padding w25"
+            type="button"
+            (click)="closeForm()"
+          >
+            Cancel
+          </button>
+          <button class="btn btn-primary btn-padding w25">
+            {{ address ? "Update" : "Create" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

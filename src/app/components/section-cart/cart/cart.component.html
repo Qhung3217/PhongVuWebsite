@@ -1,0 +1,45 @@
+<div class="cart relative">
+  <div class="overlay flex-center blur" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="infor">
+    <figure class="image">
+      <img [src]="cart.item.image" [alt]="cart.item.name" />
+    </figure>
+    <div class="infor-content">
+      <a
+        [routerLink]="['/', cart.item.slug]"
+        class="name"
+        [title]="cart.item.name"
+        >{{ cart.item.name }}</a
+      >
+      <aside class="sku">SKU: {{ cart.item.sku }}</aside>
+    </div>
+  </div>
+  <div class="price">{{ cart.item.price | currency: "AUD" }}</div>
+  <div class="quantity-box">
+    <div class="change-quantity-box flex-center">
+      <button
+        class="change-button button-decrease flex-center"
+        (click)="onDecreaseQuantity(cart.item.slug)"
+        [disabled]="cart.quantity === 1"
+      >
+        <app-minus-icon class="icon-change"></app-minus-icon>
+      </button>
+      <div class="quantity flex-center">
+        {{ cart.quantity }}
+      </div>
+      <button
+        class="change-button button-increase flex-center"
+        (click)="onIncreaseQuantity(cart.item.slug)"
+        [disabled]="cart.item.quantity <= cart.quantity"
+      >
+        <app-plus-icon class="icon-change"></app-plus-icon>
+      </button>
+    </div>
+    <div class="remove-cart" (click)="onRemoveCart(cart.item._id)">Remove</div>
+  </div>
+  <div class="into-money">
+    {{ cart.item.price * cart.quantity | currency: "AUD" }}
+  </div>
+</div>

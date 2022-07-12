@@ -1,0 +1,21 @@
+<div class="me-address relative">
+  <div class="overlay flex-center blur" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <app-address-add-model
+    *ngIf="isOpenCreateForm"
+    (close)="isOpenCreateForm = false"
+  ></app-address-add-model>
+  <h1 class="title">Address book</h1>
+  <button class="btn primary-cta" (click)="openCreateForm()">
+    <app-plus-icon></app-plus-icon>
+    <span>Add new address</span>
+  </button>
+  <div class="addresses panel panel-padding-full">
+    <ul class="list">
+      <li class="item" *ngFor="let address of addresses">
+        <app-address [address]="address"></app-address>
+      </li>
+    </ul>
+  </div>
+</div>

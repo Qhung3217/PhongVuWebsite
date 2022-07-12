@@ -1,0 +1,31 @@
+<app-address-add-model
+  *ngIf="isOpenEdit"
+  [address]="address"
+  (close)="isOpenEdit = false"
+></app-address-add-model>
+
+<div class="address relative">
+  <div class="overlay flex-center blur" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="information">
+    <div class="infor-top">
+      <h1 class="name">{{ address.fullName }}</h1>
+      <div class="default" *ngIf="address.isDefault || isSelected">
+        {{ isSelected ? "selected" : "Default" }}
+      </div>
+    </div>
+    <div class="infor-body">
+      <p class="text">Full address: {{ address.fullAddress }}</p>
+      <p class="text">Phone: {{ address.phone }}</p>
+    </div>
+  </div>
+  <div class="action">
+    <button class="btn" (click)="onEdit()">
+      <app-create-icon class="icon"></app-create-icon>
+    </button>
+    <button class="btn" (click)="onRemove(address._id)">
+      <app-trash-icon class="icon"></app-trash-icon>
+    </button>
+  </div>
+</div>

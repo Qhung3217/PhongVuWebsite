@@ -20,17 +20,17 @@ export class UserMenuComponent implements OnInit {
   menus = [
     {
       select: 'Profile',
-      url: 'me',
+      url: 'me/profile',
       icon: UserIconComponent,
     },
     {
       select: 'Order managemant',
-      url: 'me/orders',
+      url: 'me/order',
       icon: OrderIconComponent,
     },
     {
       select: 'Address book',
-      url: 'me/address-book',
+      url: 'me/address',
       icon: AddressIconComponent,
     },
     {

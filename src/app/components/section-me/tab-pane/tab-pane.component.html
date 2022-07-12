@@ -1,0 +1,56 @@
+<nav class="tab-pane">
+  <div class="me-group" appDropdown>
+    <figure class="avatar">
+      <img
+        src="assets/imgs/avatar-default.png"
+        alt="Avatar default"
+        *ngIf="!userInfor?.avatar && userInfor"
+        class="img-cover"
+      />
+      <img
+        [src]="userInfor?.avatar"
+        [alt]="userInfor?.name + 'avatar'"
+        *ngIf="userInfor?.avatar && userInfor"
+        class="img-cover"
+      />
+    </figure>
+    <div class="name">
+      <span
+        [title]="
+          userInfor?.firstName && userInfor?.lastName
+            ? userInfor.firstName + ' ' + userInfor.lastName
+            : 'Welcome'
+        "
+      >
+        {{
+          userInfor?.firstName && userInfor?.lastName
+            ? userInfor.firstName + " " + userInfor.lastName
+            : "Welcome"
+        }}
+      </span>
+      <app-arrow-down-icon class="icon"></app-arrow-down-icon>
+    </div>
+    <div class="popup panel">
+      <ul class="popup-list">
+        <li class="popup-item">Upload avatar</li>
+      </ul>
+    </div>
+  </div>
+  <ul class="nav">
+    <li class="nav-item" routerLinkActive="nav-active">
+      <a routerLink="profile">Profile</a>
+    </li>
+    <li class="nav-item" routerLinkActive="nav-active">
+      <a routerLink="order">Order</a>
+    </li>
+    <li class="nav-item" routerLinkActive="nav-active">
+      <a routerLink="address">Address book</a>
+    </li>
+    <li class="nav-item" routerLinkActive="nav-active">
+      <a routerLink="notify">Notify</a>
+    </li>
+    <li class="nav-item" routerLinkActive="nav-active">
+      <a routerLink="wishlist">Wishlist</a>
+    </li>
+  </ul>
+</nav>
