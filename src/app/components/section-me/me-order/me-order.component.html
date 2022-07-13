@@ -2,7 +2,10 @@
   <div class="col l-6">
     <div class="order-list">
       <h1 class="title mb-16">Orders</h1>
-      <ul class="orders">
+      <ul class="orders relative">
+        <div class="overlay flex-center blur" *ngIf="isLoadings.orders">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
         <li class="head">
           <div class="status">Status</div>
           <div class="customer-name">Customer name</div>
@@ -12,7 +15,17 @@
         </li>
         <li
           class="order"
-          *ngFor="let order of orders; let i = index"
+          *ngFor="
+            let i = index;
+            let order;
+            of: orders
+              | paginate
+                : {
+                    currentPage: currentPage,
+                    itemsPerPage: pageSize,
+                    totalItems: totalRow
+                  }
+          "
           (click)="onSelectOrder(i)"
         >
           <div
@@ -36,30 +49,47 @@
           </div>
         </li>
       </ul>
+      <div class="paginate-box">
+        <pagination-controls
+          class="paginate"
+          (pageChange)="handlePageChange($event)"
+          directionLinks="false"
+          maxSize="7"
+          autoHide="true"
+          (pageBoundsCorrection)="currentPage = $event"
+        ></pagination-controls>
+      </div>
     </div>
   </div>
   <div class="col l-6">
     <div class="order-detail">
       <h1 class="title mb-16">Order details</h1>
-      <div class="content flex-center">
+      <div class="content" [ngClass]="{ 'flex-center': !orderSelected }">
         <div class="empty" *ngIf="!orderSelected">
           Click order to see details
         </div>
         <div class="display" *ngIf="orderSelected">
           <div class="infor">
-            <div class="name-status">
-              <h1 class="name">
-                Customer name: {{ orderSelected.address?.fullName }}
-              </h1>
-              <span class="status">
+            <h1 class="chapter-title">Customer information</h1>
+            <div class="name">
+              Customer name: {{ orderSelected.address?.fullName }}
+            </div>
+            <span
+              class="status"
+              [ngClass]="{
+                paid: orderSelected.status == 'paid',
+                pending: orderSelected.status == 'pending'
+              }"
+            >
+              <span>
                 {{ orderSelected.status }}
               </span>
-            </div>
+            </span>
             <div class="phone">Phone: {{ orderSelected.address?.phone }}</div>
             <div class="address">
               Address: {{ orderSelected.address.fullAddress }}
             </div>
-            <div class="receipt">
+            <div class="receipt" *ngIf="this.orderSelected?.paymentDetails">
               Your receipt:
               <a
                 [href]="
@@ -71,8 +101,11 @@
             </div>
           </div>
           <div class="line"></div>
-          <div class="item-purchased">
-            <h1 class="item-title">Items purchased</h1>
+          <div class="item-purchased relative">
+            <div class="overlay flex-center blur" *ngIf="isLoadings.items">
+              <app-loading-spinner></app-loading-spinner>
+            </div>
+            <h1 class="chapter-title">Items purchased</h1>
             <ul class="list">
               <li class="item" *ngFor="let item of items">
                 <app-item [item]="item"></app-item>

@@ -12,15 +12,28 @@ export class MeOrderComponent implements OnInit {
   items: Item[];
   orderSelected: Order;
   currentPage = 1;
-  pageSize = 20;
+  pageSize = 10;
+  totalRow;
+  isLoadings = {
+    orders: false,
+    items: false,
+  };
   constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.orderService.getOrders().subscribe((orderRes) => {
-      this.currentPage = orderRes.page;
-      this.pageSize = orderRes.limit;
-      this.orders = orderRes.data;
-    });
+    this.loadOrder();
+  }
+  loadOrder() {
+    this.isLoadings.orders = true;
+    this.orderService
+      .getOrders(this.currentPage, this.pageSize)
+      .subscribe((orderRes) => {
+        this.currentPage = orderRes.page;
+
+        this.totalRow = orderRes.totalRow;
+        this.orders = orderRes.data;
+        this.isLoadings.orders = false;
+      });
   }
   onSelectOrder(index) {
     this.orderSelected = { ...this.orders[index] };
@@ -28,8 +41,16 @@ export class MeOrderComponent implements OnInit {
     this.getOrderSelected();
   }
   getOrderSelected() {
-    this.orderService
-      .getOrder(this.orderSelected.paymentDetails.metadata.orderId)
-      .subscribe((order) => (this.items = order.items));
+    if (this.orderSelected._id) {
+      this.isLoadings.items = true;
+      this.orderService.getOrder(this.orderSelected._id).subscribe((order) => {
+        this.items = order.items;
+        this.isLoadings.items = false;
+      });
+    }
+  }
+  handlePageChange(page) {
+    this.currentPage = page;
+    this.loadOrder();
   }
 }

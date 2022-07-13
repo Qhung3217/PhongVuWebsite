@@ -1,7 +1,8 @@
 <div class="mega-menu grid" *ngIf="(rangePrice | json) != '{}'">
   <div class="row">
     <div class="col l-6">
-      <div class="menu-item" *ngFor="let number of [1, 2, 3]">
+      <div class="menu-item">
+        <!-- *ngFor="let number of [1, 2, 3]" -->
         <h1 class="title">{{ navItem.name }} theo giá tiền</h1>
         <ul class="list">
           <li *ngIf="rangePrice?.low">
