@@ -1,9 +1,9 @@
 <div class="grid wide section-cart">
   <app-breadcrumb [level2Name]="'Cart'"></app-breadcrumb>
-  <div class="cart-empty" *ngIf="carts.length === 0">
+  <div class="cart-empty" *ngIf="carts && carts.length === 0">
     <app-header-popup></app-header-popup>
   </div>
-  <div class="row" *ngIf="carts.length > 0">
+  <div class="row" *ngIf="carts && carts.length > 0">
     <div class="col l-8">
       <div class="cart-top">
         <h1 class="title">Cart</h1>
@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="row cart-infor" *ngIf="carts.length > 0">
+  <div class="row cart-infor" *ngIf="carts && carts.length > 0">
     <div class="col l-8">
       <div class="cart-content panel panel-padding-full">
         <ul class="cart-list">

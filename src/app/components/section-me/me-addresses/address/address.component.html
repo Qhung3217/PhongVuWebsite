@@ -10,7 +10,7 @@
   </div>
   <div class="information">
     <div class="infor-top">
-      <h1 class="name">{{ address.fullName }}</h1>
+      <h1 class="name" (click)="onClick()">{{ address.fullName }}</h1>
       <div class="default" *ngIf="address.isDefault || isSelected">
         {{ isSelected ? "selected" : "Default" }}
       </div>

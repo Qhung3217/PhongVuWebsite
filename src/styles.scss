@@ -130,6 +130,9 @@ a {
 .mb-16 {
   margin-bottom: 1.6rem;
 }
+.mt-16 {
+  margin-top: 1.6rem;
+}
 .mt-24 {
   margin-top: 2.4rem;
 }
@@ -186,6 +189,11 @@ a {
 }
 .backdrop-filter-blur {
   backdrop-filter: blur(10px);
+}
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.6rem;
 }
 /******************************/
 //----------Form-----------//

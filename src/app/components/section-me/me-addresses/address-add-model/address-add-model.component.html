@@ -4,7 +4,9 @@
       <app-loading-spinner></app-loading-spinner>
     </div>
     <div class="panel panel-padding-full form address-form">
-      <h1 class="form-title">Create new address</h1>
+      <h1 class="form-title">
+        {{ isEdit ? "Update address " : "Create new address" }}
+      </h1>
       <div class="line mb-16"></div>
       <form (ngSubmit)="onSubmit(addressForm)" #addressForm="ngForm">
         <div class="form-group">
@@ -131,7 +133,7 @@
             Cancel
           </button>
           <button class="btn btn-primary btn-padding w25">
-            {{ address ? "Update" : "Create" }}
+            {{ isEdit ? "Update" : "Create" }}
           </button>
         </div>
       </form>

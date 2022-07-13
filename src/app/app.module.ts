@@ -97,6 +97,8 @@ import { AddressComponent } from './components/section-me/me-addresses/address/a
 import { AddressAddModelComponent } from './components/section-me/me-addresses/address-add-model/address-add-model.component';
 import { TrashIconComponent } from './shared/icons/trash-icon/trash-icon.component';
 import { CreateIconComponent } from './shared/icons/create-icon/create-icon.component';
+import { HorizonWithWheelDirective } from './shared/directives/horizon-with-wheel.directive';
+import { ItemComponent } from './components/section-me/me-order/item/item.component';
 
 @NgModule({
   declarations: [
@@ -187,6 +189,8 @@ import { CreateIconComponent } from './shared/icons/create-icon/create-icon.comp
     AddressAddModelComponent,
     TrashIconComponent,
     CreateIconComponent,
+    HorizonWithWheelDirective,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,

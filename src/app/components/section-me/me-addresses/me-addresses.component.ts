@@ -26,7 +26,7 @@ export class MeAddressesComponent implements OnInit {
     });
     this.addressSub = this.addressService.addressChanged.subscribe(
       (addresses) => {
-        this.addresses = [...addresses];
+        this.addresses = [...addresses.address];
         this.isLoading = false;
       }
     );

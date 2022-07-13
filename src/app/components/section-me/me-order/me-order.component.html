@@ -1,1 +1,86 @@
-<p>me-order works!</p>
+<div class="row">
+  <div class="col l-6">
+    <div class="order-list">
+      <h1 class="title mb-16">Orders</h1>
+      <ul class="orders">
+        <li class="head">
+          <div class="status">Status</div>
+          <div class="customer-name">Customer name</div>
+
+          <div class="price">Amount</div>
+          <div class="payment-date">Payment date</div>
+        </li>
+        <li
+          class="order"
+          *ngFor="let order of orders; let i = index"
+          (click)="onSelectOrder(i)"
+        >
+          <div
+            class="status"
+            [ngClass]="{
+              paid: order.status == 'paid',
+              pending: order.status == 'pending'
+            }"
+          >
+            <span>
+              {{ order.status }}
+            </span>
+          </div>
+          <div class="customer-name">{{ order.address.fullName }}</div>
+
+          <div class="price">
+            {{ order.totalPrice | currency: "AUD" }}
+          </div>
+          <div class="payment-date">
+            {{ order.createdAt | date: "MM/dd/y, h:mm a" }}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col l-6">
+    <div class="order-detail">
+      <h1 class="title mb-16">Order details</h1>
+      <div class="content flex-center">
+        <div class="empty" *ngIf="!orderSelected">
+          Click order to see details
+        </div>
+        <div class="display" *ngIf="orderSelected">
+          <div class="infor">
+            <div class="name-status">
+              <h1 class="name">
+                Customer name: {{ orderSelected.address?.fullName }}
+              </h1>
+              <span class="status">
+                {{ orderSelected.status }}
+              </span>
+            </div>
+            <div class="phone">Phone: {{ orderSelected.address?.phone }}</div>
+            <div class="address">
+              Address: {{ orderSelected.address.fullAddress }}
+            </div>
+            <div class="receipt">
+              Your receipt:
+              <a
+                [href]="
+                  this.orderSelected.paymentDetails?.charges.data[0].receipt_url
+                "
+                target="_blank"
+                >Click here</a
+              >
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="item-purchased">
+            <h1 class="item-title">Items purchased</h1>
+            <ul class="list">
+              <li class="item" *ngFor="let item of items">
+                <app-item [item]="item"></app-item>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

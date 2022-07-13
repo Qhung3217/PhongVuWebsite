@@ -10,6 +10,7 @@ import { Address } from 'src/app/core/models/address.model';
 import { User } from 'src/app/core/models/user.model';
 import { OrderService } from 'src/app/core/services/order.service';
 import { PaymentMethodService } from 'src/app/core/services/payment-method.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-section-checkout',
@@ -25,21 +26,23 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
   };
   totalPrice: number = 0;
   carts;
-  cartSub: Subscription;
   addresses: Address[];
+  user: User;
+  cards;
+  cartSub: Subscription;
   addressSub: Subscription;
+  userSub: Subscription;
+  toast;
+  addressSelected: Address;
+  paymentSelected;
+  formValid = false;
   isLoadings = {
     address: false,
   };
-  user: User;
-  userSub: Subscription;
-  paymentElementForm;
   paying = false;
-  addressSelected: Address;
   isAlert = false;
-  toast;
-  cards;
-  paymentSelected;
+  isAddCard = false;
+  isAddAddress = false;
 
   constructor(
     private userService: UserService,
@@ -47,21 +50,19 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private addressService: AddressService,
     private orderService: OrderService,
-    private paymentMethodService: PaymentMethodService
+    private paymentMethodService: PaymentMethodService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.userService.addPaymentStripe().subscribe((res) => {
       console.log(res.data);
       this.addClientSecret(res.data);
     });
-    this.initForm();
-    this.initCart();
+
     this.initAddress();
     this.initUser();
-    this.paymentMethodService.getListPaymentMethods().subscribe((res) => {
-      console.log('payment: ', res);
-      this.cards = [...res];
-    });
+    this.initCard();
+    this.initCart();
   }
 
   ngOnDestroy(): void {
@@ -75,6 +76,15 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
       (user) => (this.user = { ...user })
     );
   }
+  initCard() {
+    this.paymentMethodService.getListPaymentMethods().subscribe((res) => {
+      console.log('payment: ', res);
+      this.cards = [...res];
+      if (this.cards.length === 0) {
+        this.isAddCard = true;
+      } else this.changePaymentSelected(0);
+    });
+  }
   initAddress() {
     this.isLoadings.address = true;
     this.addressService.fetchData().subscribe((addresses) => {
@@ -84,18 +94,33 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
     });
     this.addressSub = this.addressService.addressChanged.subscribe(
       (addresses) => {
-        this.addresses = addresses;
-        this.autoSelectDefaultAddress();
+        this.addresses = [...addresses.address];
+        this.autoSelectDefaultAddress(addresses.type);
       }
     );
   }
   initCart() {
     this.carts = this.cartService.carts;
+    this.checkFormValid();
+
     this.totalPrice = this.calcTotalPrice(this.carts);
     this.cartSub = this.cartService.cartsChanged.subscribe((carts) => {
       this.carts = [...carts];
       this.totalPrice = this.calcTotalPrice(carts);
+      this.checkFormValid();
     });
+  }
+  checkFormValid() {
+    console.log(
+      'checkFormValid:',
+      !!this.paymentSelected,
+      !!this.addressSelected,
+      this.cards?.length === 0
+    );
+    this.formValid =
+      !!this.paymentSelected &&
+      !!this.addressSelected &&
+      this.cards?.length > 0;
   }
   calcTotalPrice(carts) {
     return carts.reduce(
@@ -103,31 +128,43 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
       0
     );
   }
-  initForm() {
-    this.paymentElementForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-    });
-  }
-  autoSelectDefaultAddress() {
+
+  autoSelectDefaultAddress(type = 'list') {
     this.addressSelected = this.addresses.find(
       (address) => address.isDefault === true
     );
-    if (!this.addressSelected && this.addresses) {
+    if (type !== 'list') {
+      this.selectAddress(this.addresses.length - 1);
+    } else if (!this.addressSelected && this.addresses) {
       this.selectAddress(0);
       console.log('select 0');
     }
   }
+  removeCarts() {
+    this.cartService.clearCarts();
+  }
   selectAddress(index) {
     this.addressSelected = { ...this.addresses[index] };
+    this.checkFormValid();
   }
   addClientSecret(resData) {
     this.elementsOptions.clientSecret = resData.client_secret;
   }
   changePaymentSelected(index) {
     this.paymentSelected = { ...this.cards[index] };
+    this.checkFormValid();
   }
   pay() {
+    if (this.formValid) {
+    }
     this.paying = true;
+    if (this.isAddCard) {
+      this.addCard();
+    } else {
+      this.callOrder(this.paymentSelected.id);
+    }
+  }
+  private addCard() {
     this.stripeService
       .confirmSetup({
         elements: this.paymentElement.elements,
@@ -147,7 +184,6 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
         this.callOrder(result?.setupIntent.payment_method);
       });
   }
-
   private callOrder(methodId) {
     const items = this.makeItems();
     if (items)
@@ -162,6 +198,8 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
               message: 'Your payment is successfully. Thank you for purchase.',
             };
             this.isAlert = true;
+            this.cartService.clearCarts();
+            this.router.navigate(['/']);
           },
           error: (err) => {
             console.log('err', err);

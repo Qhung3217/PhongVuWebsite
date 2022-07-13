@@ -25,10 +25,12 @@ export class HeaderPopupComponent implements OnInit, OnDestroy {
     );
     this.cartSub = this.cartService.cartsChanged.subscribe((carts) => {
       this.carts = carts;
-      this.totalPrice = this.carts.reduce(
-        (total, cart) => (total += cart.item.price * cart.quantity),
-        0
-      );
+      if (this.carts)
+        this.totalPrice = this.carts.reduce(
+          (total, cart) => (total += cart.item.price * cart.quantity),
+          0
+        );
+      else this.totalPrice = 0;
     });
   }
   ngOnDestroy(): void {

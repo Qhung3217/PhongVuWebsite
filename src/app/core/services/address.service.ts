@@ -16,15 +16,17 @@ export interface PayloadAdress {
 @Injectable({ providedIn: 'root' })
 export class AddressService {
   addresses: Address[];
-  addressChanged = new Subject<Address[]>();
+  addressChanged = new Subject<{ address: Address[]; type?: string }>();
   constructor(private http: HttpClient) {}
 
-  fetchData() {
+  fetchData(type = 'list') {
     return this.http
       .get<{ data: Address[] }>(environment.urlApi + '/users/me/addresses')
       .pipe(
         map((response) => response.data),
-        tap((addresses) => this.addressChanged.next([...addresses]))
+        tap((addresses) =>
+          this.addressChanged.next({ address: [...addresses], type: type })
+        )
       );
   }
   getAddresses() {
@@ -39,7 +41,7 @@ export class AddressService {
       })
       .pipe(
         map((response) => response.data),
-        tap(() => this.fetchData().subscribe())
+        tap(() => this.fetchData('create').subscribe())
       );
   }
 
@@ -53,7 +55,7 @@ export class AddressService {
       )
       .pipe(
         map((response) => response.data),
-        tap(() => this.fetchData().subscribe())
+        tap(() => this.fetchData('update').subscribe())
       );
   }
 

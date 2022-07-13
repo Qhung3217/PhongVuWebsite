@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { Cart, CartService } from './../../core/services/cart.service';
 import { Product } from './../../core/models/product.model';
 import { ProductService } from 'src/app/core/services/product.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -27,7 +27,8 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private titleService: Title
+    private titleService: Title,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -85,20 +86,35 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
     };
     console.log(this.displayImage);
   }
+  onBuyNow() {
+    this.processAddToCart(true);
+  }
   onAddToCart() {
+    this.processAddToCart();
+  }
+  processAddToCart(isBuyNow = false) {
     if (this.cart && this.product.quantity <= this.cart.quantity) {
-      this.toast = {
-        type: 'error',
-        message: `Only ${this.product.quantity} products left`,
-      };
-      this.isError = true;
-      this.isAlert = true;
+      this.alertMessage('error', `Only ${this.product.quantity} products left`);
       console.log(this.cart.quantity);
     } else {
       this.cartService.saveCart(this.product, 1);
+      if (isBuyNow) {
+        this.router.navigate(['/checkout']);
+      } else this.alertMessage('success', 'Product added to cart');
+    }
+  }
+  alertMessage(type: string, message: string) {
+    if (type === 'error') {
+      this.toast = {
+        type: 'error',
+        message: message,
+      };
+      this.isError = true;
+      this.isAlert = true;
+    } else {
       this.toast = {
         type: 'success',
-        message: 'Product added to cart',
+        message: message,
       };
       this.isError = false;
       this.isAlert = true;

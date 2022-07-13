@@ -1,0 +1,91 @@
+@import "../../../../scss/variables/variable";
+
+.order-list {
+  .orders {
+    .head,
+    .order {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      list-style: none;
+      color: $textColor;
+      .status {
+        flex: 0 0 15%;
+      }
+      .customer-name {
+        flex: 1 0 30%;
+      }
+
+      .price {
+        flex: 0 0 20%;
+      }
+      .payment-date {
+        flex: 0 0 25%;
+      }
+    }
+    .head {
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid $primaryColor;
+    }
+    .order + .order {
+      margin-top: 1rem;
+    }
+    .order {
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.1;
+      background-color: #fafafa;
+      border-radius: 0.4rem;
+      padding: 1rem 0;
+      .status {
+        span {
+          text-transform: uppercase;
+          width: fit-content;
+          margin: 0 auto;
+          padding: 0.4rem;
+          border-radius: 0.4rem;
+          text-align: center;
+          display: block;
+        }
+        &.paid span {
+          background-color: #e8fbdc;
+          color: #829576;
+        }
+        &.pending span {
+          background-color: #fed088;
+          color: #986a22;
+        }
+      }
+      .customer-name {
+      }
+      .address {
+      }
+      .price {
+      }
+      .payment-date {
+      }
+    }
+  }
+}
+.order-detail {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .content {
+    flex: auto;
+    background-color: #fcfcfc;
+    border-radius: 0.4rem;
+
+    .empty {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: $asideColor;
+    }
+  }
+}
+
+.heading {
+}

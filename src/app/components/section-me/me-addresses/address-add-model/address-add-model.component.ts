@@ -12,6 +12,7 @@ export class AddressAddModelComponent implements OnInit {
   // @Output('complete') formComplete = new EventEmitter<boolean>();
   @Output() close = new EventEmitter<boolean>();
   @Input() address: Address;
+  isEdit = false;
   isLoading = false;
   payload: {
     id?: string;
@@ -29,6 +30,8 @@ export class AddressAddModelComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    console.log(!!this.address, this.address);
+    this.isEdit = !!this.address;
     // this.formComplete.emit(false);
   }
   closeForm() {

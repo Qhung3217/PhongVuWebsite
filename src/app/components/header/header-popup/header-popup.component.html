@@ -3,7 +3,7 @@
     <div
       class="popup-empty"
       [ngClass]="{ 'no-padding': isNotification }"
-      *ngIf="carts.length === 0 || (isNotification && !notifies)"
+      *ngIf="!carts || carts.length === 0 || (isNotification && !notifies)"
     >
       <figure class="image-box" [ngClass]="{ 'notify-img': isNotification }">
         <img [src]="isNotification ? notifyImg : cartImg" alt="" />
@@ -19,7 +19,10 @@
         >Shop now</a
       >
     </div>
-    <ul class="popup-list cart" *ngIf="!isNotification && carts.length !== 0">
+    <ul
+      class="popup-list cart"
+      *ngIf="!isNotification && carts && carts.length !== 0"
+    >
       <li class="popup-item" *ngFor="let cart of carts">
         <figure class="popup-image">
           <img [src]="cart.item.image" [alt]="cart.item.name" />
@@ -35,7 +38,7 @@
     </ul>
     <div
       class="popup-bottom line"
-      *ngIf="!isNotification && carts.length !== 0"
+      *ngIf="!isNotification && carts && carts.length !== 0"
     >
       <div class="total">
         <div class="total-left">

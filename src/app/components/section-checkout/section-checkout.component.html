@@ -3,18 +3,23 @@
 <div class="model flex-center blur" *ngIf="paying">
   <app-loading-spinner></app-loading-spinner>
 </div>
+
 <div class="grid wide">
-  <form class="checkout" [formGroup]="paymentElementForm">
+  <div class="cart-empty" *ngIf="carts.length === 0">
+    <app-header-popup></app-header-popup>
+  </div>
+  <form class="checkout" *ngIf="carts.length > 0">
     <div class="area cart-area panel panel-padding-full">
       <div class="heading">
         <h1 class="title">Order summary</h1>
-        <p class="remove-all hover">Remove all</p>
+        <p class="remove-all hover" (click)="removeCarts()">Remove all</p>
       </div>
       <ul class="list">
         <li class="item" *ngFor="let cart of carts">
           <app-cart [cart]="cart" class="wfull cart-item"></app-cart>
         </li>
       </ul>
+      <div class="line mt-16"></div>
       <div class="bottom">
         <span>Total</span>
         <span class="price">{{ totalPrice | currency: "AUD" }}</span>
@@ -44,9 +49,13 @@
           ></app-address>
         </li>
       </ul>
-      <div class="add-new flex-center">
+      <div class="add-new flex-center" (click)="isAddAddress = true">
         Add new address <app-plus-icon class="icon"></app-plus-icon>
       </div>
+      <app-address-add-model
+        *ngIf="isAddAddress"
+        (close)="isAddAddress = false"
+      ></app-address-add-model>
     </div>
     <div class="area card-area panel panel-padding-full relative">
       <div
@@ -55,61 +64,68 @@
       >
         <app-loading-spinner></app-loading-spinner>
       </div>
-      <div class="cards">
-        <ngx-slick-carousel
-          class="carousel"
-          [config]="{
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            centerMode: true,
-
-            infinite: false,
-            arrows: false
-          }"
-          (slickCurrentSlide)="changePaymentSelected($event)"
-        >
-          <div ngxSlickItem *ngFor="let card of cards" class="card">
-            <div class="card-type">
-              {{ card.card.brand }}
-            </div>
-            <div class="card-number">
-              <span>****</span>
-              <span>****</span>
-              <span>****</span>
-              <span class="last4">{{ card.card.last4 }}</span>
-            </div>
-          </div>
-        </ngx-slick-carousel>
+      <div class="heading">
+        <h1 class="title">Card payment</h1>
       </div>
-      <ng-container *ngIf="elementsOptions?.clientSecret as clientSecret">
-        <ngx-stripe-payment [clientSecret]="elementsOptions?.clientSecret">
-        </ngx-stripe-payment>
-        <!-- <div ngxStripeCardGroup [elementsOptions]="elementsOptions">
-          <div class="form-group">
-            <label for="name">Name of card holder</label>
-            <input
-              type="text"
-              id="name"
-              class="form-control"
-              formControlName="name"
-            />
+      <div class="cards" appHorizonWithWheel>
+        <div
+          *ngFor="let card of cards; let i = index"
+          class="card"
+          [ngClass]="{ 'payment-selected': card?.id === paymentSelected?.id }"
+          (click)="changePaymentSelected(i)"
+        >
+          <div class="card-type">
+            {{ card.card.brand }}
           </div>
+          <div class="card-number">
+            <span>****</span>
+            <span>****</span>
+            <span>****</span>
+            <span class="last4">{{ card.card.last4 }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="create-card card">
+        <button class="btn add-btn" (click)="isAddCard = true">
+          Add new credit card <app-plus-icon class="icon"></app-plus-icon>
+        </button>
+      </div>
 
-          <ngx-stripe-card-number></ngx-stripe-card-number>
-          <ngx-stripe-card-expiry></ngx-stripe-card-expiry>
-          <ngx-stripe-card-cvc></ngx-stripe-card-cvc>
-        </div> -->
-      </ng-container>
+      <div class="card-form">
+        <ng-container
+          *ngIf="isAddCard && elementsOptions?.clientSecret as clientSecret"
+        >
+          <ngx-stripe-payment [clientSecret]="elementsOptions?.clientSecret">
+          </ngx-stripe-payment>
+        </ng-container>
+      </div>
+
       <div class="cta">
         <button
           type="button"
           class="btn btn-primary btn-padding whaft"
           (click)="pay()"
+          [disabled]="!formValid"
         >
-          Pay
+          {{ isAddCard ? "Add card and pay" : "Pay" }}
         </button>
         <button class="btn btn-outline btn-padding whaft">Cancel</button>
       </div>
     </div>
   </form>
 </div>
+<!-- <div ngxStripeCardGroup [elementsOptions]="elementsOptions">
+            <div class="form-group">
+              <label for="name">Name of card holder</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                formControlName="name"
+              />
+            </div>
+
+            <ngx-stripe-card-number></ngx-stripe-card-number>
+            <ngx-stripe-card-expiry></ngx-stripe-card-expiry>
+            <ngx-stripe-card-cvc></ngx-stripe-card-cvc>
+          </div> -->
