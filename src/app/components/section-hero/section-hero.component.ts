@@ -4,7 +4,7 @@ import { SliderComponent } from 'src/app/shared/slider/slider.component';
 @Component({
   selector: 'app-section-hero',
   templateUrl: './section-hero.component.html',
-  styleUrls: ['./section-hero.component.scss'],
+  styleUrls: ['./scss/section-hero.component.scss'],
 })
 export class SectionHeroComponent implements OnInit {
   screenWidth = window.innerWidth;

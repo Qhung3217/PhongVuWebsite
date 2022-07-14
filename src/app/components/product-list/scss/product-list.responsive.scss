@@ -1,0 +1,12 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(63.9375em) {
+  .list {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@include maxWidth(46.1875em) {
+  .list {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

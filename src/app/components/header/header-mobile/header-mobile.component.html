@@ -1,0 +1,58 @@
+<div class="header-mobile">
+  <div class="wide content">
+    <div class="action">
+      <a class="action" routerLink="/account/me/order">
+        <div class="header-icon">
+          <app-order-icon class="square-full flex-center"></app-order-icon>
+        </div>
+      </a>
+    </div>
+    <div
+      class="action"
+      [ngClass]="{ open: selected === 'catalog' }"
+      (click)="
+        selected != 'catalog' ? (selected = 'catalog') : (selected = null)
+      "
+    >
+      <a class="action">
+        <div class="header-icon">
+          <app-menu-icon class="square-full flex-center"></app-menu-icon>
+        </div>
+      </a>
+      <div class="dropdown">
+        <app-navbar-mobile class="catalog"></app-navbar-mobile>
+      </div>
+    </div>
+    <div
+      class="action"
+      [ngClass]="{ open: selected === 'notify' }"
+      (click)="selected != 'notify' ? (selected = 'notify') : (selected = null)"
+    >
+      <a class="action">
+        <div class="header-icon">
+          <app-bell-icon class="square-full flex-center"></app-bell-icon>
+        </div>
+      </a>
+      <div class="dropdown">
+        <app-header-popup isNotification="true"></app-header-popup>
+      </div>
+    </div>
+    <div
+      class="action"
+      [ngClass]="{ open: selected === 'cart' }"
+      (click)="selected != 'cart' ? (selected = 'cart') : (selected = null)"
+    >
+      <a class="action">
+        <div class="header-icon">
+          <app-cart-icon class="square-full flex-center"></app-cart-icon>
+          <span class="count-cart" *ngIf="countCarts > 0">{{
+            countCarts
+          }}</span>
+        </div>
+      </a>
+      <div class="dropdown">
+        <app-header-popup></app-header-popup>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./scss/GridSystem";
 @import "./scss/variables/variable";
+@import "./scss/mixin";
 *,
 *:before,
 *:after {
@@ -96,6 +97,9 @@ a {
 .zoom-in-hover:hover {
   transform: scale(1.1);
 }
+.display-none {
+  display: none !important;
+}
 .flex-center {
   display: flex;
   justify-content: center;
@@ -172,6 +176,10 @@ a {
   height: 100%;
   object-fit: cover;
 }
+.square-full {
+  width: 100%;
+  height: 100%;
+}
 .wfull {
   width: 100%;
 }
@@ -197,6 +205,15 @@ a {
   font-size: 2rem;
   font-weight: 700;
   line-height: 2.6rem;
+}
+
+@include maxWidth(63.9375em) {
+  .hideBelow1023 {
+    display: none !important;
+  }
+  .displayBlockBelow1023 {
+    display: block !important;
+  }
 }
 /******************************/
 //----------Form-----------//

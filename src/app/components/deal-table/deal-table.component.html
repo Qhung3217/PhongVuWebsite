@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="row" style="flex: auto">
-    <div class="col l-2 flex-centerc" *ngIf="isCountdown">
+    <div class="col l-2 m-4 s-0 flex-centerc" *ngIf="isCountdown">
       <div class="countdown-box">
         <p class="text">Ends in <span>2</span> day</p>
         <div class="countdown-time">
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div
-      class="col l-10"
+      class="col l-10 m-8 s-12"
       [ngClass]="{
         'l-10': isCountdown,
         'l-12 m-12 s-12': !isCountdown,

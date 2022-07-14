@@ -1,4 +1,4 @@
-@import "../../../scss/variables/variable";
+@import "../../../../scss/variables/variable";
 
 .product {
   background-color: white;
@@ -96,3 +96,5 @@
     }
   }
 }
+
+@import "./product.responsive.scss";

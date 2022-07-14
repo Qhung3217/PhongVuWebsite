@@ -1,0 +1,22 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(77.4375em) {
+  .sliders {
+    padding-left: 7.6rem !important;
+  }
+  .countdown-box {
+    right: -4rem !important;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@include maxWidth(63.9375em) {
+  .sliders {
+    padding-left: 0 !important;
+  }
+  .countdown-box {
+    right: 0 !important;
+    top: unset;
+    transform: unset;
+  }
+}

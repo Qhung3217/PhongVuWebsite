@@ -1,4 +1,4 @@
-<div class="mega-menu grid" *ngIf="(rangePrice | json) != '{}'">
+<div class="mega-menu grid" *ngIf="(rangePrice | json) != '{}' && !isMobile">
   <div class="row">
     <div class="col l-6">
       <div class="menu-item">
@@ -44,5 +44,43 @@
     </div>
     <div class="col l-6"></div>
     <div class="col l-6"></div>
+  </div>
+</div>
+<div class="sub-nav-menu" *ngIf="(rangePrice | json) != '{}' && isMobile">
+  <div class="menu-item">
+    <h1 class="title">{{ navItem.name }} theo giá tiền</h1>
+    <ul class="list">
+      <li *ngIf="rangePrice?.low">
+        <a
+          class="item"
+          [routerLink]="['/products']"
+          [queryParam]="{ 'where[price][$lte]': 1000 }"
+          >Below {{ rangePrice.low | currency: "AUD":"symbol":"1.0-0" }}</a
+        >
+      </li>
+      <li *ngIf="rangePrice?.middle">
+        <a
+          class="item"
+          [routerLink]="['/products']"
+          [queryParam]="{
+            'where[price][$gte]': 1000,
+            'where[price][$lte]': 2000
+          }"
+          >{{ rangePrice.middle.lowerBound | currency: "AUD":"symbol":"1.0-0" }}
+          -
+          {{
+            rangePrice.middle.upperBound | currency: "AUD":"symbol":"1.0-0"
+          }}</a
+        >
+      </li>
+      <li *ngIf="rangePrice?.hight">
+        <a
+          class="item"
+          [routerLink]="['/products']"
+          [queryParam]="{ 'where[price][$gte]': 2000 }"
+          >Above {{ rangePrice.hight | currency: "AUD":"symbol":"1.0-0" }}</a
+        >
+      </li>
+    </ul>
   </div>
 </div>

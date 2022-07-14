@@ -3,7 +3,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-deal-table',
   templateUrl: './deal-table.component.html',
-  styleUrls: ['./deal-table.component.scss'],
+  styleUrls: ['./scss/deal-table.component.scss'],
 })
 export class DealTableComponent implements OnInit, OnDestroy {
   @Input() isCountdown = false;

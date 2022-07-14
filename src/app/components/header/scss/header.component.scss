@@ -1,5 +1,5 @@
-@import "../../../scss/variables/variable";
-@import "../../../scss/mixin";
+@import "../../../../scss/variables/variable";
+@import "../../../../scss/mixin";
 .header {
   height: 8.8rem;
   display: flex;
@@ -227,3 +227,4 @@
 .header-sticky {
   display: none;
 }
+@import "./header.responsive.scss";

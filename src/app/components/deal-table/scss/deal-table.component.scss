@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  background-position: center;
   .border-bottom {
     border-bottom: 1px solid white;
     margin-bottom: 1.2rem;
@@ -30,7 +31,7 @@
     color: white;
     text-align: center;
     position: relative;
-    right: -2rem;
+    // right: -2rem;
     .text {
       font-size: 1.6rem;
       font-weight: 400;
@@ -67,6 +68,7 @@
     }
   }
   .sliders {
-    padding-left: 3rem;
+    // padding-left: 3rem;
   }
 }
+@import "./deal-table.responsive.scss";

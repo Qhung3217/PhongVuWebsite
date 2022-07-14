@@ -1,0 +1,105 @@
+@import "../../../../scss/variables/variable";
+@import "../../../../scss/mixin";
+
+.header-mobile {
+  position: fixed;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 -0.5rem 1rem rgb(0 0 0 / 10%);
+  height: 5rem;
+}
+.content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+}
+
+a.action {
+  padding: 0;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  padding: 0.365rem 2rem;
+  color: $asideColor;
+  flex-shrink: 0;
+  position: relative;
+
+  .header-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    color: inherit;
+    position: relative;
+
+    ::ng-deep svg {
+      fill: currentColor;
+      color: currentColor;
+      width: 100%;
+      height: 100%;
+    }
+    .count-cart {
+      position: absolute;
+      top: -23%;
+      right: -5px;
+      color: white;
+      background-color: #da4343;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.6rem;
+      text-align: center;
+    }
+  }
+  span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: inherit;
+  }
+
+  .dropdown {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 4.8rem;
+    z-index: 10;
+    border-radius: 0.8rem;
+    display: none;
+    ::ng-deep {
+      .popup {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+.open {
+  .header-icon {
+    border-radius: 50rem;
+    width: 4rem !important;
+    height: 4rem !important;
+    padding: 0.4rem;
+    background-color: #d0d7f3;
+    color: $primaryColor !important;
+    ::ng-deep {
+      svg {
+        width: 3.6rem !important;
+        height: 3.6rem !important;
+      }
+    }
+  }
+  .dropdown {
+    display: block;
+  }
+}
+
+.catalog {
+  ::ng-deep {
+  }
+}

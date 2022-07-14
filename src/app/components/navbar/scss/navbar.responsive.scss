@@ -1,0 +1,20 @@
+@import "../../../../scss//mixin";
+
+@include maxWidth(63.9375em) {
+  .nav {
+    width: 100%;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  .nav-list {
+    width: 30% !important;
+    background-color: white;
+    pointer-events: auto;
+    border-radius: 0.8rem;
+  }
+  .mobile {
+    width: 70%;
+    background-color: white;
+    pointer-events: auto;
+  }
+}

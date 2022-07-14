@@ -1,0 +1,14 @@
+@import "../../../../scss/mixin";
+@include maxWidth(63.9375em) {
+  .title {
+    font-size: 1.7rem !important;
+    line-height: 2rem !important;
+  }
+  .subtitle {
+    font-size: 1.2rem !important;
+    line-height: 2rem !important;
+  }
+  .hot-deal-list {
+    height: 5.2rem !important;
+  }
+}

@@ -1,0 +1,7 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(77.4375em) {
+  .popular-brand-img img {
+    object-fit: contain !important;
+  }
+}

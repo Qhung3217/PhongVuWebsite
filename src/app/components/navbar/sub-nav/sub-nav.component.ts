@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-sub-nav',
   templateUrl: './sub-nav.component.html',
-  styleUrls: ['./sub-nav.component.scss'],
+  styleUrls: ['./scss/sub-nav.component.scss'],
 })
 export class SubNavComponent implements OnInit, OnChanges {
   rangePrice: {
@@ -23,6 +23,7 @@ export class SubNavComponent implements OnInit, OnChanges {
     hight?: string;
   };
   @Input() navItem: Category;
+  @Input() isMobile = false;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute

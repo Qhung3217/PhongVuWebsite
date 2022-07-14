@@ -1,0 +1,8 @@
+@import "../../../../../scss/mixin";
+
+@include maxWidth(63.9375em) {
+  .mega-menu {
+    width: 100%;
+    position: unset;
+  }
+}

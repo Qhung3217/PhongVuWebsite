@@ -41,6 +41,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { AddressComponent } from './section-me/me-addresses/address/address.component';
 import { AddressAddModelComponent } from './section-me/me-addresses/address-add-model/address-add-model.component';
+import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
+import { NavbarMobileComponent } from './navbar/navbar-mobile/navbar-mobile.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { AddressAddModelComponent } from './section-me/me-addresses/address-add-
     SectionShowProductComponent,
     ToastMessageComponent,
     ItemComponent,
+    HeaderMobileComponent,
+    NavbarMobileComponent,
   ],
   imports: [
     CommonModule,

@@ -12,7 +12,11 @@
       <span class="title">{{ navItem.name }}</span>
     </a>
   </div>
-  <app-sub-nav [navItem]="hoverItem" *ngIf="hoverItem"></app-sub-nav>
+  <app-sub-nav
+    [navItem]="hoverItem"
+    *ngIf="hoverItem"
+    class="mobile"
+  ></app-sub-nav>
 </nav>
 <!-- <ul class="nav-list">
   <li *ngFor="let navItem of navItems">

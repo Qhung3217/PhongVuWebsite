@@ -48,13 +48,13 @@
     >
     </app-slider>
   </div>
-  <div class="grid wide">
+  <div class="grid wide hideBelow1023">
     <div class="row section-content no-gutters">
-      <div class="navbar-box col l-2">
+      <div class="navbar-box col l-2 m-12 s-12 hideBelow1023">
         <app-navbar></app-navbar>
       </div>
 
-      <div class="slide-action col l-8">
+      <div class="slide-action col l-8 hideBelow1023">
         <button
           class="btn btn-control btn-control-prev"
           (click)="onPreviousSlide()"
@@ -69,13 +69,13 @@
           <span>&rsaquo;</span>
         </button>
       </div>
-      <div class="col l-2 btn-next-col"></div>
+      <div class="col l-2 btn-next-col hideBelow1023"></div>
     </div>
   </div>
   <div class="promotion-box grid wide">
     <div class="promotions">
       <app-promotion-list
-        [classNameCol]="'l-3'"
+        [classNameCol]="'l-3 m-3 s-6'"
         [promotionList]="[
           {
             img: 'assets/imgs/promotion/promotion-hero/promotion-1.webp'

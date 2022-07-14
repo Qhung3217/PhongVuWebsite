@@ -1,0 +1,22 @@
+<nav class="nav">
+  <div class="nav-list">
+    <a
+      [routerLink]="['/product', navItem.slug]"
+      class="nav-item"
+      (mouseover)="onHover(navItem)"
+      *ngFor="let navItem of navItems"
+    >
+      <div class="main-nav">
+        <figure class="image">
+          <img [src]="navItem.image" [alt]="navItem.name" />
+        </figure>
+        <span class="title">{{ navItem.name }}</span>
+      </div>
+      <app-sub-nav
+        [navItem]="navItem"
+        class="sub-nav"
+        [isMobile]="true"
+      ></app-sub-nav>
+    </a>
+  </div>
+</nav>

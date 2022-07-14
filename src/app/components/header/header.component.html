@@ -3,10 +3,18 @@
   <div class="grid wide">
     <div class="header-box">
       <a href="#" class="logo">
-        <img src="../../../assets/logo-full.svg" alt="Logo" />
-        <img src="../../../assets/logo.svg" alt="Logo" class="logo-sticky" />
+        <img
+          src="../../../assets/logo-full.svg"
+          alt="Logo "
+          class="hideBelow1023"
+        />
+        <img
+          src="../../../assets/logo.svg"
+          alt="Logo"
+          class="logo-sticky displayBlockBelow1023"
+        />
       </a>
-      <div class="header-sticky" appShowCatalog>
+      <div class="header-sticky hideBelow1023" appShowCatalog>
         <div class="menu-box">
           <app-menu-icon></app-menu-icon>
           <span>Product catalog</span>
@@ -24,16 +32,9 @@
           </span>
         </button>
       </div>
-      <div class="action">
-        <a class="action hover">
-          <div class="header-icon">
-            <app-discount-icon></app-discount-icon>
-          </div>
-          <span>Promotion</span>
-        </a>
-      </div>
-      <div class="action">
-        <a class="action hover">
+
+      <div class="action hideBelow1023">
+        <a class="action hover" routerLink="/account/me/order">
           <div class="header-icon"><app-order-icon></app-order-icon></div>
           <span>Order</span>
         </a>
@@ -66,7 +67,7 @@
           <app-user-menu [briefInfo]="briefInfor"></app-user-menu>
         </div>
       </div>
-      <div class="action">
+      <div class="action hideBelow1023">
         <a class="action hover">
           <div class="header-icon"><app-bell-icon></app-bell-icon></div>
           <span>Notify</span>
@@ -75,7 +76,7 @@
           <app-header-popup isNotification="true"></app-header-popup>
         </div>
       </div>
-      <div class="action">
+      <div class="action hideBelow1023">
         <a class="action hover">
           <div class="header-icon">
             <app-cart-icon></app-cart-icon>
@@ -91,5 +92,9 @@
       </div>
     </div>
   </div>
+  <app-header-mobile
+    class="displayBlockBelow1023 display-none"
+    [countCarts]="countCarts"
+  ></app-header-mobile>
 </header>
 <!-- <div class="spacer"></div> -->

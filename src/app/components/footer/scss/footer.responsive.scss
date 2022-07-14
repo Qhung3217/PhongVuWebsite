@@ -1,0 +1,30 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(63.9375em) {
+  .policy-contact .footer-group {
+    grid-template-columns: repeat(3, 1fr) !important;
+    row-gap: 1rem;
+  }
+  .payment-method {
+    margin-top: 1rem;
+  }
+  .about {
+    .about-content {
+      flex-wrap: wrap;
+    }
+    .introduce {
+      width: 50% !important;
+    }
+    .address {
+      width: 50% !important;
+    }
+    .certification {
+      width: 100% !important;
+      .footer-group {
+        .footer-list {
+          align-items: center !important;
+        }
+      }
+    }
+  }
+}

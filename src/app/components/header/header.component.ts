@@ -6,7 +6,7 @@ import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  styleUrls: ['./scss/header.component.scss'],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   countCarts;

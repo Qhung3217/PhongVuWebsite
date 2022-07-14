@@ -1,0 +1,10 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(77.4375em) {
+  .image {
+    max-height: 20rem;
+    img {
+      max-height: 100%;
+    }
+  }
+}

@@ -1,18 +1,18 @@
-import { CategoryService } from './../../core/services/category.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Category } from 'src/app/core/models/category.model';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Category } from 'src/app/core/models/category.model';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./scss/navbar.component.scss'],
+  selector: 'app-navbar-mobile',
+  templateUrl: './navbar-mobile.component.html',
+  styleUrls: ['./navbar-mobile.component.scss'],
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarMobileComponent implements OnInit {
   navItems: Category[];
   navItemSub: Subscription;
-  hoverItem: Category;
+
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService
@@ -30,9 +30,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.navItemSub.unsubscribe();
-  }
-  onHover(item) {
-    this.hoverItem = item;
-    // console.log(item);
   }
 }

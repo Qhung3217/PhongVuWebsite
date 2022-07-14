@@ -23,6 +23,22 @@ export class DealListComponent implements OnInit, OnDestroy {
     accessibility: false,
     draggable: false,
     infinite: false,
+    responsive: [
+      {
+        breakpoint: 1239,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 739,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   _trackBy(product) {
     return product.image;

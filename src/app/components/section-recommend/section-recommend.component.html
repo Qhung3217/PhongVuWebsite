@@ -1,7 +1,7 @@
 <section class="section-recommend">
   <app-promotion-list
     isFullScreen="true"
-    classNameCol="l-6"
+    classNameCol="l-6 m-6 s-6"
     [promotionList]="[
       {
         img: 'assets/imgs/promotion/recommend/p-1.webp'
@@ -16,7 +16,7 @@
       <h1 class="title">Outstanding Brand</h1>
     </div>
     <div class="row">
-      <div class="col l-3" *ngFor="let branch of branchList">
+      <div class="col l-3 m-6 s-6" *ngFor="let branch of branchList">
         <a href="#" class="popular-brand-item">
           <figure class="popular-brand-img">
             <img [src]="branch.img" alt="" class="zoom-in-hover" />
@@ -28,7 +28,7 @@
   </div>
   <app-promotion-list
     isFullScreen="true"
-    classNameCol="l-4"
+    classNameCol="l-4 m-4 s-4"
     [promotionList]="[
       {
         img: 'assets/imgs/promotion/recommend/p-3.webp'
@@ -44,14 +44,14 @@
 
   <div class="introduce-product grid wide">
     <div class="row">
-      <div class="col l-6">
+      <div class="col l-6 m-12 s-12">
         <div class="popular-brand popular-brand--intro grid wide panel">
           <div class="popular-brand-heading">
             <h1 class="title">SPEAKER-HEADPHONE-PERIPHERALS</h1>
             <a href="#" class="see-all">See all <span>&rsaquo;</span></a>
           </div>
           <div class="row no-gutters">
-            <div class="col l-4">
+            <div class="col l-4 m-4 s-4">
               <figure class="popular-brand-poster">
                 <img
                   src="assets/imgs/promotion/poster/gaming.webp"
@@ -60,7 +60,7 @@
                 />
               </figure>
             </div>
-            <div class="col l-8">
+            <div class="col l-8 m-8 s-8">
               <div class="poster-list">
                 <a
                   href="#"
@@ -82,14 +82,14 @@
           </div>
         </div>
       </div>
-      <div class="col l-6">
+      <div class="col l-6 m-12 s-12">
         <div class="popular-brand popular-brand--intro grid wide panel">
           <div class="popular-brand-heading">
             <h1 class="title">TV - ELECTRICAL - HOUSEHOLD</h1>
             <a href="#" class="see-all">See all <span>&rsaquo;</span></a>
           </div>
           <div class="row no-gutters">
-            <div class="col l-4">
+            <div class="col l-4 m-4 s-4">
               <figure class="popular-brand-poster">
                 <img
                   src="assets/imgs/promotion/poster/electric-appliances.webp"
@@ -98,7 +98,7 @@
                 />
               </figure>
             </div>
-            <div class="col l-8">
+            <div class="col l-8 m-8 s-8">
               <div class="poster-list">
                 <a
                   href="#"
@@ -125,7 +125,7 @@
 
   <app-promotion-list
     isFullScreen="true"
-    classNameCol="l-4"
+    classNameCol="l-4 m-4 s-4"
     [promotionList]="[
       {
         img: 'assets/imgs/promotion/recommend/p-6.webp'
