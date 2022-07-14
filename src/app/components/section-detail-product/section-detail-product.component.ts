@@ -99,7 +99,7 @@ export class SectionDetailProductComponent implements OnInit, OnDestroy {
     } else {
       this.cartService.saveCart(this.product, 1);
       if (isBuyNow) {
-        this.router.navigate(['/checkout']);
+        this.router.navigate(['/account/checkout']);
       } else this.alertMessage('success', 'Product added to cart');
     }
   }

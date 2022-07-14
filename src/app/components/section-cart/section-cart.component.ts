@@ -53,6 +53,6 @@ export class SectionCartComponent implements OnInit, OnDestroy {
   onCheckout() {
     // if (!this.auth) this.router.navigate(['/authenticate']);
     // else
-    this.router.navigate(['/checkout']);
+    this.router.navigate(['/account/checkout']);
   }
 }

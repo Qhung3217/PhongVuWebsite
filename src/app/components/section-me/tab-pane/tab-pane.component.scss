@@ -40,7 +40,7 @@
       }
     }
     &.active .popup {
-      bottom: -14px;
+      bottom: -35px;
       visibility: visible;
       pointer-events: auto;
       opacity: 1;
@@ -56,12 +56,17 @@
       pointer-events: none;
       opacity: 0;
       transition: bottom 250ms ease;
+      box-shadow: 0px 0px 10px 6px rgb(0 0 0 / 10%);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+
       .popup-list {
         list-style: none;
         .popup-item {
           font-size: 1.4rem;
           font-weight: 400;
           line-height: 2rem;
+          cursor: pointer;
         }
       }
     }
@@ -101,5 +106,42 @@
         display: block;
       }
     }
+  }
+}
+.avatar-box {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 0px 10px 6px rgb(0 0 0 / 5%);
+  .avatar {
+    width: 60%;
+    height: 60%;
+    border-radius: 50rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 1px solid $primaryColor;
+  }
+  .upload {
+    margin-top: 1.5rem;
+    label {
+      cursor: pointer;
+      border: 1px solid $primaryColor;
+      border-radius: 0.4rem;
+      display: block;
+      font-size: 1.5rem;
+      padding: 0.6rem;
+      transition: all 200ms ease;
+      &:hover {
+        background-color: $primaryColor;
+        color: white;
+      }
+    }
+  }
+  .cta {
+    margin-top: 4rem;
+    display: flex;
+    gap: 0.8rem;
   }
 }

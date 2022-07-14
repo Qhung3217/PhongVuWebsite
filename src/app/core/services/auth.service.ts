@@ -130,7 +130,7 @@ export class AuthService {
     );
 
     if (nextUrl) this.router.navigate([nextUrl]);
-    else this.router.navigate(['/me']);
+    else this.router.navigate(['/account/me']);
   }
   private handleCatchError(errRes: HttpErrorResponse) {
     console.log(errRes);

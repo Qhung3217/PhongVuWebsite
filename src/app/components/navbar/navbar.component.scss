@@ -1,4 +1,6 @@
 @import "../../../scss/variables/variable";
+@import "../../../scss/mixin";
+
 .nav {
   background-color: white;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -44,6 +46,7 @@
         color: inherit;
         flex: auto;
         padding-right: 1rem;
+        @include textTruncate(1);
       }
     }
   }

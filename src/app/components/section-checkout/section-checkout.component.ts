@@ -105,8 +105,10 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
 
     this.totalPrice = this.calcTotalPrice(this.carts);
     this.cartSub = this.cartService.cartsChanged.subscribe((carts) => {
-      this.carts = [...carts];
-      this.totalPrice = this.calcTotalPrice(carts);
+      if (carts) {
+        this.carts = [...carts];
+        this.totalPrice = this.calcTotalPrice(carts);
+      }
       this.checkFormValid();
     });
   }
@@ -199,7 +201,8 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
             };
             this.isAlert = true;
             this.cartService.clearCarts();
-            this.router.navigate(['/']);
+
+            setTimeout(() => this.router.navigate(['/']), 1200);
           },
           error: (err) => {
             console.log('err', err);

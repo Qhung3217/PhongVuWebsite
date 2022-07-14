@@ -32,7 +32,9 @@
     </div>
     <div class="popup panel">
       <ul class="popup-list">
-        <li class="popup-item">Upload avatar</li>
+        <li class="popup-item" (click)="isChangeAvatar = true">
+          Upload avatar
+        </li>
       </ul>
     </div>
   </div>
@@ -46,11 +48,56 @@
     <li class="nav-item" routerLinkActive="nav-active">
       <a routerLink="address">Address book</a>
     </li>
-    <li class="nav-item" routerLinkActive="nav-active">
+    <!-- <li class="nav-item" routerLinkActive="nav-active">
       <a routerLink="notify">Notify</a>
     </li>
     <li class="nav-item" routerLinkActive="nav-active">
       <a routerLink="wishlist">Wishlist</a>
-    </li>
+    </li> -->
   </ul>
 </nav>
+<div class="model backdrop-filter-blur blur flex-center" *ngIf="isChangeAvatar">
+  <app-toast-message [isAlert]="isAlert" [toast]="toast"></app-toast-message>
+  <div class="overlay flex-center blur" *ngIf="this.loading.changeAvatar">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="avatar-box panel panel-padding-full">
+    <figure class="avatar relative">
+      <img
+        src="assets/imgs/avatar-default.png"
+        alt="Avatar default"
+        *ngIf="!avatar && userInfor && !this.loading.upload"
+        class="img-cover"
+      />
+      <img
+        [src]="avatar"
+        [alt]="userInfor?.name + 'avatar'"
+        *ngIf="avatar && userInfor && !this.loading.upload"
+        class="img-cover"
+      />
+      <div class="overlay flex-center blur" *ngIf="this.loading.upload">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    </figure>
+    <div class="upload">
+      <label for="upload">Upload your image</label>
+      <input
+        type="file"
+        id="upload"
+        style="display: none"
+        (change)="onUploadImage($event)"
+      />
+    </div>
+    <div class="cta">
+      <button
+        class="btn btn-outline btn-padding-sm"
+        (click)="isChangeAvatar = false"
+      >
+        Cancel
+      </button>
+      <button class="btn btn-primary btn-padding-sm" (click)="onChangeAvatar()">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

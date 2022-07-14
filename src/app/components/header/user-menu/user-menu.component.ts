@@ -20,29 +20,29 @@ export class UserMenuComponent implements OnInit {
   menus = [
     {
       select: 'Profile',
-      url: 'me/profile',
+      url: '/account/me/profile',
       icon: UserIconComponent,
     },
     {
       select: 'Order managemant',
-      url: 'me/order',
+      url: '/account/me/order',
       icon: OrderIconComponent,
     },
     {
       select: 'Address book',
-      url: 'me/address',
+      url: '/account/me/address',
       icon: AddressIconComponent,
     },
-    {
-      select: 'Notify',
-      url: 'me/notify',
-      icon: BellIconComponent,
-    },
-    {
-      select: 'Wishlist',
-      url: 'me/wishlist',
-      icon: WishlistIconComponent,
-    },
+    // {
+    //   select: 'Notify',
+    //   url: '/account/me/notify',
+    //   icon: BellIconComponent,
+    // },
+    // {
+    //   select: 'Wishlist',
+    //   url: '/account/me/wishlist',
+    //   icon: WishlistIconComponent,
+    // },
   ];
   constructor(private authService: AuthService) {}
 

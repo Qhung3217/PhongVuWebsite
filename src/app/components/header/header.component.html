@@ -11,9 +11,9 @@
           <app-menu-icon></app-menu-icon>
           <span>Product catalog</span>
         </div>
-        <div class="catalog">
-          <app-navbar></app-navbar>
-        </div>
+        <app-navbar class="catalog"></app-navbar>
+        <!-- <div class="catalog">
+        </div> -->
         <div class="overlay"></div>
       </div>
       <div class="search">
@@ -39,7 +39,7 @@
         </a>
       </div>
       <div class="action">
-        <a routerLink="me" class="action hover">
+        <a routerLink="/account/me" class="action hover">
           <div class="header-icon">
             <app-user-icon *ngIf="!userInfor"></app-user-icon>
             <img

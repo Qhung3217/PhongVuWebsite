@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register({ ...this.payload }).subscribe({
       next: () => {
         this.isLoading = false;
-        this.router.navigate(['/authenticate']);
+        this.router.navigate(['/account/authenticate']);
       },
       error: (errMess) => {
         this.isLoading = false;

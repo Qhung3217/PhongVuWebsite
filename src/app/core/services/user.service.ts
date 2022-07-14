@@ -28,6 +28,7 @@ export class UserService {
     phone?: string;
     dob?: string;
     gender?: string;
+    avatar?: string;
   }) {
     return this.http
       .put<{ data: User }>(environment.urlApi + '/users/me/profile', {
