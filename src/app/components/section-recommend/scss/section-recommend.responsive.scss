@@ -1,0 +1,17 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(46.1875em) {
+  .title {
+    font-size: 1.5rem !important;
+  }
+  .poster-list {
+    grid-template-columns: 1fr !important;
+  }
+  .popular-brand-poster {
+    display: flex;
+    justify-content: center;
+    img {
+      height: unset !important;
+    }
+  }
+}

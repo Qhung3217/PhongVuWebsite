@@ -1,4 +1,5 @@
 @import "../../../../scss/variables/variable";
+@import "../../../../scss/mixin";
 .slide-box {
   ::ng-deep .slide-cus {
     height: 5.6rem !important;
@@ -34,5 +35,19 @@
         color: red;
       }
     }
+  }
+}
+
+@include maxWidth(63.9375em) {
+  .aside-box {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .row {
+    flex-wrap: nowrap;
+    width: fit-content;
+  }
+  .aside-item {
+    flex-shrink: 0;
   }
 }

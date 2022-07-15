@@ -34,8 +34,8 @@ export class DealListComponent implements OnInit, OnDestroy {
       {
         breakpoint: 739,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],

@@ -5,10 +5,10 @@
 </div>
 
 <div class="grid wide">
-  <div class="cart-empty" *ngIf="carts.length === 0">
+  <div class="cart-empty" *ngIf="!carts || carts?.length === 0">
     <app-header-popup></app-header-popup>
   </div>
-  <form class="checkout" *ngIf="carts.length > 0">
+  <form class="checkout" *ngIf="carts && carts.length > 0">
     <div class="area cart-area panel panel-padding-full">
       <div class="heading">
         <h1 class="title">Order summary</h1>

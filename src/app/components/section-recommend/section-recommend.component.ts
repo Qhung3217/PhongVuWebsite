@@ -6,7 +6,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-section-recommend',
   templateUrl: './section-recommend.component.html',
-  styleUrls: ['./section-recommend.component.scss'],
+  styleUrls: ['./scss/section-recommend.component.scss'],
 })
 export class SectionRecommendComponent implements OnInit, OnDestroy {
   branchList = [

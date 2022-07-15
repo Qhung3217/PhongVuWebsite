@@ -17,7 +17,7 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxStripeModule.forRoot(environment.STRIPE_PUBLIC_KEY),
+
     AuthModule,
     CoreModule,
     ComponentsModule,

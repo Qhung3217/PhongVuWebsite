@@ -20,3 +20,14 @@
     transform: unset;
   }
 }
+@include maxWidth(46.1875em) {
+  .countdown-box {
+    display: none;
+  }
+  .table-heading {
+    backdrop-filter: brightness(0.5);
+  }
+  .deal-table {
+    margin: 0 0.4rem;
+  }
+}

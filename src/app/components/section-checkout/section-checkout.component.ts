@@ -125,10 +125,12 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
       this.cards?.length > 0;
   }
   calcTotalPrice(carts) {
-    return carts.reduce(
-      (total, cart) => (total += cart.quantity * cart.item.price),
-      0
-    );
+    if (carts)
+      return carts.reduce(
+        (total, cart) => (total += cart.quantity * cart.item.price),
+        0
+      );
+    return 0;
   }
 
   autoSelectDefaultAddress(type = 'list') {
@@ -151,6 +153,7 @@ export class SectionCheckoutComponent implements OnInit, OnDestroy {
   }
   addClientSecret(resData) {
     this.elementsOptions.clientSecret = resData.client_secret;
+    console.log(this.elementsOptions.clientSecret);
   }
   changePaymentSelected(index) {
     this.paymentSelected = { ...this.cards[index] };

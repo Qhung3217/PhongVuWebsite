@@ -28,3 +28,29 @@
     }
   }
 }
+
+@include maxWidth(46.1875em) {
+  .policy-contact .footer-group {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .payment-method {
+    margin-top: 1rem;
+    .footer-group {
+      grid-template-columns: 1fr !important;
+
+      row-gap: 1rem;
+    }
+  }
+  .footer-content {
+    padding: 0 0.4rem;
+  }
+  .about {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+
+    .introduce,
+    .address {
+      width: 100% !important;
+    }
+  }
+}

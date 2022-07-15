@@ -1,0 +1,18 @@
+@import "../../../../scss/mixin";
+
+@include maxWidth(46.1875em) {
+  .display-area {
+    flex-wrap: wrap;
+  }
+  .main-display {
+    margin-right: 0 !important;
+  }
+  .side-panel {
+    width: fit-content !important;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+}

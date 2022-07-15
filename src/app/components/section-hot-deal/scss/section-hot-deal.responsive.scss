@@ -12,3 +12,9 @@
     height: 5.2rem !important;
   }
 }
+@include maxWidth(46.1875em) {
+  .hot-deal {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+}

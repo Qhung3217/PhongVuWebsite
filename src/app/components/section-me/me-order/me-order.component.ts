@@ -5,7 +5,7 @@ import { OrderService } from 'src/app/core/services/order.service';
 @Component({
   selector: 'app-me-order',
   templateUrl: './me-order.component.html',
-  styleUrls: ['./me-order.component.scss'],
+  styleUrls: ['./scss/me-order.component.scss'],
 })
 export class MeOrderComponent implements OnInit {
   orders: Order[];

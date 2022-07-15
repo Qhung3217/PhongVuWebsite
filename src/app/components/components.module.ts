@@ -43,6 +43,8 @@ import { AddressComponent } from './section-me/me-addresses/address/address.comp
 import { AddressAddModelComponent } from './section-me/me-addresses/address-add-model/address-add-model.component';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
 import { NavbarMobileComponent } from './navbar/navbar-mobile/navbar-mobile.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -92,6 +94,7 @@ import { NavbarMobileComponent } from './navbar/navbar-mobile/navbar-mobile.comp
     NgxPaginationModule,
     DynamicModule,
     RouterModule,
+    NgxStripeModule.forRoot(environment.STRIPE_PUBLIC_KEY),
   ],
   exports: [
     BreadcrumbComponent,

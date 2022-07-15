@@ -34,6 +34,7 @@
       </div>
     </div>
     <div class="main-display-right">
+      <p class="warranty">Warranty {{ product.warranty.months }} months</p>
       <h1 class="product-title">{{ product.name }}</h1>
       <aside>SKU: {{ product.sku }}</aside>
       <div class="only-one" *ngIf="product.quantity === 0">
@@ -137,7 +138,6 @@
         </li>
       </ul>
     </div>
-    <a href="#">See details</a>
   </div>
 </div>
 
@@ -146,84 +146,12 @@
     <h1 class="description">Product decription</h1>
     <div class="description-area" [innerHtml]="product.description"></div>
   </div>
-  <div class="side-infor">
-    <h1 class="title">Details</h1>
-    <div class="side-panel">
-      <div class="list">
-        <div class="item">
-          <div class="item-title">Brand</div>
-          <div class="item-text">MSI</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Warranty</div>
-          <div class="item-text">
-            {{ product.warranty.months }}
-          </div>
-        </div>
-        <div class="seperate">General information</div>
-        <div class="item">
-          <div class="item-title">Series Laptop</div>
-          <div class="item-text">Modern Series</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Part-number</div>
-          <div class="item-text">1024VN</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Color</div>
-          <div class="item-text">Gray</div>
-        </div>
-        <div class="item">
-          <div class="item-title">CPU gen</div>
-          <div class="item-text">Intel Core i5-1155G7</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Graphics chip</div>
-          <div class="item-text">Intel Iris Xe Graphics</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Ram</div>
-          <div class="item-text">
-            1 x 8GB DDR4 3200MHz ( 2 slots / Support up to 64GB )
-          </div>
-        </div>
-        <div class="item">
-          <div class="item-title">Monitor</div>
-          <div class="item-text">
-            15.6" ( 1920 x 1080 ) Full HD IPS no touch , HD webcam
-          </div>
-        </div>
-        <div class="item">
-          <div class="item-title">Storage</div>
-          <div class="item-text">512GB SSD M.2 NVMe</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Maximum number of storage ports</div>
-          <div class="item-text">2 x M.2 NVMe</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Supported M.2 slot type</div>
-          <div class="item-text">M.2 NVMe</div>
-        </div>
-        <div class="item">
-          <div class="item-title">Output port</div>
-          <div class="item-text">1 x HDMI</div>
-        </div>
-      </div>
-    </div>
-    <p class="action-more-info flex-center">
-      View more content
-      <span class="icon flex-center"
-        ><app-arrow-down-icon></app-arrow-down-icon
-      ></span>
-    </p>
-  </div>
 </div>
 
 <app-image-model
   [slides]="
     product &&
-    product.galleries && [{ url: product.image, label: product.name }]
+    (product.galleries || [{ url: product.image, label: product.name }])
   "
   *ngIf="isOpenModelImage"
   (closeEvent)="onCloseModelImage($event)"

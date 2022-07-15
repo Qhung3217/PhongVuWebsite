@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-section-detail-product',
   templateUrl: './section-detail-product.component.html',
-  styleUrls: ['./section-detail-product.component.scss'],
+  styleUrls: ['./scss/section-detail-product.component.scss'],
 })
 export class SectionDetailProductComponent implements OnInit, OnDestroy {
   product: Product = null;
